@@ -1,0 +1,19 @@
+{
+	"page":[
+		{
+		"imagePath":"images/random_imgs/Guava.jpg"
+		},
+		{
+		"imagePath":"images/random_imgs/Pineapple.jpg"
+		},
+		{
+		"imagePath":"images/random_imgs/Papaya.jpg"
+		},
+		{
+		"imagePath":"images/random_imgs/Orange.jpg"
+		},
+		{
+		"imagePath":"images/random_imgs/Pomegranate.jpg"
+		}
+	]
+}

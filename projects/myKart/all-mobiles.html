@@ -1,0 +1,181 @@
+<div class="col-md-12"  ng-controller="dataload">
+		<div class="col-md-2 rangepanel">
+			<input type="text" class="form-control" placeholder="Search by Name" ng-model="namefilter"/>			
+			<hr/>
+			<p><strong>Set Min Value:</strong></p>
+			<span style="float:left;">{{rangeValMin}}</span>
+			<input type="range" name="points" min="5000" max="30000" ng-model="rangeValMin" ng-init="rangeValMin=5000" ng-change="rangeValMax=rangeValMin"/>
+			<span style="float:left;">30000</span>
+			<br/>
+			<br/>
+			
+			<p><strong>Set Max Value:</strong></p>
+			<span style="float:left;">{{rangeValMin}}</span>
+			<input type="range" name="points" min="{{rangeValMin}}" max="30000" ng-model="rangeValMax" ng-init="rangeValMax=rangeValMin"/>			
+			<span style="float:left;">30000</span>
+			<br/>
+			<output>Range: <strong>Min: {{rangeValMin}} - Max {{rangeValMax}}</strong></output><br/>
+			<button class="btn btn-sm btn-info" ng-click="filterData();">Filter</button>
+			<hr/>
+			<div> Sort by Ratings:
+				<i class="fa fa-arrow-circle-up fa-lg" title="Lowest Ratings" ng-click="rting='ratings'"></i>
+				<i class="fa fa-arrow-circle-down fa-lg" title="Highest Ratings" ng-click="rting='-ratings'"></i>
+			</div>
+			<hr/>
+			<div> Sort by Price:
+				<i class="fa fa-arrow-circle-up fa-lg" title="Lowest Ratings" ng-click="rting='price'"></i>
+				<i class="fa fa-arrow-circle-down fa-lg" title="Highest Ratings" ng-click="rting='-price'"></i>
+			</div>
+		</div>
+		<div class="col-md-10">
+			<div class="row" id="dataView">
+				<div class='col-md-3' ng-repeat="globalData in mainData | filter:namefilter | orderBy:rting">
+					<div class='itemCnt' ng-click="routePage(globalData.datapath)">
+						<div class='imgCnt'>
+							<img ng-src="{{globalData.imgPath}}" />
+						</div>
+						<div class='prd-name'>
+							<h3>{{globalData.productName}}</h3>
+						</div>
+						<div class='prd-ratings'>
+							<p>Ratings:{{globalData.ratings}}</p>
+						</div>
+						<div class='prd-price'>
+							<h1>{{globalData.price | currency:"&#8377;"}}</h1>
+						</div>
+						<div class='prd-description'>
+							<ul>
+								<li>{{globalData.msp[0].item1}}</li>
+								<li>{{globalData.msp[0].item2}}</li>
+								<li>{{globalData.msp[0].item3}}</li>
+								<li>{{globalData.msp[0].item4}}</li>
+							</ul>
+						</div>
+						<div ng-show="{{globalData.dataavail}}">
+							<strong class="text-success">Data Available</strong>
+						</div>
+						<div ng-show="!{{globalData.dataavail}}">
+							<strong class="text-danger">OOPS!!! Data Not Available</strong>
+						</div>
+					</div>
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal" title="Add to Cart" ng-click="addtoCart(globalData);">
+							<span class="fa fa-cart-plus fa-lg"></span>
+						</button>
+				</div>
+			</div>			
+		</div>	
+	
+	
+<!-- Cart Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Your Cart</h4>
+      </div>
+      <div class="modal-body">
+			<table class="table">
+            <thead>
+              <tr>
+                <th>Item Name</th>
+                <th>Price</th>
+                <th>Ratings</th>                
+                <th></th>                
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="data in cartData">
+                <td><img ng-src="{{data.imgPath}}" height="30" width="20"> {{data.productName}}</td>
+                <td>{{data.price}}</td>
+                <td>{{data.ratings}}</td>                
+                <td><button class="text-danger btn btn-sm fa fa-times" ng-click="removeItemFromCart(data)"></button></td>                				
+              </tr>			  
+			  <tr ng-show="cartData.length <= 0">
+				<td colspan="4" class="text-danger">Cart is Empty</td>
+			  </tr>			  
+			  <tr>
+				<td colspan="4" class="text-success">Total Amount: {{totAmnt | currency:"&#8377;"}}</td>
+			  </tr>
+            </tbody>
+          </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Continue Shopping</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#checkoutModal" >Check Out</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Check Out Modal -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Check Out</h4>
+      </div>
+      <div class="modal-body">
+			<strong>Please fill up the details</strong>
+			<form name="details">
+				<input type="text" class="form-control" ng-model="username" placeholder="Enter Your Name" required /><br/>
+				<input type="Address" class="form-control" ng-model="address" placeholder="Enter Address (optional)" required /><br/>
+				<input type="number" class="form-control" ng-model="mobileno" placeholder="Mobile Number (optional)"/><br/>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Continue Shopping</button>
+				<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#orderPlacedModal" ng-disabled="username==null" ng-click="emptySession()">Place Order</button>
+			</form>
+			<hr/>
+			<h3>Items Purchased</h3>
+			<table class="table">
+				<thead>
+				  <tr>
+					<th>Item Name</th>
+					<th>Price</th>
+					<th>Ratings</th>                
+					<th></th>                
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr ng-repeat="data in cartData">
+					<td><img ng-src="{{data.imgPath}}" height="30" width="20"> {{data.productName}}</td>
+					<td>{{data.price}}</td>
+					<td>{{data.ratings}}</td>                
+					<td><button class="text-danger btn btn-sm fa fa-times" ng-click="removeItemFromCart(data)"></button></td>                				
+				  </tr>			  
+				  <tr ng-show="cartData.length <= 0">
+					<td colspan="4" class="text-danger">Cart is Empty</td>
+				  </tr>			  
+				  <tr>
+					<td colspan="4" class="text-success">Total Amount: {{totAmnt | currency:"&#8377;"}}</td>
+				  </tr>
+				</tbody>
+			</table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Check Out Modal -->
+<div class="modal fade" id="orderPlacedModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Order Placed</h4>
+      </div>
+      <div class="modal-body">
+			<h4>Congratulations!!! Your order is placed.</h4>
+			<h5>You will receive your order on <span>31-December-2999</span> <h5><br/>
+			<h5>Now go buy something new, we emptied your cart again</h5><br/>
+			<h5>Thanks for your patience. (:p)</h5>
+      </div>
+	  <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">Close Me</button>        
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>

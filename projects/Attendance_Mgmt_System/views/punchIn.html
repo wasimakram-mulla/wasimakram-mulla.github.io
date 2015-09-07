@@ -1,0 +1,27 @@
+<div class="container" ng-controller="PunchInController">
+	<button type="button" class="btn btn-sm btn-success" ng-click="punch.in=true" ng-init="punch.in=true">Punch In</button>
+	<button type="button" class="btn btn-sm btn-success" ng-click="punch.in=false">Punch Out</button>
+	<br/><br/><br/>
+	<div class="col-md-12" ng-show="punch.in">
+		<div class="col-md-6">
+			<form ng-submit="punchIn()" name="myForm">
+				<button type="button" class="btn btn-warning verifyBtn" ng-click="genBarCode();">Generate Verification BarCode</button><br/><br/>
+				<h4 class="text-warning">Enter your Bar-code digits</h4>	
+				<input type="number" placeholder="Enter Verification Code" class="form-control" ng-model="verificationCode" name="verificationCode" id="verificationCode" ng-maxlength="8" />
+				<span class="error text-danger" ng-show="myForm.verificationCode.$error.maxlength">Only 8 Digits Barcode is allowed!</span><br>
+				<button type="submit" class="btn btn-primary verifyBtn">Punch In</button>
+			</form>
+		</div>
+		<div class="col-md-6">
+				<div id="barCodeContainer"></div>
+		</div>
+	</div>
+	<div class="col-md-12" ng-show="!punch.in">
+		<div class="col-md-6">
+			<button type="submit" class="btn btn-lg btn-danger verifyBtn" ng-click="punchOut()">Punch Out</button>
+		</div>
+		<div class="col-md-6" ng-show="workedHrs">
+			<h4 class="text-warning">Your Total Working Time is: <strong class="text-danger">{{workedHrs | date:'HH:mm:ss'}}</strong>.</h4>
+		</div>
+	</div>
+</div>

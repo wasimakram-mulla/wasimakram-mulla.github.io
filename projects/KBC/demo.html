@@ -1,0 +1,22 @@
+<html>
+	<head></head>
+<body>
+	<h2>Time</h2>
+	<p><strong class="time">30</strong>  Seconds</p> 
+
+<script src="../../js/Libs/jquery-1.11.1.min.js"></script>
+<script>
+	$(document).ready(function(){
+		var cnt=30;
+		 var interval=setInterval(function(){
+			$(".time").html(cnt);
+			cnt--;
+			
+			if(cnt==0){
+				clearInterval(interval);
+			}
+		},1000)
+	});
+</script>
+</body>
+</html>

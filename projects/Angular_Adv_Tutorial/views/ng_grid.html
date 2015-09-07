@@ -1,0 +1,59 @@
+<div class="container"  ng-controller="MyCtrl">
+<p><strong>Definition</strong>: It is a common requirement for any project to display data in some kind of tabular format. The easiest way to achieve this is by using HTML table. But soon this gets complex as you need a way to support pagination (client-side and server-side), sorting (single & multi column), resizable columns, inline editing, filtering, etc. These all are satisfied by <strong>ng-grid</strong>. Below is an Basic example for the same.</p>
+<div class="col-md-6">
+	<h4>State Wise Population</h4>
+	<div class="gridStyle" ng-grid="gridOptions"></div>
+</div>
+
+<div class="col-md-6">
+	<h4>State Wise Population Description</h4>
+	<div class="gridStyle gridDetails" ng-grid="gridDetails"></div>
+</div>
+</div>
+
+<br/>
+<div style="background-color:#dddddd" class="container">
+<h5><strong>Code Snippet</strong></h5>
+<textarea class="form-control" readonly rows="20">
+/************* Here we Consider data is fetched from some JSON **************/
+
+CoreStructure.controller('MyCtrl', function($scope) {
+	$(".gridDetails").hide();
+	$scope.mySelections = [];
+	
+	$scope.gridOptions = { 
+		data: 'myData',
+		selectedItems: $scope.mySelections,
+		multiSelect: false,
+		columnDefs:[
+			{field:'rank', displayName:'Rank'},
+			{field:'name', displayName:'Name'},
+		    {field:'population', displayName:'Population'}
+		],
+		afterSelectionChange: 	function (rowItem, event) {	
+			 if($scope.mySelections[0]){
+				$scope.selData = $scope.mySelections[0].id;
+				$scope.pathData = $scope.sortedData[$scope.selData];
+				$(".gridDetails").show();
+			}
+		return $scope.pathData;	
+		}
+	};
+	
+	$scope.gridDetails = { 
+		data: 'pathData',
+		selectedItems: $scope.mySelections,
+		multiSelect: false,
+		columnDefs:[
+			{field:'name', displayName:'District'},
+			{field:'persons', displayName:'Persons'},
+			{field:'male', displayName:'Males'},
+			{field:'female', displayName:'Females'}
+		],
+	};
+});
+</textarea>
+</div>
+
+<br/>
+<br/>

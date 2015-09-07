@@ -1,0 +1,21 @@
+<div class="col-md-12" ng-controller="mobileDetails" style="margin-top:60px;">	
+	<div class="col-md-12" ng-show="cellDetails.length > 0">
+		<div class="col-md-6">
+			<img ng-src="{{dispImage}}" height="400" width="450"/>		
+			<ul style="overflow-y:auto;width:500px;list-style-type:none;">
+				<li ng-repeat="img in cellDetails[0].imgs" style="float:left;cursor:pointer;margin-right:20px;margin-top:20px;border:2px solid #ccc;">
+					<img ng-src="{{img}}" height="100" width="100" ng-click="changeDispImage(img)" />
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-6">
+			<h2>Specification of: <span class="text-success">{{cellDetails[0].productName}}</span></h2>
+			<ol>
+				<li ng-repeat="details in cellDetails[0].msp">{{details}}</li>
+			</ol>
+		</div>
+	</div>
+	<div ng-show="cellDetails.length<=0">
+		<strong class="text-danger">Sorry!!! Cannot find any related details.</strong>
+	</div>
+</div>

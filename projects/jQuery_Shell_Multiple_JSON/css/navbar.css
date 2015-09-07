@@ -1,0 +1,10 @@
+body {
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.navbar {
+    margin-bottom: 20px;
+}
+.navbar-brand {
+    padding: 3px;
+}

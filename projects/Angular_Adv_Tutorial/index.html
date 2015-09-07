@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" ng-app="Structure">
+<head>
+  <meta charset="utf-8">
+  <title>Angular Tutorial</title>
+  <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../css/ng-grid.css" />
+  <link rel="stylesheet" href="css/style.css">
+  <script src="../../js/Libs/jquery-1.11.1.min.js"></script>
+  <script src="../../js/Libs/bootstrap.min.js"></script>
+  <script src="../../js/Libs/angular.min.js"></script>
+  <script src="../../js/Libs/ng-grid.debug.min.js"></script>
+  <script src="../../js/Libs/angular-translate-min.js"></script>
+  <script src="../../js/Libs/angular-route.min.js"></script>
+  <script src="../../js/Libs/angular-locale_en-us.js"></script>
+  <script src="../../js/Libs/angular-locale_de-de.js"></script>
+  <script src="js/Controllers/app.js"></script>
+  <script src="js/Controllers/controller.js"></script>  
+</head>
+<body>
+	<!-- Header Portion -->
+<!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img height="100%" src="imgs/AngularJs.png" /></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+           <li class="dropdown">
+              <a href="#/whyangular" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Basics <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="#/whyangular">Why_angular?</a></li>
+                <li><a href="#/what_is_Angular">What is Angular Js</a></li>
+              </ul>
+            </li>
+            <li><a href="#/TwoWayDB_Filter">Two Way Data Binding</a></li>            
+            <li><a href="#/Localization">Localization</a></li>            
+            <li><a href="#/ng_grid">ng Grid</a></li>      
+			<li class="dropdown">
+				<a href="#/custom_service" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Custom Components <span class="caret"></span></a>
+				<ul class="dropdown-menu" role="menu">			
+					<li><a href="#/custom_service">Custom Service</a></li>            
+					<li><a href="#/custom_directive">Custom Directive</a></li>            
+				</ul>
+			</li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+	
+    <div class="container" ng-controller="SearchController as search">	
+		
+		<!-- Section Part NG-VIEW to Load Content -->
+        <section id="about" class="col-md-12" ng-view>
+           
+        </section>
+		
+    </div>
+	
+	<!-- Footer content -->
+<footer class="footer">
+      <div class="container">
+        <p>Copyright &copy; Calsoft.</p>
+      </div>
+    </footer>
+</body>
+</html>

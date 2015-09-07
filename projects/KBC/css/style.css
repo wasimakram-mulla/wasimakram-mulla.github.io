@@ -1,0 +1,132 @@
+.container{
+	height:600px;
+	width:1024px;
+	margin:0 auto;
+	border:1px solid black;
+	background:#F5F5F5;
+}
+
+.row{
+	width:100%;
+	float:left;
+}
+
+.Header{	
+	width:100%;
+	float:left;
+	font-size: 20px;
+	padding:20px;
+	box-sizing: border-box;
+}
+
+.questionWrapper{
+    height: 536px;
+    width: 800px;	
+	float:left;
+}
+
+.marksWrapper{
+    background: none repeat scroll 0 0 tan;
+    height: 536px;
+    width: 224px;	
+	float:left;
+	text-align:center;
+}
+
+.marks{
+    background: none repeat scroll 0 0 wheat;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px auto;
+    padding: 5px;
+    text-align: center;
+    width: 50%;
+}
+
+.questionBar{
+	padding:20px;	
+	background:turquoise;
+	font-size:18px;
+	font-family:comic sans ms;	
+}
+
+
+.option {
+    background: #E3E3E3;
+    cursor: pointer;
+    float: left;
+    font-size: 17px;
+    margin: 25px;
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+}
+
+.optionWrapper{
+	width:100%;
+	float:left;
+}
+
+.btn{
+	background-image: linear-gradient(to bottom, #5cb85c 0px, #419641 100%);
+    background-repeat: repeat-x;
+    border-color: #3e8f3e;
+	border-radius: 3px;
+    font-size: 12px;
+    line-height: 1.5;
+	margin: 5px 20px;
+    padding: 5px 10px;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-sizing: border-box;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+	background-color: #5cb85c;
+    border-color: #4cae4c;
+    color: #fff;
+	float:left;
+	cursor:pointer;
+}
+
+.btn-quit{
+    background-image: linear-gradient(to bottom, #d9534f 0px, #c12e2a 100%);
+    background-repeat: repeat-x;
+    border-color: #b92c28;
+	float:right;
+}
+
+.option.selected{
+	background:#FFDAB9;
+}
+
+.marks.levelUp{
+	background:#98FB98;
+}
+
+.btn.disabled{
+	cursor:default;
+	background:#ccc;
+	color:#000;
+	border-color: grey;
+}
+
+.option.disabled{
+	cursor:default;
+}
+
+
+
+.btn-reset{
+    background-image: linear-gradient(to bottom, #428bca 0px, #2d6ca2 100%);
+    background-repeat: repeat-x;
+    border-color: #2b669a;
+	border-radius: 3px;
+    font-size: 12px;
+    line-height: 1.5;
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15) inset, 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-sizing: border-box;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+	background-color: #5cb85c;
+    border-color: #4cae4c;
+    color: #fff;
+	float:right;
+	cursor:pointer;
+}

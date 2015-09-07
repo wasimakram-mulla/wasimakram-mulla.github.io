@@ -1,0 +1,47 @@
+.navbar-brand{font-size: 28px;}
+.navbar a{color: #fff;}
+.nav > li > a:focus,.nav > li > a:hover, .nav .open > a, .nav .open > a:focus, .nav .open > a:hover{background: #286AA0;}
+#dataView , .rangepanel{
+    margin-top: 80px;
+}
+.itemCnt {
+    height: 420px;
+	cursor: pointer;
+    margin-bottom: 20px;
+    padding: 20px 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.itemCnt:hover{
+	background:#eee;
+}
+.prd-name h3 {
+    color: #999;
+    font-size: 17px;
+}
+.prd-description ul {
+	text-align: left;
+}
+
+input[type="range"] {
+	float:left;
+	width: 60%;
+}
+
+.fa.fa-arrow-circle-up,.fa.fa-arrow-circle-down{
+cursor:pointer;
+margin-right:5px;
+}
+
+.col-md-3{
+	position:relative;
+}
+
+.col-md-3 button{
+	font-size: 15px;
+	position:absolute;	
+	text-align:center;
+	right:15px;
+	top:0px;
+}

@@ -1,0 +1,19 @@
+{
+	"mobileDetails" : [
+		{
+			"id": 1,
+			"productName": "Redmi Note 4G (White)",
+			"offer": "false",
+			"ratings": 3.8,
+			"price": 9999,
+			"msp": ["5.5-inch Touchscreen","13 MP Primary Camera","5 MP Secondary Camera","Android v4.4.2 OS"],
+			"imgs": [
+					"images/Redmi_Note_4G/1.jpg",
+					"images/Redmi_Note_4G/2.jpg",
+					"images/Redmi_Note_4G/3.jpg",
+					"images/Redmi_Note_4G/4.jpg",
+					"images/Redmi_Note_4G/5.jpg"
+			]
+		}
+	]
+}

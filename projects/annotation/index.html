@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--<html lang="en" type="text/cache-manifest" manifest="cache.appcache">-->	
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Annotations</title>
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<script src="libs/jquery/jquery-1.9.1.min.js"></script>	
+<script src="libs/jquery/jquery-ui.min.js"></script>	
+<script src="libs/fabrics/fabric.require.js"></script>	
+<script src="libs/fabrics/fabric.js"></script>	
+
+<script src="js/drawing/objects/Rectangle.js"></script>
+<script src="js/drawing/objects/Circle.js"></script>
+<script src="js/drawing/objects/Triangle.js"></script>
+<script src="js/drawing/objects/Text.js"></script>
+<script src="js/drawing/objects/Image.js"></script>
+
+<script src="js/controllers/MainController.js"></script>
+<script>
+	$(document).ready(function(){
+		var temp = new MainController();
+		temp.init();
+	});
+</script>
+
+</head>
+<body>
+	<p> Annotation samples</p>
+	<div id="container" style="border:1px solid">
+		<canvas id="painting" style="border:1px solid blue" width="500px" height="500px">
+		
+		</canvas>
+	</div>
+	<br/>
+	
+	<div class="toolBox" id="toolBox">
+		<div class="toolBoxHeader">
+			<div class="closeToolBox" id="closeToolBox">X</div>
+		</div>
+		<div id="rect" class="tools rect"></div>
+		<div id="circle" class="tools circle"></div>
+		<div id="rectopaque" class="tools rectopaque"></div>
+		<div id="triangle" class="tools triangle"></div>
+		<div id="text" class="tools text"></div>
+		<div class="spacer"></div>
+		<input id="colorpicker" type="color" class="tools colorpicker" title="Background Color"/>
+		<input id="borderclr" type="color" class="tools borderclr" title="Border Color"/>
+	</div>
+	
+	<div id="popupBox" class="popupBox">
+		<label>X: </label><input type="text" size="5" id="xcord" />
+		<label>Y: </label><input type="text" size="5" id="ycord" />
+		<br/><br/>
+		<div id="heightWidthCtrls">
+		<label>Height: </label><input type="text" size="5" id="height" />
+		<label>Width: </label><input type="text" size="5" id="width" />
+		<br/><br/>
+		</div>
+		<div id="textCtrls">
+		<label>Text: </label><input type="text" size="25" id="textval" />
+		<br/><br/>
+		</div>
+		<div id="circleCtrls">
+		<label>Radius: </label><input type="text" size="5" id="circRad" />
+		<br/><br/>
+		</div>
+		<label>Color: </label><input type="color" size="10" id="color" />
+		<br/><br/>
+		<button id="makeObject">Done</button>
+	</div>
+	
+	<button type="button" id="startAnnotation">Start Drawing</button>
+	
+	<div class="showBlock">
+		<ul>
+			<li id="sendBackwards" class="menu">sendBackwards</li>
+			<li id="sendToBack" class="menu">sendToBack</li>
+			<li id="bringForward" class="menu">bringForward</li>
+			<li id="bringToFront" class="menu">bringToFront</li>
+		</ul>
+	</div>
+	<!-- <input type="text" id="text1" />
+	<button type="button" id="updateText">Add</button> -->
+</body>
+</html>

@@ -1,0 +1,181 @@
+.col-sm-1{
+	margin-bottom:10px;
+}
+
+.imageContainer{
+	text-align:center;
+}
+
+.imageContainer img{
+	border:solid 5px #c0c0c0;
+	padding:10px;
+}
+
+.alphabets{
+	text-align:center;
+}
+
+.alphabets .charImgs{
+	cursor:pointer;
+}
+
+.alphabets .charImgs[data-disabled="disabled"]{
+	opacity:0.5;
+	cursor:default;
+}
+
+.alphabets .A{
+	background:url("../images/alphabets.jpg") repeat scroll -13px -10px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .B{
+	background:url("../images/alphabets.jpg") repeat scroll -105px -10px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .C{
+	background:url("../images/alphabets.jpg") repeat scroll -203px -10px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .D{
+	background:url("../images/alphabets.jpg") repeat scroll -303px 1px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .E{
+	background:url("../images/alphabets.jpg") repeat scroll -400px 0 rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .F{
+	background:url("../images/alphabets.jpg") repeat scroll -493px 11px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .G{
+	background:url("../images/alphabets.jpg") repeat scroll -590px 10px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .H{
+	background:url("../images/alphabets.jpg") repeat scroll -13px -120px  rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .I{
+	background:url("../images/alphabets.jpg") repeat scroll -103px -120px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .J{
+	background:url("../images/alphabets.jpg") repeat scroll -203px -115px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .K{
+	background:url("../images/alphabets.jpg") repeat scroll -303px -115px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .L{
+	background:url("../images/alphabets.jpg") repeat scroll -396px -109px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .M{
+	background:url("../images/alphabets.jpg") repeat scroll -493px -110px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .N{
+	background:url("../images/alphabets.jpg") repeat scroll -593px -100px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .O{
+	background:url("../images/alphabets.jpg") repeat scroll -5px -233px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .P{
+	background:url("../images/alphabets.jpg") repeat scroll -103px -233px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .Q{
+	background:url("../images/alphabets.jpg") repeat scroll -201px -229px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .R{
+	background:url("../images/alphabets.jpg") repeat scroll -303px -228px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .S{
+	background:url("../images/alphabets.jpg") repeat scroll -406px -225px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .T{
+	background:url("../images/alphabets.jpg") repeat scroll -505px -222px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .U{
+	background:url("../images/alphabets.jpg") repeat scroll -597px -226px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .V{
+	background:url("../images/alphabets.jpg") repeat scroll -99px -347px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .W{
+	background:url("../images/alphabets.jpg") repeat scroll -199px -347px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .X{
+	background:url("../images/alphabets.jpg") repeat scroll -319px -344px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .Y{
+	background:url("../images/alphabets.jpg") repeat scroll -416px -344px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}
+
+.alphabets .Z{
+	background:url("../images/alphabets.jpg") repeat scroll -519px -346px rgba(0, 0, 0, 0);
+	padding:60px 0;
+    width: 100px;
+}

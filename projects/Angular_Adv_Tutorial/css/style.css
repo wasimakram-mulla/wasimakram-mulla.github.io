@@ -1,0 +1,25 @@
+body {
+    margin: 0;
+    padding: 0;
+	/* background:#F3F3F3; */
+}
+
+
+.navbar-brand{
+	padding:0px !important
+}
+
+footer {
+    background-color: black;
+    color: white;
+}
+
+textarea{
+	resize:none;
+}
+
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 400px; 
+    height: 300px;
+}

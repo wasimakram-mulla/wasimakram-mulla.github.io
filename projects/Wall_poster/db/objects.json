@@ -1,0 +1,44 @@
+{
+    "wall": {
+        "table": {
+            "objNm": "table",
+            "imgs": [
+                "imgs/table/table1.png",
+                "imgs/table/table2.png"
+            ]
+        },
+        "fridge": {
+            "objNm": "fridge",
+            "imgs": [
+                "imgs/fridge/fridge1.png",
+                "imgs/fridge/fridge2.png",
+                "imgs/fridge/fridge3.png"
+            ]
+        },
+        "TV": {
+            "objNm": "TV",
+            "imgs": [
+                "imgs/tv/tv1.png",
+                "imgs/tv/tv2.png",
+                "imgs/tv/tv3.png"
+            ]
+        },
+        "photo_frames": {
+            "objNm": "photo_frames",
+            "imgs": [
+                "imgs/photo_frames/frame1.jpg",
+                "imgs/photo_frames/frame2.png",
+                "imgs/photo_frames/frame3.png",
+                "imgs/photo_frames/frame4.png"
+            ]
+        },
+        "vase": {
+            "objNm": "vase",
+            "imgs": [
+                "imgs/vase/vase1.png",
+                "imgs/vase/vase3.png",
+                "imgs/vase/vase4.png"
+            ]
+        }
+    }
+}

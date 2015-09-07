@@ -1,0 +1,18 @@
+{
+    "page": [
+        {
+            "QuesText": "AB_DEF",
+            "Opt1": [
+              {
+                 "text":"X",
+                 "Start_Time":"0:30",
+                 "End_Time":"1:30"
+              }
+             ],
+            "Opt2": "C",
+            "Opt3": "P",
+            "Opt4": "L",
+            "CorrectAns": "2"
+        }
+    ]
+}

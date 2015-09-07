@@ -1,0 +1,95 @@
+.toolBox{
+    background: none repeat scroll 0 0 #ccc;
+    display: none;
+    float: left;
+    left: 513px;
+    position: absolute;
+    top: 55px;
+    width: 100px;
+}
+
+.toolBoxHeader{
+	height:25px;
+	width:100%;
+	background:red;
+	position:relative;
+}
+
+.closeToolBox{
+	padding:3px;
+	background:tan;
+	position:absolute;
+	right:0px;
+	cursor:pointer;
+}
+
+.tools{
+	height:40px;
+	float:left;
+	width:40px;
+	background:#000;
+	margin:5px;
+	cursor:pointer;
+}
+
+.circle{
+	border-radius:30px;
+}
+
+.rectopaque{
+	opacity:0.2;
+}
+
+.colorpicker, .borderclr{
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    padding: 0;
+}
+
+.triangle{
+	background:url('../triangle.png');
+	background-size:100%;
+}
+
+.text{
+	background:url('../text.png');
+	background-size:100%;
+}
+
+.spacer {
+    background: none repeat scroll 0 0 #aaa;
+    float: left;
+    height: 1px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.popupBox{
+    background: none repeat scroll 0 0 #ccc;
+    display: none;
+    left: 513px;
+    padding: 20px;
+    position: absolute;
+    top: 320px;
+    width: 220px;
+}
+
+
+.showBlock{
+	display:none;
+	background:tan;
+	position:absolute;
+}
+.showBlock ul {
+	list-style: none outside none;
+	margin: 10px;
+	padding: 0;
+}
+.showBlock li {
+	cursor:pointer;
+	padding:5px;
+}	
+
+.showBlock li:hover{
+	background:rgba(255,255,255,0.5);
+}	

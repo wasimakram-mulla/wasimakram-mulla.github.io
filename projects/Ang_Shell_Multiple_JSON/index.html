@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" ng-app="Structure">
+<head>
+  <meta charset="utf-8">
+  <title>Angular Demo Single HTML Multi JSON Load</title>
+  <link rel="stylesheet" href="../../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../../css/ng-grid.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="../../js/Libs/jquery-1.11.1.min.js"></script>
+  <script src="../../js/Libs/bootstrap.min.js"></script>
+  <script src="../../js/Libs/angular.min.js"></script>
+  <script src="../../js/Libs/ng-grid.debug.min.js"></script>
+  <script src="../../js/Libs/angular-resource.min.js"></script>
+  <script src="../../js/Libs/angular-route.min.js"></script>
+  <script src="js/Controllers/app.js"></script>
+  <script src="js/Controllers/controller.js"></script>  
+</head>
+<body>
+	<!-- Header Portion -->
+<!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><img height="100%" src="imgs/AngularJs.png" /></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" ng-controller="MainController as mainCtrl">
+          <ul class="nav navbar-nav navbar-right">          
+            <li><a href="#/demoPage1" ng-click="mainCtrl.addStorage('json1')">Load JSON 1</a></li>
+            <li><a href="#/demoPage2" ng-click="mainCtrl.addStorage('json2')">Load JSON 2</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+	
+    <div class="container">	
+		
+		<!-- Section Part NG-VIEW to Load Content -->
+        <section id="about" class="col-md-12" ng-view>
+           
+        </section>
+		
+    </div>
+	
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+body, html{
+	margin:0;
+	padding:0;
+}
+
+.wrapperContainer{
+	height:100%;
+	width:100%;
+	background:#eee;
+	margin:0 auto;
+}
+
+.col-lg-4{
+	padding:1.5em !important;	
+}
+
+.tiles{
+	background:tan;
+	padding:1.5em;
+}
+
+.tiles > h2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.quizSection{
+	background:#ccc;
+	display:none;
+}
+
+.QOpts{
+	padding:10px;
+}
+.optText{
+	background:#235453;
+	color:white;
+	padding:5px;
+	cursor:pointer;
+	border-radius: 5px;
+	border: 1px solid #93C9C7;
+}
+.optText.selected{
+	background:#93C9C7;
+	color:#235453;
+	border: 1px solid #235453;
+}
+
+.QuestionText{
+	padding:10px;
+}
+
+.submitBtn p{
+	text-align:center;
+}
+
+.resetQuizBtn{
+	margin-bottom: 10px;
+    margin-top: 20px;
+	float:right;
+}

@@ -1,0 +1,13 @@
+.wrapper{
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 100%;
+}
+
+.wrapper[data-disabled="disabled"]{
+    background:#ccc;
+}
+
+.submitBtn, .cancelBtn{
+	display:none;
+}

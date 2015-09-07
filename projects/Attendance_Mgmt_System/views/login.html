@@ -1,0 +1,16 @@
+<head>
+<link rel="stylesheet" href="css/sign_in.css" />
+</head>
+<body>
+	<div class="container" ng-controller="LoginController">
+
+      <form class="form-signin col-md-6" ng-submit="loginSuccess();">
+        <h2 class="form-signin-heading text-success">Login Credentials</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" ng-model="email" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" ng-model="passwd" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="!email">Sign in</button>
+      </form>
+    </div> <!-- /container -->		<div class="container">	<h4>Normal User</h4>	<h5>Username: test@kk.in<br/> Password: test@1234</h5>		<h4>Admin User</h4>	<h5>Username: admin@kk.in<br/> Password: admin@1234</h5>    </div> <!-- /container -->
+</body>

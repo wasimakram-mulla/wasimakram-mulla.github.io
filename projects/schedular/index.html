@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<title>Scheduler</title>
+		<link rel="stylesheet" type="text/css" href="../../css/jquery-ui.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/Scheduler.css" />
+	</head>
+<body>
+<h2>Scheduler</h2>
+<div class="SchedulerContainer">
+	<label>Select Date: </label><input type="text" id="dtp"  placeholder="Date"/><br/><br/>
+	<label>Select Timing: </label>
+		<select id="hr"></select> <select id="min"></select> 
+	<br/><br/>
+	<label>Enter Course: </label><input type="text" id="course" placeholder="Course"/><br/><br/>
+	<label>Enter Page Number: </label><input type="text" id="coursepgnum" placeholder="Page" size="5" maxlength="5" onkeypress="return Scheduler.numbersonly(event)" /><br/><br/>
+	<label>Enter Comments: </label><br/><textarea id="SchedulerComment" class="SchedulerComment" placeholder="Comment"></textarea><br/><br/>
+	<button type="button" id="addScheduler">Add Scheduler</button><br/>
+</div>
+<script src="../../js/Libs/jquery-1.11.1.min.js"></script>
+<script src="../../js/Libs/jquery-ui.min.js"></script>
+<script src="js/Controller/SchedulerController.js"></script>
+<script>	
+	$(document).ready(function(){
+			Scheduler.init();
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<div class="container">
+	<div class="col-md-12" ng-controller="localizationController as localCtrl">
+		<p><strong>Definition:</strong> Localization (l10n), is the process of adapting applications and text to enable their usability in a particular cultural or linguistic market. </p>
+		<label>Please select an Preferred Language</label>
+		<select ng-model="selLanguage" ng-change="localCtrl.changeLang()">
+			<option>EN-US</option>
+			<option>DE-DE</option>
+		</select>
+		<br/>
+		<br/>
+		<strong>Your Message:</strong><h3> {{ 'MESSAGE' | translate }}</h3>
+	</div>
+	</div>
+	<br/><br/>
+<div style="background-color:#dddddd" class="container">
+<h5><strong>Code Snippet</strong></h5>
+<textarea class="form-control" readonly rows="20">
+/******  In Module Config (Inject pascalprecht.translate) ******/
+	$translateProvider.preferredLanguage('en');
+	$translateProvider.translations('en', {
+		'MESSAGE': 'This is an Angular Tutorial.'
+	}).translations('de', {
+		'MESSAGE': 'Dies ist ein Winkel Tutorial.'
+	});
+	
+	
+/****** In Controller Change Language at Runtime ******/
+CoreStructure.controller("localizationController", function($translate, $scope){
+	$scope.selLanguage='EN-US';
+		
+	this.changeLang = function(){
+		if($scope.selLanguage=='EN-US'){
+			$translate.use('en')
+		}
+		else{
+			$translate.use('de')
+		}
+	}
+});
+
+</textarea>
+<br/>
+</div>
+	<br/><br/><br/><br/><br/><br/>

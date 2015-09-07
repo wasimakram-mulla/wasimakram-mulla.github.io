@@ -1,0 +1,28 @@
+{
+	"page":[
+		{
+		"imagePath":"images/random_imgs/apple.jpg",
+		"Opt1": "images/A.png",
+		"Opt2": "images/X.png",
+		"Opt3": "images/C.png",
+		"Opt4": "images/S.png",
+		"CorrectAns":"1"
+		},
+		{
+		"imagePath":"images/random_imgs/strawberry.jpg",
+		"Opt1": "images/A.png",
+		"Opt2": "images/C.png",
+		"Opt3": "images/L.png",
+		"Opt4": "images/S.png",
+		"CorrectAns":"4"
+		},
+		{
+		"imagePath":"images/random_imgs/watermelon.jpg",
+		"Opt1": "images/Q.png",
+		"Opt2": "images/W.png",
+		"Opt3": "images/C.png",
+		"Opt4": "images/D.png",
+		"CorrectAns":"2"
+		}
+	]
+}

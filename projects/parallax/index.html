@@ -1,0 +1,100 @@
+<!Doctype html>
+<html>
+	<head>
+		<title>Responsive Parallax</title>
+		<script src="../../js/Libs/jquery-1.11.1.min.js"></script>
+		<style>
+			body{
+			    margin: 0;
+				padding: 0;
+			}
+			#navigation{    
+				width: 100%;
+				height: 60px;
+				margin: 0;
+				padding: 0;
+				position: relative;
+				background: #fff;
+			}
+			#navigation li {
+				display: table;
+				float: left;
+				height: 100%;
+				margin: 0 20px;
+				width: auto;
+			}
+			#navigation li a {
+				display: table-cell;
+				text-align: center;
+				text-decoration: none;
+				vertical-align: middle;
+			}
+			.pgsection{
+				float: left;
+				width: 100%;
+				height: 100%;
+				/*display:none;*/
+			}
+			#mainCnt{
+				overflow: hidden;
+				width: 100%;
+			}
+			.animtedCnt{
+				height: 100%;
+				top:0;
+				position: relative;
+			}
+		</style>
+		<script>
+			$(document).ready(function(){
+				$(".page_1").css("display", "block");
+				var docWidth = $(window).width();
+				var docHeight = $(document).height();
+				
+				var contentLength= $(".pgsection").length;
+				
+				$(".animtedCnt").css({"width": docWidth*contentLength, "top": 0});
+				
+				$("#mainCnt").css("height", docHeight);
+				
+				//$(".pgsection").css("width", docWidth);
+				
+				$("#navigation a").click(function(){
+					var pageNav =$(this).attr("class");
+					//alert(pageNav);
+					$(".animtedCnt").animate({"top": -docHeight*pageNav});
+					//$(".pgsection").fadeOut();
+					//$(".page_"+pageNav).fadeIn();
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		<header>
+			<nav>
+				<ul id="navigation">
+					<li><a href="#">PARALLAX DEMO</a></li>
+					<li><a href="#" class="0">Home</a></li>
+					<li><a href="#" class="1">Page2</a></li>
+					<li><a href="#" class="2">Page3</a></li>
+					<li><a href="#" class="3">Page4</a></li>
+					<li><a href="#" class="4">Page5</a></li>
+					<li><a href="#" class="5">Page6</a></li>
+					<li><a href="#" class="6">Location & Contact Us</a></li>
+				</ul>
+			</nav>
+		</header>
+		<section id="mainCnt">
+			<div class="animtedCnt">
+				<div class="page_1 pgsection" style="background:#22A39F;"></div>
+				<div class="page_2 pgsection" style="background:red;"></div>
+				<div class="page_3 pgsection" style="background:yellow;"></div>
+				<div class="page_4 pgsection" style="background:lime;"></div>
+				<div class="page_5 pgsection" style="background:blue;"></div>
+				<div class="page_6 pgsection" style="background:lightblue;"></div>
+				<div class="page_7 pgsection" style="background:purple;"></div>
+			</div>
+		</section>
+	</body>
+</html>

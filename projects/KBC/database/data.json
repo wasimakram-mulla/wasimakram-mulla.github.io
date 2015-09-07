@@ -1,0 +1,103 @@
+{
+    "Questions": [
+        {
+            "QuesId": "0",
+            "QuesText": "Full Form of HTML",
+            "Opt1": "Hyper Text Multiple Language",
+            "Opt2": "Hiper Text Multiple Language",
+            "Opt3": "Hyper Text Markup Language",
+            "Opt4": "Hiper Text Markup Language",
+            "CorrectAns": "3"
+        },
+        {
+			"QuesId": "1",
+            "QuesText": "Which of the following is not obsolete in HTML5?",
+            "Opt1": "applet",
+            "Opt2": "basefont",
+            "Opt3": "Figure",
+            "Opt4": "center",
+            "CorrectAns": "2"
+        },
+        {
+			"QuesId": "2",
+            "QuesText": "Which attribute will play the  audio embed in the audio element  continuously?",
+            "Opt1": "loop",
+            "Opt2": "control",
+            "Opt3": "preload",
+            "Opt4": "autoplay",
+            "CorrectAns": "1"
+        },
+        {
+			"QuesId": "3",
+            "QuesText": "Which attribute will play the  Video embed in the audio element  continuously?",
+            "Opt1": "loop",
+            "Opt2": "control",
+            "Opt3": "preload",
+            "Opt4": "autoplay",
+            "CorrectAns": "4"
+        },
+		{
+            "QuesId": "0",
+            "QuesText": "Full Form of HTML",
+            "Opt1": "Hyper Text Multiple Language",
+            "Opt2": "Hiper Text Multiple Language",
+            "Opt3": "Hyper Text Markup Language",
+            "Opt4": "Hiper Text Markup Language",
+            "CorrectAns": "3"
+        },
+        {
+			"QuesId": "1",
+            "QuesText": "Which of the following is not obsolete in HTML5?",
+            "Opt1": "applet",
+            "Opt2": "basefont",
+            "Opt3": "Figure",
+            "Opt4": "center",
+            "CorrectAns": "2"
+        },
+        {
+			"QuesId": "2",
+            "QuesText": "Which attribute will play the  audio embed in the audio element  continuously?",
+            "Opt1": "loop",
+            "Opt2": "control",
+            "Opt3": "preload",
+            "Opt4": "autoplay",
+            "CorrectAns": "1"
+        },
+        {
+			"QuesId": "3",
+            "QuesText": "Which attribute will play the  Video embed in the audio element  continuously?",
+            "Opt1": "loop",
+            "Opt2": "control",
+            "Opt3": "preload",
+            "Opt4": "autoplay",
+            "CorrectAns": "4"
+        },
+		{
+            "QuesId": "0",
+            "QuesText": "Full Form of HTML",
+            "Opt1": "Hyper Text Multiple Language",
+            "Opt2": "Hiper Text Multiple Language",
+            "Opt3": "Hyper Text Markup Language",
+            "Opt4": "Hiper Text Markup Language",
+            "CorrectAns": "3"
+        },
+        {
+			"QuesId": "1",
+            "QuesText": "Which of the following is not obsolete in HTML5?",
+            "Opt1": "applet",
+            "Opt2": "basefont",
+            "Opt3": "Figure",
+            "Opt4": "center",
+            "CorrectAns": "2"
+        },
+        {
+			"QuesId": "2",
+            "QuesText": "Which attribute will play the  audio embed in the audio element  continuously?",
+            "Opt1": "loop",
+            "Opt2": "control",
+            "Opt3": "preload",
+            "Opt4": "autoplay",
+            "CorrectAns": "1"
+        }
+    ]
+}

@@ -1,0 +1,24 @@
+<div ng-controller="WallObjectsController as wallctrl">
+	<div class="col-md-12">
+			<p class="text-danger"><strong>Below are set of Objects Click of Open Items and Once the Item is placed on Wall You can Drag it anywhere on the Wall. Also There is a Sidebar you can Set the background tiles you want.</strong></p>
+		<div class="wall">
+			<a type="button" class="btn btn-xs btn-warning" href="#/dashboard">Back </a><h2>My HALL</h2>
+			<div style="float:left" class="dragObjs" ng-repeat="images in wallctrl.wallObjects"><img ng-src="{{images.imagePath}}" width="150"/></div>
+		</div>	
+	</div>
+	<div class="col-md-12">
+		<div class="optionsWrapper">
+			<div class="col-md-1 objects" ng-hide="wallctrl.innerContentShow" ng-repeat="items in wallctrl.globalObjects" ng-click="wallctrl.selObject(items)"><img ng-src="{{items.imgs[0]}}" width="150"/></div>
+			<div class="col-md-12" ng-show="wallctrl.innerContentShow" ng-repeat="items in wallctrl.dupGlobalObjects">
+				<span class="col-sm-1"><br/><button ng-click="wallctrl.jumpBack();" class="btn"><img width="30" src="imgs/jump_back.png"></button></span>
+				<span class="col-md-1 objects" ng-repeat="subitems in items.imgs" ng-click="wallctrl.pushObjOnWall(items, subitems);"><img ng-src="{{subitems}}" width="150"/></span>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="tilesWrapper" ng-controller="tilesController as tilesCtrl">
+	<div class="sideBar openBar" ng-click="tilesCtrl.openCloseSideBar()"></div>
+	<div class="tilesContainer">		
+		<div class="tiles" ng-repeat="tls in tilesCtrl.tiles"><img ng-src="{{tls}}" width="70" ng-click="tilesCtrl.applyBg(tls)"/></div>
+	</div>
+</div>

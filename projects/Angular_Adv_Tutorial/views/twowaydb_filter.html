@@ -1,0 +1,124 @@
+<div style="background-color:#dddddd" class="container ng-scope" ng-app="searchModule">
+<div ng-controller="SearchController as search">
+	<div style="margin: 0" class="page-header">
+		<h3>
+			<!-- Heading goes here -->
+			Search the Table - Filter and Two Way Data Binding Example
+		</h3>
+	</div>
+	<div style="padding-top: 15px">
+		<!-- Summary goes here -->
+		This demo shows how to search the table for any keyword
+	</div>
+	<div style="padding: 10px 0px 20px 0px">
+		<b>Instruction: </b>
+		<!-- Instruction goes here -->		
+			Filtering Repeaters tutorial page</a>. Try playing with all the functions
+		such as add, remove and search.
+	</div>
+	<div style="padding: 20px 0px 60px 0px">
+		<span style="font-weight: bold" class="col-md-1">Search</span> <span class="col-md-3"> <input type="text" ng-model="searchKeyword" class="form-control ng-pristine ng-valid" />
+		</span>
+	</div>
+	<div style="padding-bottom: 50px">
+		<table style="width: 100%">
+			<tbody><tr>
+				<td style="vertical-align: top">
+					<table class="table">
+						<tbody><tr>
+							<th>Name</th>
+							<th>Employees</th>
+							<th>Head Office</th>
+							<th>Action</th>
+						</tr>
+						<!-- ngRepeat: company in companies | filter: searchKeyword --><tr ng-repeat="companyDt in search.companyData | filter: searchKeyword" class="ng-scope">
+							<td class="ng-binding">{{companyDt.Name}}</td>
+							<td class="ng-binding">{{companyDt.Employees}}</td>
+							<td class="ng-binding">{{companyDt.HO}}</td>
+							<td><input type="button" ng-click="search.removeRow(companyDt.Name)" class="btn btn-primary" value="Remove"></td>
+						</tr><!-- end ngRepeat: company in companies | filter: searchKeyword -->
+					</tbody></table>
+				</td>
+				<td style="width: 50%; vertical-align: top; padding-left: 100px;">
+					<div style="padding-bottom: 20px;">
+						<h3 style="margin-top: 0px">Add a Company</h3>
+					</div>
+					<form ng-submit="search.addRow()" name="addRowFrm" role="form" class="form-horizontal ng-pristine ng-valid">
+						<div class="form-group">							
+							<label class="col-md-2 control-label">Name</label>
+							<div class="col-md-4">																
+								<input type="text" ng-model="Name" name="name" class="form-control ng-pristine ng-valid" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 control-label">Employees</label>
+							<div class="col-md-4">
+								<input type="text" ng-model="Employees" name="employees" class="form-control ng-pristine ng-valid" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-md-2 control-label">Headoffice</label>
+							<div class="col-md-4">
+								<input type="text" ng-model="HO" name="headoffice" class="form-control ng-pristine ng-valid" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div style="padding-left: 110px">
+								<input type="submit" class="btn btn-primary" value="Submit">
+							</div>
+						</div>						
+					</form>
+				</td>
+			</tr>
+		</tbody></table>
+	</div>	
+	
+</div>
+</div>
+<br/>
+<div style="background-color:#dddddd" class="container">
+<h5><strong>Code Snippet</strong></h5>
+<textarea class="form-control" readonly rows="20">
+CoreStructure.controller("SearchController", function($scope){
+	this.companyData=companyData;	
+	this.addRow = function(){
+		this.companyData.push({ 'Name':$scope.Name, 'Employees': $scope.Employees, 'HO':$scope.HO });
+		$scope.Name='';
+		$scope.Employees='';
+		$scope.HO='';
+	};
+	
+	this.removeRow = function(nm){		
+		var index=-1;
+		for(var i=0;i<this.companyData.length;i++){
+			if(this.companyData[i].Name==nm){
+				index=i;
+			}
+		}
+		if(index==-1){
+			alert('Error');
+		}
+		
+		this.companyData.splice(index,1);
+		index=null;
+	};
+});
+
+var companyData=[
+	{		
+		"Name":"Google",
+		"Employees":"47,756",
+		"HO":"Mountain View, CA"
+	},
+	{	
+		"Name":"Microsoft",
+		"Employees":"93000",
+		"HO":"Washington"
+	}
+	];
+</textarea>
+</div>
+
+<br/>
+<br/>
+<br/>

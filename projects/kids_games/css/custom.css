@@ -1,0 +1,13 @@
+.text-primary{
+	color:#428bca !important;
+	font-weight:bold;
+}
+
+body{
+	background:url("../images/bodybg1.jpg") no-repeat scroll 100% center  rgba(0, 0, 0, 0);
+}
+
+body .container.mainWrapper{
+	background:#FBFBFB;
+	padding:10px 50px;
+}

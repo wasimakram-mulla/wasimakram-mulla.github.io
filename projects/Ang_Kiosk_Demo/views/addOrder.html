@@ -1,0 +1,111 @@
+<div class="col-lg-12" ng-controller="OrderController as orderCtrl">
+	<a type="button" class="btn btn-sm btn-warning" href="#/dashboard">Back </a><br/>
+	<h2 class="text-success">Add Order</h2><br/>
+<div class="col-md-6">
+	<div class="row">
+		<div class="col-sm-3"><h4>Customer Contact: </h4></div><div class="col-sm-9">
+			<input type="number" id="oNo" class="form-control" ng-model="oNo" ng-blur="orderCtrl.searchCustomer(oNo);"/>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-3"><h4>Customer Name: </h4></div><div class="col-sm-9"><input type="text" class="form-control" id="oName" ng-model="oName" disabled/></div>
+	</div>
+	
+	<div class="row">
+		<div class="col-sm-3"><h4>Order : </h4></div><div class="col-sm-9">
+			<table class="table">
+            <thead>
+              <tr>                
+                <th>Order Id</th>
+                <th>Price</th>
+                <th>Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+				<tr class="prodList" ng-repeat="prodct in orderCtrl.products">
+					<td><input type="checkbox" class="checkBx" ng-model="prodct.cnt" ng-click="orderCtrl.selectProduct(prodct.index, prodct.cnt, prodct.prod_price, prodct.prod_name, prodct.quan)"/> {{prodct.prod_name}} </td> 
+					<td>{{prodct.prod_price}}</td>
+					<td><input type="number" min="1" max="99" class="quantity" ng-model="prodct.quan" ng-change="orderCtrl.changeQuantity(prodct.index, prodct.cnt, prodct.prod_price, prodct.quan)"/></td>
+				</tr>
+				<tr class="prodList">
+					<td colspan="2" align="right">Total Amount: <input type="text" id="totalAmt" disabled value="{{orderCtrl.totPrice}}" /></td>
+				</tr>
+			</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<div class="row" ng-show="orderCtrl.totPrice">
+		<div class="col-sm-3">
+			<input type="radio" ng-model="payment" value="cash" ng-init="payment='cash'" ng-change="orderCtrl.changePayment(payment)"/> Cash
+		</div>
+		<div class="col-sm-3">
+			<input type="radio" ng-model="payment" value="cc" ng-change="orderCtrl.changePayment(payment)"/> Credit Card / Debit Card 
+			<input type="text" ng-model="paymentId" id="paymentId" ng-show="payment=='cc'" />
+		</div>	
+		<div class="col-sm-6">		
+			<button style="float:right;margin-left: 10px;" id="nxtOrder" class="btn btn-success" type="submit" ng-click="orderCtrl.addToDatabase();" disabled>Next Order</button>  
+			<button style="float:right" id="paymentBtn" class="btn btn-purple" type="submit" ng-click="orderCtrl.makePayment(payment);" disabled>Make Payment</button>		
+		</div>	
+	</div>	
+</div>
+
+<div class="col-md-3">
+	<h3 class="text-info">Bill</h3>
+	<div id="billToPrint">
+	<div ng-show="orderCtrl.OId">
+		<h4 class="text-danger">Order Id: <strong>{{orderCtrl.OId}}</strong></h4>
+		<h5>Name: <strong>{{oName}}</strong><br/>Contact No: <strong>{{oNo}}</strong></h5>
+		<h5>Payment Type: <strong>{{payment}}</strong></h5>
+		<h5 ng-show="paymentId && payment=='cc'">Payment Id: <strong>{{paymentId}}</strong></h5>
+	</div>
+	<table class="table">
+			<thead>
+			  <tr>
+				<th>Product</th>
+				<th>Price</th>
+				<th>Amount</th>
+			  </tr>
+			</thead>
+			<tbody>
+			  <tr ng-repeat="items in orderCtrl.billContent">
+				<td>{{items.prodnm}} X {{items.quan}} </td>                
+				<td>{{items.price}}</td>				
+				<td>{{items.amount}}</td>				
+			  </tr>
+			  <tr ng-show="orderCtrl.totPrice">
+				<td colspan="3">VAT Percentage: {{ orderCtrl.vatAmt }} %</td>
+			  </tr>
+			  <tr ng-show="orderCtrl.totPrice">
+				<td colspan="3" align="right">Total Amount: <input type="text" id="totalAmt" disabled value="{{orderCtrl.netAmount}}" />
+					
+				</td>
+			  </tr>
+			</tbody>
+	</table>
+	</div>
+	<button ng-show="orderCtrl.totPrice" id="printBtn" class="btn btn-sm btn-warning" type="button" ng-click="orderCtrl.printBill()" title="Click to Print Bill" disabled>Print Bill</button>
+</div>
+
+<div class="col-md-3">
+	<h3 class="text-info">Finished Orders</h3>
+	<table class="table">
+		<thead>
+		  <tr>                
+			<th>Order Id</th>
+			<th>Order</th>
+			<th>Finished Status</th>
+		  </tr>
+		</thead>
+		<tbody>
+		  <tr ng-repeat="items in orderCtrl.doneOrders">
+			<td>{{items.order_id}}</td>                
+			<td><div ng-repeat="Qprod in items.order_content">{{Qprod}}</div></td>				
+			<td><button class="btn btn-sm btn-primary" type="button" ng-click="orderCtrl.finishFinalOrder(items.order_id)" title="Click to Finish the Order">Finish It !!</button></td>                
+		  </tr>
+		</tbody>
+	</table>
+</div>
+
+</div>

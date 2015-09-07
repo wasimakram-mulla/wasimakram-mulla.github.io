@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding: 0;
+	/* background:#F3F3F3; */
+}
+
+.navbar-brand{
+	padding:0px !important
+}
+
+footer {
+    background-color: black;
+    color: white;
+}
+
+.wall{
+	background:#dfd;
+	height:550px;
+	padding:25px;
+	width:100%;
+}
+
+.optionsWrapper{
+	background:#ddf;
+	float: left;
+    height: auto;
+	width:100%;
+}
+
+.objects{
+	margin-top:20px;
+	cursor:pointer;
+}
+
+.tilesWrapper{
+    background: none repeat scroll 0 0 salmon;
+    height: 300px;
+    position: absolute;
+    right: 0;
+    width: auto;
+}
+
+.sideBar{
+    height: 100%;
+    vertical-align: middle;
+    width: 50px;
+	float:left;
+}
+.openBar{
+	background:url("../imgs/open.png") no-repeat scroll 0 0 / 100% auto teal;
+	cursor:pointer;
+}
+.closeBar{
+	background:url("../imgs/close.png") no-repeat scroll 0 0 / 100% auto salmon;
+	cursor:pointer;
+}
+
+.dragObjs{
+	cursor: move;
+}
+
+.tilesContainer{
+	/* width:350px; */
+	width:0px;
+	background:wheat;
+	height:100%;
+	overflow:auto;
+	float:left;
+}
+
+.tiles{
+	float:left;
+	cursor:pointer;
+	margin-left:5px;
+	margin-top:5px;
+}

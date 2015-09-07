@@ -1,0 +1,50 @@
+body {
+    margin: 0;
+    padding: 0;
+	/* background:#F3F3F3; */
+}
+
+.btn-orders{
+	margin-top:10px;
+}
+
+.navbar-brand{
+	padding:0px !important
+}
+
+footer {
+    background-color: black;
+    color: white;
+}
+
+.employeePortal{
+	height:250px;
+}
+
+.employeePortal h4{
+	text-decoration: underline;
+}
+
+.orderNos{
+	font-size:10em;
+}
+
+.prodList{
+	font-size:1.2em;
+}
+
+.row{
+	margin-top:10px;
+}
+
+.btn-purple {
+    background-color: #806AA5;
+    border-color: #000;
+    color: #fff;
+}
+
+.btn-purple:hover, .btn-purple:focus, .btn-purple:active, .btn-purple.active, .open > .dropdown-toggle.btn-purple {
+    background-color: #533B79;
+    border-color: #000;
+    color: #fff;
+}

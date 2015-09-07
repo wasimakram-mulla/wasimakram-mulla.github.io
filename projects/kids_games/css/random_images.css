@@ -1,0 +1,26 @@
+.option{
+	display:table;
+	margin-top:10px;
+}
+
+.img-circle{
+	display:table-cell;
+	padding: 50px;
+	background:#ccc;
+	text-align:center;
+	vertical-align: middle;	
+	cursor:pointer;
+}
+
+.CorrectOpt{
+	background:green;
+}
+
+.WrongOpt{
+	background:red;
+	cursor:default
+}
+
+.option[data-disabled="disabled"] .img-circle{
+	cursor:default;
+}

@@ -1,0 +1,62 @@
+<div class="container" ng-controller="AttendanceAllController">
+	<div class="col-md-12" ng-hide="showTab">
+		<h4>Attendance</h4>
+		<table class="table table-condensed">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Email Id</th>
+					<th>Auth Code</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="logs in allAttenLogs">
+					<td class="link" ng-click="showUserAttendanceLog(logs.userAuthCode, logs.username)">{{logs.username}}</td>					
+					<td>{{logs.email_id}}</td>					
+					<td>{{logs.userAuthCode}}</td>					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="col-md-12" ng-show="showTab">
+		<button class="btn btn-xs btn-warning" ng-click="showTab=!showTab">Back</button><br/><br/>
+		<ul role="tablist" class="nav nav-pills">
+			<li role="presentation" ng-class="{'active':selectedTab === 'JAN'}" ng-click="selectedTab = 'JAN'"><span class="link" ng-click="changeMonthAttn('JAN')">JAN</span></li>
+			<li role="presentation" ng-class="{'active':selectedTab === 'FEB'}" ng-click="selectedTab = 'FEB'"><span class="link" ng-click="changeMonthAttn('FEB')">FEB</span></li>
+			<li role="presentation" ng-class="{'active':selectedTab === 'MAR'}" ng-click="selectedTab = 'MAR'"><span class="link" ng-click="changeMonthAttn('MAR')">MAR</span></li>
+			<li role="presentation" ng-class="{'active':selectedTab === 'APR'}" ng-click="selectedTab = 'APR'"><span class="link" ng-click="changeMonthAttn('APR')">APR</span></li>
+			<li role="presentation" ng-class="{'active':selectedTab === 'MAY'}" ng-click="selectedTab = 'MAY'"><span class="link" ng-click="changeMonthAttn('MAY')">MAY</span></li>
+			<li role="presentation" ng-class="{'active':selectedTab === 'JUN'}" ng-click="selectedTab = 'JUN'"><span class="link" ng-click="changeMonthAttn('JUN')">JUN</span></li>
+			<li role="presentation" ng-class="{'active':selectedTab === 'JUL'}" ng-click="selectedTab = 'JUL'"><span class="link" ng-click="changeMonthAttn('JUL')">JUL</span></li>
+			<li role="presentation" ng-class="{'active':selectedTab === 'AUG'}" ng-click="selectedTab = 'AUG'"><span class="link" ng-click="changeMonthAttn('AUG')">AUG</span></li>
+			<li role="presentation" ng-class="{'active':selectedTab === 'SEP'}" ng-click="selectedTab = 'SEP'"><span class="link" ng-click="changeMonthAttn('SEP')">SEP</span></li>
+			<li role="presentation" ng-class="{'active':selectedTab === 'OCT'}" ng-click="selectedTab = 'OCT'"><span class="link" ng-click="changeMonthAttn('OCT')">OCT</span></li>
+			<li role="presentation" ng-class="{'active':selectedTab === 'NOV'}" ng-click="selectedTab = 'NOV'"><span class="link" ng-click="changeMonthAttn('NOV')">NOV</span></li>
+			<li role="presentation" ng-class="{'active':selectedTab === 'DEC'}" ng-click="selectedTab = 'DEC'"><span class="link" ng-click="changeMonthAttn('DEC')">DEC</span></li>
+		</ul>
+		<br/>
+		<h4>Attendance Of: <strong class="text-info">{{selUser}}</strong></h4>
+		<h4>Month: <strong class="text-info badge">{{usrAttenLogs.length == 0  ? ('No Data Available for Current Month/Selected Month') : (usrAttenLogs[0].punchInTime*1000 | date:'MMMM')}}</strong></h4>
+		<table class="table table-condensed">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Day</th>
+					<th>Punch In</th>
+					<th>Punch Out</th>
+					<th>Total Hrs. Worked</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="logs in usrAttenLogs" ng-class="{nullEntry: logs.punchOutTime==null}">
+					<td>{{logs.logInDate}}</td>
+					<td>{{logs.punchInTime*1000 | date:'EEEE'}}</td>
+					<td>{{logs.punchInTime*1000 | date:'hh:mm:ss a'}}</td>
+					<td>{{logs.punchOutTime==null? "- " : logs.punchOutTime*1000 | date:'hh:mm:ss a'}}</td>
+					<td>{{logs.hrsWorked}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

@@ -1,0 +1,21 @@
+{
+	"mobileDetails" : [
+		{
+			"id": 1,
+			"productName": "Moto G (2nd Gen) (Black, with 16 GB)",			
+			"imgPath": "images/Moto-G-2nd-Gen-Black.jpeg",
+			"offer": "true",
+			"ratings": 3.8,
+			"price": "12999",
+			"msp": ["Android v4.4.4 OS","Dual Sim (GSM + GSM)","5-inch HD Screen","8 MP Primary Camera"],
+			"imgs": [
+					"images/Moto_G_2nd_Gen_black/5.jpg",
+					"images/Moto_G_2nd_Gen_black/1.jpg",
+					"images/Moto_G_2nd_Gen_black/2.jpg",
+					"images/Moto_G_2nd_Gen_black/3.jpg",
+					"images/Moto_G_2nd_Gen_black/4.jpg",
+					"images/Moto_G_2nd_Gen_black/6.jpg"
+			]
+		}
+	]
+}

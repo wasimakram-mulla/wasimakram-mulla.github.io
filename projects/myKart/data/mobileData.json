@@ -1,0 +1,300 @@
+{
+	"mobileData" : [
+		{
+			"id": 1,
+			"productName": "Moto G (2nd Gen) (Black, with 16 GB)",
+			"datapath": "Moto_G_2nd_Gen_black",
+			"imgPath": "images/Moto-G-2nd-Gen-Black.jpeg",
+			"offer": "true",
+			"ratings": 3.8,
+			"price": 12999,
+			"msp": [
+				{
+					"item1": "Android v4.4.4 OS",
+					"item2": "Dual Sim (GSM + GSM)",
+					"item3": "5-inch HD Screen",
+					"item4": "8 MP Primary Camera"
+					
+				}
+			],
+			"dataavail":"true"
+		},
+		{
+			"id": 2,
+			"productName": "Redmi Note 4G (White)",
+			"datapath": "Redmi_Note_4G",
+			"imgPath": "images/mi-redmi-note-4g.jpeg",
+			"offer": "false",
+			"ratings": 3.8,
+			"price": 9999,
+			"msp": [
+				{
+					"item1": "5.5-inch Touchscreen",
+					"item2": "13 MP Primary Camera",
+					"item3": "5 MP Secondary Camera",
+					"item4": "Android v4.4.2 OS"
+					
+				}
+			],
+			"dataavail":"true"
+		},
+		{
+			"id": 3,
+			"productName": "Moto E (1st Gen) (Black)",
+			"datapath": "Moto_E_1st_Gen_Black",
+			"imgPath": "images/motoE.jpeg",
+			"offer": "true",
+			"ratings": 4.3,
+			"price": 5999,
+			"msp": [
+				{
+					"item1": "Android v4.4.4 OS",
+					"item2": "Dual Sim (GSM + GSM)",
+					"item3": "5-inch HD Screen",
+					"item4": "8 MP Primary Camera"
+					
+				}
+			],
+			"dataavail":"false"
+		},
+		{
+			"id": 4,
+			"productName": "Huawei Honor 6",
+			"datapath": "Huawei_Honor_6",
+			"imgPath": "images/huawei-honor-6.jpeg",
+			"offer": "false",
+			"ratings": 4.5,
+			"price": 26999,
+			"msp": [
+				{
+					"item1": "Android v4.4.4 OS",
+					"item2": "Dual Sim (GSM + GSM)",
+					"item3": "5-inch HD Screen",
+					"item4": "8 MP Primary Camera"
+					
+				}
+			],
+			"dataavail":"false"
+		},
+		{
+			"id": 5,
+			"productName": "Huawei Honor Holly (Black/White)",
+			"datapath": "Huawei_Honor_Holly",
+			"imgPath": "images/huawei-holly-u19.jpeg",
+			"offer": "false",
+			"ratings": 3.8,
+			"price": 17999,
+			"msp": [
+				{
+					"item1": "1.3 GHz Quad Core Pr",
+					"item2": "5-inch HD IPS Display",
+					"item3": "1 GB RAM with 16 GB",
+					"item4": "8 MP BSI Primary Cam"
+					
+				}
+			],
+			"dataavail":"false"
+		},
+		{
+			"id": 6,
+			"productName": "Moto G (2nd Gen) (White, with 16 GB)",
+			"datapath": "Moto_G_2nd_Gen_White",
+			"imgPath": "images/motorola-xt1022.jpeg",
+			"offer": "true",
+			"ratings": 4,
+			"price": 12999,
+			"msp": [
+				{
+					"item1": "8 MP Primary Camera",
+					"item2": "Dual Sim (GSM + GSM)",
+					"item3": "Android v4.4.4 OS",
+					"item4": "5-inch HD Screen"
+					
+				}
+			],
+			"dataavail":"false"
+		},
+		{
+			"id": 7,
+			"productName": "Moto E (2nd Gen) 3G (Black, with 8 GB)",
+			"datapath": "Moto_E_2nd_Gen",
+			"imgPath": "images/huawei-holly-u19.jpeg",
+			"offer": "false",
+			"ratings": 4,
+			"price": 6999,
+			"msp": [
+				{
+					"item1": "VGA Front Facing Camera",
+					"item2": "Android v5.0 OS",
+					"item3": "Dual Sim (GSM + UMTS)",
+					"item4": "5 MP Primary Camera"
+					
+				}
+			],
+			"dataavail":"false"
+		},
+		{
+			"id": 8,
+			"productName": "Moto E (1st Gen) (White)",
+			"datapath": "Moto_E_1st_Gen_White",
+			"imgPath": "images/motorola-xt1022.jpeg",
+			"offer": "true",
+			"ratings": 3.8,
+			"price": 5999,
+			"msp": [
+				{
+					"item1": "Dual Sim (GSM + GSM)",
+					"item2": "1 GB RAM",
+					"item3": "4.3-inch Touchscreen",
+					"item4": "Android v4.4 OS"
+					
+				}
+			],
+			"dataavail":"false"
+		},
+		{
+			"id": 9,
+			"productName": "Asus Zenfone 5 A501CG (Black, with 8 GB, with 1.2 GHz Processor)",
+			"datapath": "Asus_Zenfone_5_Black_8GB",
+			"imgPath": "images/asus-zenfone-5.jpeg",
+			"offer": "false",
+			"ratings": 4.1,
+			"price": 8499,
+			"msp": [
+				{
+					"item1": "Android OS v4.4 (Kitkat)",
+					"item2": "5-inch HD Display",
+					"item3": "2 GB RAM, 8 GB ROM",
+					"item4": "8MP Pixel Master Camera"
+				}
+			],
+			"dataavail":"false"
+		},
+		{
+			"id": 10,
+			"productName": "Asus Zenfone 5 A501CG (Black, with 16 GB, with 1.6 GHz Processor)",
+			"datapath": "Asus_Zenfone_5_Black_16GB",
+			"imgPath": "images/asus-zenfone-5-a501cg.jpeg",
+			"offer": "false",
+			"ratings": 4.1,
+			"price": 9999,
+			"msp": [
+				{
+					"item1": "2 GB RAM, 16 GB ROM",
+					"item2": "Upgrade to Android version",
+					"item3": "8MP Pixel Master Camera",
+					"item4": "5-inch HD Display"
+				}
+			],
+			"dataavail":"false"
+		},
+		{
+			"id": 11,
+			"productName": "Samsung Galaxy S3 Neo (Pebble Blue)",
+			"datapath": "Samsung_Galaxy_s3_Neo_Blue",
+			"imgPath": "images/samsung-galaxy-s3-neo-gt-i9300i.jpeg",
+			"offer": "false",
+			"ratings": 4.2,
+			"price": 11499,
+			"msp": [
+				{
+					"item1": "Super AMOLED Screen",
+					"item2": "1.5 GB RAM",
+					"item3": "Dual Sim",
+					"item4": "8 MP Primary Camera"
+				}
+			],
+			"dataavail":"false"
+		},
+		{
+			"id": 12,
+			"productName": "Samsung Galaxy S3 Neo (Marble White)",
+			"datapath": "Samsung_Galaxy_s3_Neo_White",
+			"imgPath": "images/samsung-galaxy-s3-neo-gt-i9300i-white.jpeg",
+			"offer": "false",
+			"ratings": 3.5,
+			"price": 11499,
+			"msp": [
+				{
+					"item1": "8 MP Primary Camera",
+					"item2": "Dual Sim",
+					"item3": "Super AMOLED Screen",
+					"item4": "1.5 GB RAM"
+				}
+			],
+			"dataavail":"false"
+		},
+		{
+			"id": 13,
+			"productName": "Microsoft Lumia 535 (Black)",
+			"datapath": "Microsoft_Lumia_535",
+			"imgPath": "images/microsoft-lumia-535.jpeg",
+			"offer": "false",
+			"ratings": 3.8,
+			"price": 7670,
+			"msp": [
+				{
+					"item1": "Windows Phone 8.1 OS",
+					"item2": "5 MP Primary Camera",
+					"item3": "5 MP Secondary Camera",
+					"item4": "Dual Standby SIM"
+				}
+			],
+			"dataavail":"false"
+		},
+		{
+			"id": 14,
+			"productName": "Asus Zenfone 4 A400CXG (Black, with 8 GB, with Soda Lime Glass)",
+			"datapath": "Asus_Zenfone_4_Black_8GB",
+			"imgPath": "images/asus-zenfone-4-a400cxg.jpeg",
+			"offer": "false",
+			"ratings": 3.8,
+			"price": 11499,
+			"msp": [
+				{
+					"item1": "5 MP Primary Camera",
+					"item2": "Dual Sim (GSM + GSM)",
+					"item3": "Upgradable to v4.4",
+					"item4": "1 GB RAM"
+				}
+			],
+			"dataavail":"false"
+		},
+		{
+			"id": 15,
+			"productName": "Mi4 16 GB (White)",
+			"datapath": "Mi4_16GB_White",
+			"imgPath": "images/mi-mzb4239in.jpeg",
+			"offer": "false",
+			"ratings": 3.8,
+			"price": 19999,
+			"msp": [
+				{
+					"item1": "5-inch Touchscreen",
+					"item2": "Android v4.4 OS",
+					"item3": "13 MP Primary Camera",
+					"item4": "8 MP Secondary Camera"
+				}
+			],
+			"dataavail":"false"
+		},
+		{
+			"id": 16,
+			"productName": "Asus Zenfone 5 A501CG (Red, with 8 GB, with 1.2 GHz Processor)",
+			"datapath": "Asus_Zenfone_5_Red_8GB",
+			"imgPath": "images/asus-zenfone-5-a501cg-a501cg.jpeg",
+			"offer": "false",
+			"ratings": 4.1,
+			"price": 8499,
+			"msp": [
+				{
+					"item1": "5-inch HD Display",
+					"item2": "8 MP Secondary Camera",
+					"item3": "2 GB RAM, 8 GB ROM",
+					"item4": "Android v4.4 OS(Kitkat)"
+				}
+			],
+			"dataavail":"false"
+		}
+	]
+}

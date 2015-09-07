@@ -1,0 +1,14 @@
+<div class="container" ng-controller="AddEmployeeController">
+	<h4>Add Employee</h4>
+	<div class="col-md-12">
+		<form ng-submit="addEmployeeDetails()">
+			<div class="row"><div class="col-md-2">Full Name: </div><div class="col-md-10"><input type="text" class="form-control" ng-model="fname" required autofocus/></div></div>
+			<div class="row"><div class="col-md-2">Email Id</div><div class="col-md-10"><input type="email" class="form-control" ng-model="email" required/></div></div>
+			<div class="row"><div class="col-md-12">
+				<button type="submit" class="btn btn-success">Add</button> 
+				<button type="button" class="btn btn-info" ng-click="resetForm()">Reset</button>
+				</div>
+			</div>
+		</form>
+	</div>	
+</div>

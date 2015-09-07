@@ -1,0 +1,38 @@
+.fruits img{
+	margin-right:10px;
+}
+
+.row{
+	margin-top:10px;
+}
+
+.fruits{
+	border:solid 1px brown;
+	padding:5px;
+}
+
+.words h4{
+	border:solid 2px navy;
+	float:left;
+	padding:5px;
+	cursor:pointer;
+	text-transform:uppercase;
+	position:relative;
+	z-index:111;
+}
+
+.fruits span.correct{
+	background:url('../images/m_t_f/correct.png') no-repeat;
+	background-size:100%;
+    float: right;
+    padding: 40px;
+	margin: 30px 10px 0 0;
+}
+
+.fruits span.wrong{
+	background:url('../images/m_t_f/wrong.png') no-repeat;
+	background-size:100%;
+    float: right;
+    padding: 40px;
+	margin: 30px 10px 0 0;
+}

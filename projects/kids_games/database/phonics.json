@@ -1,0 +1,32 @@
+{
+	"page":[
+		{
+		"alphabetImage":"A",
+		"audioStartTime":"10",
+		"audioEndTime":"14.5",
+		"characterImage":"images/phonics/apple.jpg",
+		"characterText":"A for Apple"
+		},
+		{
+		"alphabetImage":"B",
+		"audioStartTime":"15",
+		"audioEndTime":"20",
+		"characterImage":"images/phonics/bird.jpg",
+		"characterText":"B for Bird"
+		},
+		{
+		"alphabetImage":"C",
+		"audioStartTime":"20.5",
+		"audioEndTime":"25",
+		"characterImage":"images/phonics/cat.jpg",
+		"characterText":"C for Cat"
+		},
+		{
+		"alphabetImage":"C",
+		"audioStartTime":"25.5",
+		"audioEndTime":"30",
+		"characterImage":"images/phonics/dog.jpg",
+		"characterText":"D for Dog"
+		}
+	]
+}

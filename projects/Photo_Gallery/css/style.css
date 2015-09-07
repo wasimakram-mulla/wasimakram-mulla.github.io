@@ -1,0 +1,18 @@
+.galPic img{
+	margin:0 auto;
+	width:70%;
+	transition:width 1s;
+	cursor:pointer;
+}
+
+.galPic{
+	position:relative;
+	margin-top:20px;
+	height:200px;
+	margin-bottom:20px;
+	text-align:center;
+}
+
+.galPic img:hover{
+	width:80%;
+}

@@ -1,0 +1,13 @@
+{
+	"page":[
+		{
+		"imagePath":"images/random_imgs/Apple.jpg"
+		},
+		{
+		"imagePath":"images/random_imgs/Strawberry.jpg"
+		},
+		{
+		"imagePath":"images/random_imgs/Watermelon.jpg"
+		}
+	]
+}

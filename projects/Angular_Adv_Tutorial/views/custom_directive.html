@@ -1,0 +1,49 @@
+<div class="container">
+	<h3>Custom Directive</h3>
+	<p><strong>Definition: </strong>At a high level, directives are markers on a DOM element (such as an attribute, element name, comment or CSS class) that tell AngularJS's HTML compiler ($compile) to attach a specified behavior to that DOM element or even transform the DOM element and its children.
+
+Angular comes with a set of these directives built-in, like ngBind, ngModel, and ngClass. Much like you create controllers and services, you can create your own directives for Angular to use. When Angular bootstraps your application, the HTML compiler traverses the DOM matching directives against the DOM elements.</p>
+	<div class="row">
+		<div class="col-md-12" ng-controller="HelloCtrl">
+			<form class="form-horizontal" role="form">
+				<div class="form-group">
+				  <label class="col-md-2 control-label">Type Your Name</label>
+				   <div class="col-md-4">
+					  <input type="text" class="form-control" ng-model="name"/>					   
+						<div ng-show="name">
+							<div my-customer></div>
+						</div>
+				  </div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<br/>
+<div style="background-color:#dddddd" class="container">
+<h5><strong>Code Snippet</strong></h5>
+<textarea class="form-control" readonly rows="15">
+/********* HTML Code ***********/
+ <input type="text" class="form-control" ng-model="name"/>					   
+	<div ng-show="name">
+		<div my-customer></div>
+	</div>
+						
+						
+/********* Angular Code ***********/
+CoreStructure.controller('HelloCtrl', ['$scope', function($scope) {
+	$scope.name='';
+}]);
+
+CoreStructure.directive( "myCustomer", function() {
+    return {
+		template: '<h2>Hello: <span class="text-danger">{{name}}</span>  How are you today?</h2>'
+  };
+});
+</textarea>
+<br/>
+</div>
+
+<br/>
+<br/>

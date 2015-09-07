@@ -1,0 +1,16 @@
+<div class="container" ng-controller="ChangePassController">
+	<h4>Change Password</h4>
+	<div class="col-md-12">
+		<form ng-submit="changePass()">			
+			<div class="row"><div class="col-md-2">New Password: </div><div class="col-md-10"><input type="text" class="form-control" ng-model="nPass" required autofocus/></div></div>
+			<div class="row"><div class="col-md-2">Confirm Password: </div><div class="col-md-10"><input type="text" class="form-control" ng-model="cPass" required/></div></div>
+			<div class="row"><div class="col-md-12">
+				<button type="submit" class="btn btn-success" ng-disabled="nPass!=cPass || nPass==null || cPass==null">Change Password</button> 
+				<button type="button" class="btn btn-info" ng-click="resetForm()">Reset</button>
+				</div>
+			</div>
+			<h6 class="text-danger">Note: "Change Password" button will enable if both passwords are correct.</h6>
+			
+		</form>
+	</div>	
+</div>

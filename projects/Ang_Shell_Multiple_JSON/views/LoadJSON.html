@@ -1,0 +1,15 @@
+<div class="container" style="background:#fff" ng-controller="DataLoadController as dataload">
+	<h4 ng-show={{dataload.tmpVar.length}}>JSON File: <strong>{{dataload.tmpVar}}.json</strong> Called</h4>
+	<h4 ng-show={{!dataload.tmpVar.length}}>Please Click on Link to Load Data</h4>
+	<!-- ng-controller="DataLoadController" -->
+	<ul class="list-group">
+		<li class="list-group-item" ng-repeat="data in dataload.mydata"><strong>{{data.imagePath}}</strong> <br /> </li>
+	</ul>
+</div>
+
+<!-- <script src="js/Controllers/loadJSON.js"></script>
+<script>
+$(document).ready(function(){
+	tmpDemo.init();
+});
+</script> -->

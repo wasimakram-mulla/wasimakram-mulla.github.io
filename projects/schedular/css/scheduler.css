@@ -1,0 +1,12 @@
+textarea.SchedulerComment{
+	width:300px;
+	height:100px;
+	resize:none;
+}
+
+.SchedulerContainer{
+	width:auto;
+	background:#22A39F;
+	width:400px;
+	padding:20px;
+}

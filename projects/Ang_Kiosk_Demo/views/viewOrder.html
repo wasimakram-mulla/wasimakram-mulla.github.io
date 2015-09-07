@@ -1,0 +1,54 @@
+<div class="container" ng-controller="ViewController as vieworderCtrl">
+	<a type="button" class="btn btn-sm btn-warning" href="#/dashboard">Back </a><br/><br/>
+	
+	<div class="row">
+		<div class="col-md-6 employeePortal" ng-repeat="objs in vieworderCtrl.workingEmployee">			
+			<h4>Order for Employee Id: <span class="text-danger">{{objs.employee_id}}</span></h4>			 
+			<table class="table" ng-show="objs.order_id">
+				<thead>
+					<th>Order Id</th>
+					<th>Order Content</th>
+					<th colspan="2">Order Quantity</th>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{objs.order_id}}</td>
+						<td>
+							<div ng-repeat="prod in objs.order_content">{{prod}}</div>
+						</td>
+						<td>							
+							<div ng-repeat="Quanprod in objs.order_quantity track by $index">{{Quanprod}}</div>
+						</td>
+						<td>
+							<button class="btn btn-sm btn-success" type="button" ng-click="vieworderCtrl.completeOrder(objs.order_id, objs.employee_id);" title="Click to Complete Order">Complete</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<table class="table" ng-show="!objs.order_id">
+				<tbody>
+					<th> -- You are Idle for now --</th>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<!-- Test: {{vieworderCtrl.workingEmployee}} -->
+	<h2 class="text-success">Total Pending Orders: <span class="text-danger">{{vieworderCtrl.completeObject.length}}</span></h2>
+		<table class="table">
+			<thead>
+                <th>Order Id</th>
+                <th>Customer Id</th>
+                <th>Order Content</th>
+                <th>Order Quantity</th>
+            </thead>
+			<tbody>
+				<tr ng-repeat="item in vieworderCtrl.completeObject">
+					<td>{{item.order_id}}</td>
+					<td>{{item.cust_id}}</td>
+					<td><div ng-repeat="Qprod in item.order_content">{{Qprod}}</div></td>
+					<td><div ng-repeat="Quanprod in item.order_quantity track by $index">{{Quanprod}}</div></td>
+				</tr>
+			</tbody>
+		</table>
+</div>
