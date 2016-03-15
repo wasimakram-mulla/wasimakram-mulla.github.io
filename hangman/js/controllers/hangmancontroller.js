@@ -40,9 +40,11 @@ function HangmanController(MoveWordsToArray, AlphabetsArray){
 		else{
 			if(vm.wrongAnsCnt==8)
 			{
-				vm.wrongAnsCnt++;
-				vm.gameLost=true;
-				alert('You Lost');
+				if(returnVal.found!=true){
+					vm.wrongAnsCnt++;
+					vm.gameLost=true;
+					alert('You Lost');
+				}
 			}
 			else{
 				if(returnVal.found==false){
