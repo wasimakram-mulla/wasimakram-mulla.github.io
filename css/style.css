@@ -117,7 +117,8 @@ body {
 	width:95%;
 	padding:10px;
 	color:#fff;
-	height: 240px;
+	height: 230px;
+	overflow:hidden;
 }
 
 .project .icon{
