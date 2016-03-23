@@ -27,7 +27,7 @@ portfolio.config(['$routeProvider','$resourceProvider',
 }]);
 
 portfolio.controller("HomeController", function($scope){
-	var sdt = new Date('1972-11-30');
+	var sdt = new Date('1989-08-09');
 	var difdt = new Date(new Date() - sdt);
 	$scope.age=(difdt.toISOString().slice(0, 4) - 1970) + "Years " + (difdt.getMonth()+1) + "Months " + difdt.getDate() + "Days";
 });
