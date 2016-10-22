@@ -1,61 +1,124 @@
-<!DOCTYPE html>
-<html lang="en" ng-app="portfolio">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="img/favicon.ico">
-
-    <title>Wasimakram Mulla | PORTFOLIO</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="js/Libs/html5shiv.min.js"></script>
-      <script src="js/Libs/respond.min.js"></script>
-    <![endif]-->
-	<script src="js/Libs/jquery-1.11.1.min.js"></script>
-	<script src="js/Libs/bootstrap.min.js"></script>
-	<script src="js/Libs/angular.min.js"></script>
-	<script src="js/Libs/angular-resource.min.js"></script>
-	<script src="js/Libs/angular-route.min.js"></script>
-	<script src="js/Controllers/app.js"></script>
-  </head>
-
-  <body><div id="preloaded-images">   <img src="img/myPic.jpg" width="1" height="1" alt="Preloaded Img" /></div>
-
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#"><span class="text-info">WASIMAKRAM MULLA | PORTFOLIO | UI Developer</span></a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#/profile/">Profile</a></li>
-            <li><a href="#/experience/">Experiences</a></li>
-            <li><a href="#/abilities/">Abilities</a></li>
-            <li><a href="#/projects/">Projects</a></li>
-            <li><a href="#/contact/">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </nav>
-  <div class="container wrapper" ng-view></div>
-</body>
+<!DOCTYPE html>
+
+<html lang="en" ng-app="portfolio">
+
+  <head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <meta name="description" content="">
+
+    <meta name="author" content="">
+
+    <link rel="icon" href="img/favicon.ico">
+
+
+
+    <title>Wasimakram Mulla | PORTFOLIO</title>
+
+
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+
+
+
+    <!-- Custom styles for this template -->
+
+    <link href="css/style.css" rel="stylesheet">
+
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+
+    <!--[if lt IE 9]>
+
+      <script src="js/Libs/html5shiv.min.js"></script>
+
+      <script src="js/Libs/respond.min.js"></script>
+
+    <![endif]-->
+
+	<script src="js/Libs/jquery-1.11.1.min.js"></script>
+
+	<script src="js/Libs/bootstrap.min.js"></script>
+
+	<script src="js/Libs/angular.min.js"></script>
+
+	<script src="js/Libs/angular-resource.min.js"></script>
+
+	<script src="js/Libs/angular-route.min.js"></script>
+
+	<script src="js/Controllers/app.js"></script>
+
+  </head>
+
+
+
+  <body>
+<div id="preloaded-images">
+   <img src="img/myPic.jpg" width="1" height="1" alt="Preloaded Img" />
+</div>
+
+
+    <!-- Fixed navbar -->
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+
+      <div class="container">
+
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+
+            <span class="sr-only">Toggle navigation</span>
+
+            <span class="icon-bar"></span>
+
+            <span class="icon-bar"></span>
+
+            <span class="icon-bar"></span>
+
+          </button>
+
+          <a class="navbar-brand" href="#"><span class="text-info">WASIMAKRAM MULLA | PORTFOLIO | UI Developer</span></a>
+
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+
+          <ul class="nav navbar-nav navbar-right">
+
+            <li><a href="#/profile/">Profile</a></li>
+
+            <li><a href="#/experience/">Experiences</a></li>
+
+            <li><a href="#/abilities/">Abilities</a></li>
+
+            <li><a href="#/projects/">Projects</a></li>
+
+            <li><a href="#/contact/">Contact</a></li>
+            <li><a href="resumes/">Resumes</a></li>
+
+          </ul>
+
+        </div><!--/.nav-collapse -->
+
+      </div>
+
+    </nav>
+
+  <div class="container wrapper" ng-view></div>
+
+</body>
+
 </html>
