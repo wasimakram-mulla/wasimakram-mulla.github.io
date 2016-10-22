@@ -1,0 +1,21 @@
+﻿.NewBlogPost .row{
+	margin-bottom:25px;
+}
+
+.NewBlogPost textarea{
+	resize:none;
+}
+
+.NewBlogPost form{
+    border: 1px solid #7fffd4;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.NewBlogPost .btn-addpost{
+	float:right;
+}
+
+.NewBlogPost .text-success{
+	color: #32cd32;
+}

@@ -1,0 +1,31 @@
+﻿{
+	"blogques": [{
+		"queId": 1,
+		"queText": "Write anything which comes to your mind.",
+		"postedBy": 1,
+		"commentData":[
+		{
+			"commentId":1476083657000,
+			"commentedBy":1,
+			"commentText":"Test Comment"
+		},
+		{
+			"commentId":1476083657000,
+			"commentedBy":1,
+			"commentText":"Avengers"
+		},{
+			"commentId":1476256457000,
+			"commentedBy":3,
+			"commentText":"Hello World"
+		},{
+			"commentId":1476515657000,
+			"commentedBy":5,
+			"commentText":"Dawn of the new Era"
+		}]
+	}, {
+		"queId": 2,
+		"queText": "How much I liked this blog.",
+		"postedBy": 3,
+		"commentData":[]
+	}]
+}

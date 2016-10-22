@@ -1,0 +1,47 @@
+﻿.allBlogs .questionWrapper{
+	font-size:1.5em;
+	background: #fff;
+    padding: 5px;
+	border-radius: 5px 20px 5px 20px;
+	margin-bottom:30px;
+	cursor:pointer;
+	position: relative;
+}
+
+.allBlogs .questionWrapper:hover{
+	background:#ffefd5;
+}
+
+.allBlogs .questionWrapper .questionText{
+    color: #000;
+    height: auto;
+    min-height: 50px;
+    padding: 15px;
+    border: 1px solid #777;
+	border-radius: 5px 15px 5px 15px;
+}
+
+.allBlogs .questionWrapper .bloggerName{
+    color: #00008b;
+    font-size: 15px;
+    background: #8fbc8f;
+    padding: 3px 10px;
+    position: absolute;
+    top: -5px;
+    right: 0;
+	min-width:50px;
+	min-height:20px;
+	text-align:center;
+}
+
+.allBlogs .spinnerIcon {
+	text-align:center;
+}
+
+.allBlogs .questionWrapper.ng-enter{
+	transition:0.5s linear all;
+	opacity:0;
+}
+.allBlogs .questionWrapper.ng-enter-active{	
+	opacity:1;
+}

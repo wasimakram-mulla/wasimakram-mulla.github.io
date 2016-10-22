@@ -1,0 +1,73 @@
+<!doctype html>
+<html ng-app="BlogApp">
+	<head>
+		<title>Blog</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/font-awesome.min.css" />
+		<link rel="stylesheet" href="templates/AllBlogs/css/AllBlogs.css" />
+		<link rel="stylesheet" href="templates/BlogDetails/css/BlogDetails.css" />
+		<link rel="stylesheet" href="templates/NewBlog/css/NewBlogPost.css" />
+		<link rel="stylesheet" href="templates/Registration/css/Registration.css" />
+		<script src="js/libs/angular.min.js"></script>
+		<script src="js/libs/angular-animate.min.js"></script>
+		<script src="js/libs/angular-route.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/config/app-config.js"></script>
+
+		<!-- Common Features -->
+		<script src="common/directives/overlaydirective.js"></script>
+		<script src="common/directives/logindirective.js"></script>
+		<script src="common/directives/usersdirective.js"></script>
+		<script src="common/services/UserService.js"></script>
+		<script src="common/services/dataservice.js"></script>
+		<script src="common/controllers/navcontroller.js"></script>
+
+		<!-- Template Controllers -->
+		<script src="templates/AllBlogs/js/controllers/allblogscontroller.js"></script>
+		<script src="templates/BlogDetails/js/controllers/blogdetailscontroller.js"></script>
+		<script src="templates/BlogDetails/js/directives/EditBlogDirective.js"></script>
+		<script src="templates/Registration/js/controllers/registrationcontroller.js"></script>
+		<script src="templates/AllBlogs/js/services/allblogservice.js"></script>
+		<script src="templates/NewBlog/js/controllers/newblogcontroller.js"></script>
+		<script src="templates/NewBlog/js/services/newblogservice.js"></script>
+	</head>
+<body class="grayBg"><br/>
+	<div class="container" ng-controller="NavController as navctrl">
+		<nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#/"><span class="text-white">Welcome to My Forum</span></a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active" ng-if="!loggedIn">
+				<a href="javascript:void(0)" ng-click="navctrl.showLoginPopup()">Sign in</a>
+			  </li>
+              <li class="active" ng-if="!loggedIn"><a href="#/reguser" >Register</a></li>
+              <li class="active userName" ng-if="loggedIn"><a href="javascript:void(0)">{{loggedInUser.fullNm}}</a></li>
+              <li class="active" ng-if="loggedIn"><a href="#/newblog">Blog new post</a></li>
+              <li class="active" ng-if="loggedIn"><a href="javascript:void(0)" ng-click="navctrl.logoutUser()">Logout</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+	</div>
+	<div class="container">
+		<div class="mainWrapper" ng-view></div>
+	</div>
+
+<div class="overlay" ng-if="errorMessage || showLoginModal || editCommentModal || usersdetailsModal">
+<div overlay-directive ng-if="errorMessage"></div>
+<div login-directive ng-if="showLoginModal"></div>
+<div editcomment-directive ng-if="editCommentModal"></div>
+<div users-directive ng-if="usersdetailsModal"></div>
+</div>
+</body>
+</html>

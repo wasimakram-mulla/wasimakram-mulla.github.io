@@ -1,0 +1,53 @@
+<div class="Registration">
+<div class="col-md-3 emptySpace"></div>
+
+<div class="col-md-6">
+	<form>
+		<div class="row">
+			<div class="col-md-11">
+				<a class="btn btn-xs btn-warning" href="#/"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-11">
+				<h3><i class="fa fa-user-plus" aria-hidden="true"></i> Sign up</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-11">
+				<input type="text" class="form-control" placeholder="Select a username" ng-model="RegCtrl.username" ng-blur="RegCtrl.checkUserNmAvail()"/>
+				<div class="text-usernmError" ng-if="RegCtrl.usernmError">{{RegCtrl.usernmError}}</div>
+			</div>
+			<div class="col-md-1">
+				<span class="spinner" ng-if="RegCtrl.usernmError"><i class="fa fa-spinner fa-pulse fa-2x fa-fw"></i></span>
+			</div>
+		</div>
+		<div class="row">			
+			<div class="col-md-11">
+				<input type="password" class="form-control" placeholder="Select a password" ng-model="RegCtrl.password" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-11">
+				<input type="password" class="form-control" placeholder="confirm password" ng-model="RegCtrl.confpassword" />
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-11">
+				<input type="text" class="form-control" placeholder="User full name" ng-model="RegCtrl.fullname" />
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-11">
+				<span class="text-error" ng-if="RegCtrl.txtError">{{RegCtrl.txtError}}</span>
+				<span class="text-success" ng-if="RegCtrl.txtSuccess">{{RegCtrl.txtSuccess}}</span>
+				<button type="button" class="btn btn-sm btn-success btn-signup" ng-click="RegCtrl.signup()">Sign up</button>
+			</div>
+		</div>
+
+	</form>
+</div>
+
+<div class="col-md-3 emptySpace"></div>
+</div>

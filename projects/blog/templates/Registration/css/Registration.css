@@ -1,0 +1,30 @@
+﻿.Registration .row{
+	margin-bottom:25px;
+}
+
+.Registration form{
+    border: 1px solid #7fffd4;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.Registration .btn-signup{
+	float:right;
+}
+
+.Registration .text-success{
+	color: #32cd32;
+}
+
+.Registration .text-error{
+	color: #ff9b9b;
+}
+
+.Registration .spinner{
+	margin-left: -20px;
+	color:#00ced1;
+}
+
+.Registration .text-usernmError{
+	color:#ff9b9b;
+}

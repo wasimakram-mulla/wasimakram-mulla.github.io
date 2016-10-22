@@ -1,0 +1,15 @@
+﻿<div class="col-md-4"></div>
+<div class="col-md-4">
+	<div class="editblog-panel">
+		<div class="editblog-panel-header">
+			<i class="fa fa-rss-square"></i> Edit comment
+		</div>
+		<div class="editblog-panel-body">
+			<textarea ng-model="editCmtCtrl.cmtData.commentText" class="form-control"></textarea><br/>
+		</div>
+		<div class="editblog-panel-footer">
+			<button class="btn btn-sm btn-primary" ng-click="editCmtCtrl.saveBlog()" ng-disabled="!editCmtCtrl.cmtData.commentText">Save Changes</button>
+			<button class="btn btn-sm btn-default" ng-click="editCmtCtrl.closeModal()">Cancel</button>
+		</div>
+	</div>
+</div>

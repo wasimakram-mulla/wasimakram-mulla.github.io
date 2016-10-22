@@ -1,0 +1,28 @@
+<div class="NewBlogPost">
+<div class="col-md-3 emptySpace"></div>
+
+<div class="col-md-6">
+	<form>
+		<div class="row">
+			<a class="btn btn-xs btn-warning" href="#/"><i class="fa fa-backward" aria-hidden="true"></i> Back</a>
+		</div>
+		<div class="row">
+			<h3><i class="fa fa-rss-square" aria-hidden="true"></i> Add new post</h3>
+		</div>
+		<div class="row">
+			<input type="text" class="form-control" placeholder="Blog Title" ng-model="NewBlogCtrl.blogTitle"/>
+		</div>
+		<div class="row">
+			<textarea class="form-control" placeholder="Add comment (optional)" ng-model="NewBlogCtrl.blogComment"></textarea>
+		</div>
+		
+		<div class="row">
+			<span ng-if="NewBlogCtrl.postSuccess" class="text-success">{{NewBlogCtrl.postSuccess}}</span>
+			<button type="button" class="btn btn-sm btn-success btn-addpost" ng-click="NewBlogCtrl.addPost()">Add post</button>
+		</div>
+		
+	</form>
+</div>
+
+<div class="col-md-3 emptySpace"></div>
+</div>

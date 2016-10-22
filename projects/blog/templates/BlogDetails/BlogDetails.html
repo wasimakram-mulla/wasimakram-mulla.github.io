@@ -1,0 +1,48 @@
+﻿<div class="blogDetails">
+	<div class="col-md-2 emptySpace"></div>
+	
+	<div class="col-md-7 allQuestions">
+		<button class="btn btn-xs btn-warning" ng-click="BlogDetCtrl.goToDashboard()"><i class="fa fa-backward"></i> Back</button>
+		<h3 class="QuestionText"><em><i class="fa fa-question-circle"></i> {{BlogDetCtrl.quesText}}</em></h3>
+		<h5 class="postedBy">-- Posted by: <strong>{{BlogDetCtrl.blogUsr.fullNm}}</strong></h5>
+		<br/>
+		<div class="spinnerIcon" ng-if="!BlogDetCtrl.blogData">
+			<i class="fa fa-circle-o-notch fa-spin fa-4x fa-fw"></i>
+		</div>
+		<div class="commentWrapper" ng-if="BlogDetCtrl.commentData.length" ng-repeat = "cmnts in BlogDetCtrl.commentData">
+			<div class="commentText">
+				{{cmnts.commentText}}
+			</div>
+			<div class="userName">{{cmnts.userDets.userNm}}</div>
+			<div class="deleteBtn" ng-if="loggedIn && (cmnts.userDets.userId == BlogDetCtrl.loggedInUser.userId)" ng-click="BlogDetCtrl.deleteComment(cmnts)">
+				<i class="fa fa-trash-o"></i>
+			</div>
+			<div class="editBtn" ng-if="loggedIn && (cmnts.userDets.userId == BlogDetCtrl.loggedInUser.userId)" ng-click="BlogDetCtrl.editComment(cmnts)">
+				<i class="fa fa-minus"></i>
+			</div>
+		</div>
+		<div class="commentWrapper" ng-if="!BlogDetCtrl.commentData.length">
+			<div class="commentText">
+				<h4><i class="fa fa-thumbs-o-up"></i> Be first to comments on this post.</h4>
+			</div>
+		</div>
+		<div class="commentBox">
+			<div class="col-md-9">
+				<textarea class="form-control" placeholder="Please comment here..." ng-readonly="!loggedIn" ng-model="BlogDetCtrl.commentVal"></textarea>
+			</div>
+			<div class="col-md-3">
+				<button class="btn btn-block btn-primary" ng-disabled="!loggedIn || !BlogDetCtrl.commentVal" ng-click="BlogDetCtrl.addComment()"><i class="fa fa-comments-o"></i> Comment</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-md-3 emptySpace">
+		<h3><em><i class="fa fa-user"></i> Tagged Users</em></h3><br/>
+		<div class="col-md-12 userDetails" ng-repeat = "usrinfo in BlogDetCtrl.userData track by $index">
+			<div class="user-icon-wrapper col-md-5">
+				<div class="user-icon"><span>{{usrinfo.fullNm.charAt(0) | uppercase}}</span></div>
+			</div>
+			<div class="user-icon-name col-md-7">{{usrinfo.userNm}}</div>
+		</div>
+	</div>
+</div>

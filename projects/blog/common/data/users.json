@@ -1,0 +1,28 @@
+﻿{
+	"users": [{
+		"userId": 1,
+		"userNm": "wasim",
+		"fullNm": "Wasimakram Mulla",
+		"password":"wasim"
+	},{
+		"userId": 2,
+		"userNm": "test",
+		"fullNm": "Test Test",
+		"password":"test"
+	},{
+		"userId": 3,
+		"userNm": "demo",
+		"fullNm": "Demo Demo",
+		"password":"demo"
+	},{
+		"userId": 4,
+		"userNm": "abcd",
+		"fullNm": "Abc Xyz",
+		"password":"abcd"
+	},{
+		"userId": 5,
+		"userNm": "admin",
+		"fullNm": "Admin",
+		"password":"admin"
+	}]
+}
