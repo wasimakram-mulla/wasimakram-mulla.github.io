@@ -1,0 +1,228 @@
+<html ng-app="DiceRoll">
+	<head>
+		<title>Expedition Quest</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
+		<link rel="stylesheet" href="./css/style.css" />
+	</head>
+<body ng-controller="RollDiceController as diceroll">
+<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+			<div class="col-md-12">
+				<a href="index.html" class="navbar-brand" style="margin-left:10px;">Expedition Quest</a>
+				<a href="#" class="navbar-brand" style="margin-left:50px;" ng-hide="diceroll.firstPage"><span class="text-info">Note: {{diceroll.gamenote}}</span></a>
+			</div>
+        </div>
+		<div class="navbar-collapse collapse" id="navbar" >
+          <ul class="nav navbar-nav navbar-right" ng-hide="diceroll.firstPage">
+            <li><a href="javascript:void(0)"><span class="text-danger">{{diceroll.playernote}}</span></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<br/><br/>
+
+<div class="container" ng-show="diceroll.firstPage">
+	<form class="col-md-12" ng-submit="diceroll.startGame();">
+		<br/>		
+		<div class="col-md-12">
+			<div class="col-md-3">
+				Select No. of Players
+			</div>
+			<div class="col-md-1" ng-init="diceroll.playersSelected='1'">
+				<select class="form-control" ng-model="diceroll.playersSelected">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+				</select>
+			</div>
+			<div class="col-md-12">
+				<br/>
+				Select how would you like the steps.
+			</div>
+			<div class="col-md-12 PlayersGraph" ng-init="diceroll.playergraph1=true;diceroll.playergraph2=false">
+				<div class="player_graph" ng-class="{'active':diceroll.playergraph1==true}" ng-click="diceroll.playergraph1=true;diceroll.playergraph2=false"></div>
+				<div class="player_graph" ng-class="{'active':diceroll.playergraph2==true}" ng-click="diceroll.playergraph1=false;diceroll.playergraph2=true"></div>
+			</div>
+			<div class="col-md-12">
+				<br/>
+				<button class="btn btn-success btn-sm">Start Game</button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div class="container" ng-hide="diceroll.firstPage">
+		<div class="stage">
+			<div class="cubeWhite" ng-class="{'cubespinner':diceroll.rollingdice==true}">
+				<div class="face1 face">1</div>
+				<div class="face2 face">2</div>
+				<div class="face3 face">3</div>
+				<div class="face4 face">4</div>
+				<div class="face5 face">5</div>
+				<div class="face6 face">6</div>
+			</div>
+		</div>
+		<div class="stageForBlack">
+			<div class="cubeBlack" ng-class="{'cubespinner':diceroll.rollingdice==true}">
+				<div class="face1 face"><img src="./imgs/Friend.png" /></div>
+				<div class="face2 face"><img src="./imgs/Food_Crate.png" /></div>
+				<div class="face3 face"><img src="./imgs/Medicine.png" /></div>
+				<div class="face4 face"><img src="./imgs/Gun.png" /></div>
+				<div class="face5 face"><img src="./imgs/Bullet.png" /></div>
+				<div class="face6 face"><img src="./imgs/Katana_Sword.png" /></div>
+			</div>
+		</div>
+		<button class="btn btn-sm btn-primary btn-roll-dice" ng-click="diceroll.rolldie();" ng-disabled="diceroll.rollingdice">Roll Dice</button>
+
+	<div class="col-md-12 graphsteps">
+		<br/>
+		<div class="col-md-12">
+			<div class="step0 step start">
+				<div class="player1 playerQue"></div>
+				<div class="player2 playerQue"></div>
+				<div class="player3 playerQue"></div>
+				<div class="player4 playerQue"></div>
+			</div>
+		</div>
+		<!-- Steps will be written here -->
+	</div>
+	
+	<div class="playerScoreBoardWrapper">
+		<div class="player1_ScoreBoard scoreboard">
+			<span class="playername">Player 1</span>
+			<div class="scoreboardicon">
+				<img src="./imgs/Friend.png" />: {{diceroll.friend[0]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Food_Crate.png" />: {{diceroll.food_crate[0]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Medicine.png" />: {{diceroll.medicine[0]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Gun.png" />: {{diceroll.gun[0]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Bullet.png" />: {{diceroll.bullet[0]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Katana_Sword.png" />: {{diceroll.katana_sword[0]}}
+			</div>
+		</div>
+		<div class="player2_ScoreBoard scoreboard" ng-hide="diceroll.playersSelected<2">
+			<span class="playername">Player 2</span>
+			<div class="scoreboardicon">
+				<img src="./imgs/Friend.png" />: {{diceroll.friend[1]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Food_Crate.png" />: {{diceroll.food_crate[1]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Medicine.png" />: {{diceroll.medicine[1]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Gun.png" />: {{diceroll.gun[1]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Bullet.png" />: {{diceroll.bullet[1]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Katana_Sword.png" />: {{diceroll.katana_sword[1]}}
+			</div>
+		</div>
+		<div class="player3_ScoreBoard scoreboard" ng-hide="diceroll.playersSelected<3">
+			<span class="playername">Player 3</span>
+			<div class="scoreboardicon">
+				<img src="./imgs/Friend.png" />: {{diceroll.friend[2]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Food_Crate.png" />: {{diceroll.food_crate[2]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Medicine.png" />: {{diceroll.medicine[2]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Gun.png" />: {{diceroll.gun[2]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Bullet.png" />: {{diceroll.bullet[2]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Katana_Sword.png" />: {{diceroll.katana_sword[2]}}
+			</div>
+		</div>
+		<div class="player4_ScoreBoard scoreboard" ng-hide="diceroll.playersSelected<4">
+			<span class="playername">Player 4</span>
+			<div class="scoreboardicon">
+				<img src="./imgs/Friend.png" />: {{diceroll.friend[3]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Food_Crate.png" />: {{diceroll.food_crate[3]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Medicine.png" />: {{diceroll.medicine[3]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Gun.png" />: {{diceroll.gun[3]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Bullet.png" />: {{diceroll.bullet[3]}}
+			</div>
+			<div class="scoreboardicon">
+				<img src="./imgs/Katana_Sword.png" />: {{diceroll.katana_sword[3]}}
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="rulesPopup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content panel panel-success">
+      <div class="modal-header panel-heading">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title panel-title" id="myModalLabel"><strong>Game Rules</strong></h4>
+      </div>
+      <div class="modal-body panel-body">
+        <h4><i><u>Rules:</u></i></h4>
+			<div class="modalface">1</div> <strong class="text-primary">Movement Dice</strong> This dice is has numbers from 1 to 6, This die helps in movement of the player. The number on die after rolling will move the player that number of times.<br/><br/><br/>
+			<div class="modalfaceBlack"><img src="./imgs/Friend.png" /></div> <strong class="text-primary">Special Dice</strong> This dice is has six different images on it, This die helps in giving some special features to the player. The image on die after rolling will give different items to the player to help on different occations, below are details of items on a black die.<br/><br/>
+			<blockquote><img src="./imgs/Friend.png" height="20" width="20"/><strong class="text-info">/Porter</strong>: These are your helpers which carries load and other tasks. You need atleast one porter in the game to continue playing.</blockquote>
+			<blockquote><img src="./imgs/Food_Crate.png" height="20" width="20"/><strong class="text-info">/Food Crate</strong>: These are your food supplies for the journey. You need atleast 0.25 crate of food to survive in the game. Each porter in the game consumes 0.25 of crate per turn per player. When icon is faced up you will get 2 crates of food.</blockquote>
+			<blockquote><img src="./imgs/Medicine.png" height="20" width="20"/><strong class="text-info">/Medicine Vial</strong>: These are medical supplies for diseases like "viral fewers" in the game, if at anytime you move over the viral fewer position you need atleast one vial of medicine to heal else you will lose a porter. When icon is faced up you will get 1 medicine vial. </blockquote>
+			<blockquote><img src="./imgs/Gun.png" height="20" width="20"/><strong class="text-info">/Gun</strong>: Gun and Bullets in the game are interlinked, There are ferocious animals like Wild Bear in the game which might kill you porter if you don't shoot it. You need 1 gun and 2 bullets to kill the animals. If anytime you get this die face up, you will get a gun which will lasts till the game.</blockquote>
+			<blockquote><img src="./imgs/Bullet.png" height="20" width="20"/><strong class="text-info">/Bullet</strong>: As mentioned above you need 2 bullets to kill an animal. If anytime you get this die face up, you will get 1 bullet, which will be used once you go hunting.</blockquote>
+			<blockquote><img src="./imgs/Katana_Sword.png" height="20" width="20"/><strong class="text-info">/Katana</strong>: This is a sword which will help you to kill snakes in the game, killing a snake you will lose the sword. When icon is faced up you will get 1 Katana.</blockquote>
+			<h4><i><u>Game Tricks:</u></i></h4>
+			<blockquote><strong class="text-info">Start Again <img src="./imgs/home.png" height="20" width="20" /></strong>: Whenever you fall in this area, you need to Start the game again will the current resources.</blockquote>
+			<blockquote><strong class="text-info">Snakes <img src="./imgs/snake.png" height="20" width="20" /></strong>: If you drop in this area Snakes will kill your porter, if you don't have any Katana sword. One Katana will kill one Snake.</blockquote>
+			<blockquote><strong class="text-info">Bear attack <img src="./imgs/bear.png" height="20" width="20" /></strong>: If you drop in this area Bear will kill your porter, if you don't have any Gun and 2 Bullets. If you have Bullets, two of them will be used, Gun will remain as it is.</blockquote>
+			<blockquote><strong class="text-info">Viral Fewer <img src="./imgs/viral_fewer.png" height="20" width="20" /></strong>: A fewer will spread across your camp, and you would require a Medicine Vial to cure this vial else one of you porter will get killed.</blockquote>
+			<blockquote><strong class="text-info">Town <img src="./imgs/Town.png" height="20" width="20" /></strong>: These are the best townsmen you will ever meet, each time you get in a town, the townsmen will provide you with free food crate.</blockquote>
+			<blockquote><strong class="text-info">Jump <img src="./imgs/jump.png" height="20" width="20" /></strong>: You will automatically jump over 2 places ahead.</blockquote>
+			<blockquote><strong class="text-info">Swamp <img src="./imgs/swamp.png" height="20" width="20" /></strong>: You will automatically thrown 4 places back.</blockquote>
+
+      </div>
+    </div>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-1.12.2.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+<!-- <script src="js/jquery-1.12.2.js"></script>
+<script src="js/angular.min.js"></script> -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/StepsWriter.js"></script>
+<script src="js/RandomizeTricks.js"></script>
+
+</body>
+</html>

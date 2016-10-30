@@ -171,7 +171,8 @@ body {
 }
 .alert.popupContent {
     height: 50%;
-    min-height: 600px;
+    /* min-height: 600px; */
+    min-height: auto;
     overflow: auto;
 }
 .showPopUp {
