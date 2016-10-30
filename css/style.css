@@ -92,6 +92,16 @@ body {
 .face.back:hover .overlay{
 	display: block;
 }
+
+.flip-container{
+	margin-bottom:40px;
+}
+
+.flip-container img{
+	height:100%;
+	width:100%;
+}
+
 .flip-container:hover .project{
 	transform: rotateY(360deg);
 }
