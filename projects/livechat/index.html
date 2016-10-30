@@ -1,0 +1,115 @@
+<html ng-app="chatapp">
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+<body ng-controller="ChatController as chatctrl">
+ <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">My Chat</a>
+        </div>
+      </div>
+    </nav>
+<br/><br/><br/>
+<div class="container" ng-show="chatctrl.showSigninForm">
+	<div class="col-md-12">
+		<div class="col-md-12">
+			<form class="form-signin col-md-6" ng-submit="chatctrl.signin()">
+				<h5 class="text-danger" ng-hide="chatctrl.showError">Please login first to Start chat</h5>
+				<h4 class="text-danger" ng-show="chatctrl.showError">Invalid Username and Password</h4>
+				<label for="inputUsername" class="sr-only">Username</label>
+				<input type="text" class="form-control" placeholder="Username" required="" autofocus="" ng-model="chatctrl.usernm">
+				<label for="inputPassword" class="sr-only">Password</label>
+				<input type="password" class="form-control" placeholder="Password" required="" ng-model="chatctrl.passwd">
+				<button class="btn btn-sm btn-primary" type="submit">Sign in</button>
+				<button class="btn btn-sm btn-warning btn-register" type="button" ng-click="chatctrl.enableRegisterForm()">Register</button>
+			</form>
+		</div>
+		<br/><br/><br/>
+	</div>
+</div>
+<div class="container" ng-show="chatctrl.showRegisterForm">
+	<div class="col-md-12">
+		<div class="col-md-12">
+			<form class="form-signin col-md-6">
+				<h4 class="text-danger">{{chatctrl.registerText}}</h4>
+				<input type="text" class="form-control" placeholder="Username" ng-model="chatctrl.RegUser" required="" autofocus="">
+				<input type="password" class="form-control" placeholder="Password" ng-model="chatctrl.RegPasswd" required="">
+				<input type="password" class="form-control" placeholder="Confirm Password" ng-model="chatctrl.RegConfPasswd" required="">
+				<button class="btn btn-sm btn-warning btn-register" type="button" ng-click="chatctrl.registerUser()" ng-disabled="!(chatctrl.RegUser && chatctrl.RegPasswd && (chatctrl.RegConfPasswd == chatctrl.RegPasswd))" style="float:left;">
+					Register
+				</button>
+				<button class="btn btn-sm btn-primary" type="button" ng-click="chatctrl.goHome()" style="float:right;">Back</button>
+			</form>
+		</div>
+		<br/><br/><br/>
+	</div>
+</div>
+
+<div class="container" ng-show="chatctrl.showChatForm">
+	<div class="col-md-8">
+		<div class="col-md-12">
+			<h4 class="text-success">Common Chat Room</h4>
+			<textarea id="chatMessages" style="resize:none;height:400px;" class="form-control" ng-model="chatctrl.chatMessages" disabled></textarea>
+		</div>
+		<div class="col-md-12 row">
+			<div class="col-md-11">
+				<textarea style="resize:none;height:100px;margin-top:5px;" class="form-control" ng-model="chatctrl.chatText" ></textarea>
+			</div>
+			<div class="col-md-1">
+				<br/>
+				<button class="btn btn-success" style="margin-top:5px;" ng-click="chatctrl.addMessage()">Send</button>
+				<button class="btn btn-warning" style="margin-top:5px;" ng-click="chatctrl.logout()">Logout</button>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4">
+		<h4>&nbsp;</h4>
+		<ul class="list-group chatusers-list">
+            <li class="list-group-item active">All Users <input type="text" class="form-control" placeholder="Search" ng-model="chatctrl.searchUser"></li>            
+            <li class="list-group-item" ng-hide="chatctrl.users.length">
+				<h5 class="text-warning">Please wait... <i class="fa fa-spinner fa-spin"></i></h5>
+			</li>
+            <li class="list-group-item clickable" ng-repeat="usrs in chatctrl.users | filter: '!'+chatctrl.username | filter:chatctrl.searchUser" ng-click="chatctrl.selectUser(usrs.username)">
+				<strong class="text-primary">{{usrs.username}}</strong>
+			</li>
+			<li class="list-group-item">
+				<button class="btn btn-sm btn-info" ng-click="chatctrl.startChat()" ng-disabled="!chatctrl.clickedUser">Start Chat</button>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="container" ng-show="chatctrl.showPersonalChatForm">
+	<div class="col-md-12">
+		<div class="col-md-12">
+			<h4 class="text-success">Personal Chat Room 
+				<button class="btn btn-sm btn-warning" ng-click="chatctrl.goBackToHome()">Back</button>
+			</h4>
+			<textarea id="personalChatMessages" style="resize:none;height:400px;" class="form-control" ng-model="chatctrl.personalChatMessages" disabled></textarea>
+		</div>
+		<div class="col-md-12 row">
+			<div class="col-md-11">
+				<textarea style="resize:none;height:100px;margin-top:5px;" class="form-control" ng-model="chatctrl.personalChatText" ></textarea>
+			</div>
+			<div class="col-md-1">
+				<br/>
+				<button class="btn btn-success" type="button" style="margin-top:5px;" ng-click="chatctrl.personalAddMessage()">Send</button>
+				<button class="btn btn-warning" type="button" style="margin-top:5px;" ng-click="chatctrl.logout()">Logout</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="notification">{{chatctrl.notificationText}}</div>
+
+<script src="https://code.jquery.com/jquery-1.12.2.js" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+<script src="js/app.js"></script>
+</body>
+</html>

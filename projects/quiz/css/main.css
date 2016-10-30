@@ -1,0 +1,47 @@
+/* General CSS START */
+.mainWrapper{
+	margin-top:55px;
+}
+
+.cursorPointer{
+	cursor:pointer;
+}
+
+tr.cursorPointer:hover{
+	background:#eee;
+}
+/* General CSS END */
+
+/* Search Page CSS START*/
+.searchContainer{
+    min-height: 480px;
+    box-shadow: 0px 0px 5px #000;
+    height: auto;
+}
+.searchContainer .date{
+	margin-top: 235px;
+}
+/* Search Page CSS END*/
+.QuestionWrapper{
+    margin-top: 20px;
+    background: #eff;
+    box-shadow: 0px 0px 5px #aaa;
+	padding: 15px;
+}
+
+.OptionWrapper .col-md-5{
+    margin-top: 20px;
+    background: whitesmoke;
+    padding: 15px;
+	cursor:pointer;
+}
+
+.OptionWrapper .col-md-2.noBg{
+	background:none;
+	cursor:default;
+}
+
+.OptionWrapper .col-md-5.selected{
+	background:tan;
+	color:#fff;
+}
