@@ -1,0 +1,342 @@
+﻿body{
+	margin:0;
+	padding:0;
+}
+.gameWrapper{
+	width:1020px;
+	height:765px;
+	border:1px solid black;
+	margin:0 auto;
+	position:relative;
+}
+.header{
+	margin-top:10px;
+	width: 150px;
+	margin-left:10px;
+}
+.deck{
+    height: 150px;
+    width: 100px;
+	position:relative;
+}
+.deck .deck-count{
+    position: absolute;
+    font-size: 15px;
+    top: 150px;
+}
+
+.deck .card{
+	height:100%;
+	width:100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+	border-radius: 5px;
+	cursor:pointer;
+}
+.deck .card .cardBg{
+	height:100%;
+	width:100%;
+    background: url(../imgs/deck-card-back.jpg);
+    background-size: 100% 100%;
+}
+.deck .card .card-details{
+	height:100%;
+	width:100%;
+	background: #f5f5dc;
+	position:relative;
+	display:none;
+}
+.deck .card-number-top{
+    font-size: 25px;
+    font-weight: bold;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.deck .card-number-bottom{
+    font-size: 25px;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+	transform: scale(-1, -1);
+}
+.card-bg{
+    height: 70px;
+    width: 50px;
+    position: absolute;
+    top: 26%;
+    left: 26%;
+	background-image: url(../imgs/deck-bg-small.png);
+}
+.bg-diamond{
+    background-position: -153px 0px;
+}
+.bg-spade{
+    background-position: -18px 0px;
+}
+.bg-club{
+    background-position: 71px 0px;
+}
+.bg-heart{
+    background-position: -85px 0px;
+}
+.red-card{
+	color:#ff0000;
+}
+.black-card{
+	color:#000000;
+}
+
+/* Card Pool - center circle area*/
+.card-pool{
+	height:250px;
+	width:250px;
+	border:1px solid #aaa;
+	position:absolute;
+	left: 365px;
+    top: 190px;
+	border-radius:50%;
+}
+.pool-card{
+    height: 150px;
+    width: 100px;
+    position: absolute;
+    top: 50px;
+    left: 75px;
+    box-shadow:0px 0px 10px rgba(50,50,50,0.3);
+}
+.pool-card .card-number-top{
+    font-size: 25px;
+    font-weight: bold;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.pool-card .card-number-bottom{
+    font-size: 25px;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+	transform: scale(-1, -1);
+}
+.card-pool .pool-card .card-details{
+	height:100%;
+	width:100%;
+	background: #f5f5dc;
+	position:relative;
+}
+/* Card Pool Finish */
+
+/* Player Wrapper's */
+.player1_wrapper, .player2_wrapper, .player3_wrapper, .player4_wrapper{
+	height: 180px;
+    width: auto;
+    position: absolute;
+    min-width: 450px;
+    top: 450px;
+    left: 400px;
+	overflow:auto;
+}
+
+.player1_wrapper{
+	width:600px;
+}
+
+.player2_wrapper{
+    top: 130px;
+    left: 700px;
+    transform: rotate(90deg);
+}
+.player3_wrapper{
+	top: 0px;
+    left: 300px;
+}
+.player4_wrapper{
+    top: 310px;
+    left: -130px;
+	transform: rotate(-90deg);
+}
+
+.player1_cards_wrapper, .player2_cards_wrapper, .player3_cards_wrapper, .player4_cards_wrapper{
+	position:relative;
+	margin-left: 20px;
+}
+
+.p1-card-6{
+	height: 150px;
+    width: 100px;
+    background: url(../imgs/deck-card-back.jpg);
+    background-size: 100% 100%;
+    position: absolute;
+    top: 20px;
+    left: 100px;
+    transform-origin: left bottom;
+	box-shadow: 0px 0px 10px rgba(50,50,50,0.3);
+}
+
+.p1-card-6 .card-details{
+	height:100%;
+	width:100%;
+	background: #f5f5dc;
+	position:relative;
+	display:none;
+}
+.p1-card-6.p1Cards .card-details{
+	display:block;
+	cursor:pointer;
+}
+.p1-card-6 .card-number-top{
+    font-size: 25px;
+    font-weight: bold;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.p1-card-6 .card-number-bottom{
+    font-size: 25px;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+	transform: scale(-1, -1);
+}
+
+.p1-card-6.card-1{
+	left:0px;
+}
+.p1-card-6.card-2{
+	left:40px;
+}
+.p1-card-6.card-3{
+	left:80px;
+}
+.p1-card-6.card-4{
+	left:120px;
+}
+.p1-card-6.card-5{
+	left:160px;
+}
+.p1-card-6.card-6{
+	left:200px;
+}
+
+/* Player Playing */
+.player-playing-text{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+	z-index:123;
+    height: 55px;
+    width: 200px;
+	overflow:hidden;
+}
+
+.player-playing-text h3.ng-leave {
+	transition:0.5s linear all;
+	opacity:0;
+}
+/* The starting CSS styles for the enter animation */
+.player-playing-text h3.ng-enter {
+	transform: translateX(150px);
+	transition:0.5s linear all;
+	opacity:0;
+}
+
+/* The finishing CSS styles for the enter animation */
+.player-playing-text h3.ng-enter-active {
+	transform: translateX(0px);
+	opacity:1;
+}
+
+.player-playing-text span{
+    font-size:10px;
+}
+.player-playing-button{
+    position: absolute;
+    top: 400px;
+    right: 250px;
+}
+.player-playing-selectedCard{
+    position: absolute;
+    bottom: 170px;
+    left: 220px;
+    width: 120px;
+}
+.player-playing-selectedCard .card-selected-heading{
+	font-size: 17px;
+    text-decoration: underline;
+    font-style: italic;
+    font-weight: bold;
+}
+.player-playing-selectedCard .card-number{
+    font-size: 25px;
+    font-weight: bold;
+    float: left;
+    padding: 15px;
+}
+.player-playing-selectedCard  .card-icon{
+	height: 70px;
+    width: 50px;
+    float: left;
+    background-image: url(../imgs/deck-bg-small.png);
+}
+
+.newcard-to-play{
+	height: 150px;
+    width: 150px;
+    position: absolute;
+    left: 140px;
+    top: 20px;
+    border: 1px solid saddlebrown;
+	padding: 5px;
+}
+
+.newcard-to-play .new-card-heading{
+	font-size: 18px;
+    text-decoration: underline;
+}
+
+.newcard-to-play .card-icon{
+	height: 70px;
+    width: 50px;
+    margin: 0 auto;
+    background-image: url(../imgs/deck-bg-small.png);
+}
+
+.tmpNextPlayerBtn{
+    position: absolute;
+    right: 240px;
+    top: 320px;
+}
+/* Overlay */
+.overlay{
+	position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(245, 245, 220,0.7);
+    top: 0;
+    left: 0;
+    z-index: 1234;
+}
+.loadingoverlay{
+	position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba(245, 245, 220,0.2);
+    top: 0;
+    left: 0;
+    z-index: 123;
+}
+.spinnngArea{
+	position:relative;
+	height:100%;
+	width:100%;
+}
+.spinnerIcon{
+    position: absolute;
+    left: 46%;
+    top: 40%;
+}

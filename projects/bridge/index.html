@@ -1,0 +1,163 @@
+﻿<!doctype html>
+<html ng-app="BridgeApp">
+	<head>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/font-awesome.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<script src="js/libs/jquery-3.1.1.min.js"></script>
+		<script src="js/libs/angular.min.js"></script>
+		<script src="js/libs/angular-animate.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/controllers/gamecontroller.js"></script>
+		<script src="js/services/deckservice.js"></script>
+	</head>
+<body>
+<div class="gameWrapper" ng-controller="GameController as gameCtrl">
+	<div class="header">
+		<div class="deckWrapper">
+			<div class="deck">
+				<div class="card" ng-repeat="card in gameCtrl.deckSet">
+					<div class="cardBg"></div>
+					<div class="card-details {{card.cardColor}}-card">
+						<div class="card-number-top">{{card.cardNo}}</div>
+						<div class="card-bg bg-{{card.cardType}}"></div>
+						<div class="card-number-bottom">{{card.cardNo}}</div>
+					</div>
+				</div>
+				<div class="deck-count">Cards left: <strong class="text-danger">{{gameCtrl.deckSet.length}}</strong></div>
+			</div>
+			<br/>
+			<!-- <button class="btn btn-xs btn-primary" ng-disabled="!gameCtrl.deckSet || !gameCtrl.shuffleBtnEnable" ng-click="gameCtrl.shuffleDeck()">Shuffle</button>
+			<button class="btn btn-xs btn-primary" ng-disabled="!gameCtrl.deckSet" ng-click="gameCtrl.distributeCards()" ng-if="gameCtrl.shuffleBtnEnable">Start Game</button><br/>
+			Note: These button are in working condition just remove comment for buttons to work and minor change in funcns.
+			-->
+			<div class="text-info" ng-show="!gameCtrl.deckSet"><i class="fa fa-spinner fa-pulse fa-fw"></i>Shuffling deck.</div>
+		</div>
+	</div>
+
+	<div class="card-pool">
+		<div class="pool-wrapper" ng-if="gameCtrl.deckPool.length">
+			<div class="pool-card" ng-repeat="poolcard in gameCtrl.deckPool" style="transform: rotate({{poolcard.rotation}}deg)">
+				<div class="card-details {{poolcard.cardColor}}-card">
+					<div class="card-number-top">{{poolcard.cardNo}}</div>
+					<div class="card-bg bg-{{poolcard.cardType}}"></div>
+					<div class="card-number-bottom">{{poolcard.cardNo}}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Player Wrappers -->
+	<div class="player1_wrapper" ng-if="gameCtrl.playerCards.player1.cards">
+		<div class="player1_cards_wrapper">
+			<div class="p1-card-6 card-{{$index+1}} p1Cards" ng-repeat="p1card in gameCtrl.playerCards.player1.cards" ng-mouseenter = "gameCtrl.hoverCard($event)" ng-mouseleave= "gameCtrl.hoverLeave($event)" ng-click="gameCtrl.selectCardToPlay(p1card, $event)" style="left:{{p1card.left}}px">
+				<div class="card-details {{p1card.cardColor}}-card">
+					<div class="card-number-top">{{p1card.cardNo}}</div>
+					<div class="card-bg bg-{{p1card.cardType}}"></div>
+					<div class="card-number-bottom">{{p1card.cardNo}}</div>
+				</div>
+			</div>
+		</div> <!-- Player 1 Cards Wrapper Ends -->
+	</div> <!-- Player 1 Wrapper Ends -->
+
+	<div class="player2_wrapper" ng-if="gameCtrl.playerCards.player2.cards">
+		<div class="player2_cards_wrapper">
+			<div class="p1-card-6 card-{{$index+1}}" ng-repeat="p2card in gameCtrl.playerCards.player2.cards" style="left:{{p2card.left}}px">
+				<div class="cardBg"></div>
+				<div class="card-details {{p2card.cardColor}}-card">
+					<div class="card-number-top">{{p2card.cardNo}}</div>
+					<div class="card-bg bg-{{p2card.cardType}}"></div>
+					<div class="card-number-bottom">{{p2card.cardNo}}</div>
+				</div>
+			</div>
+		</div> <!-- Player 2 Cards Wrapper Ends -->
+	</div> <!-- Player 2 Wrapper Ends -->
+
+	<div class="player3_wrapper" ng-if="gameCtrl.playerCards.player3.cards">
+		<div class="player3_cards_wrapper">
+			<div class="p1-card-6 card-{{$index+1}}" ng-repeat="p3card in gameCtrl.playerCards.player3.cards" style="left:{{p3card.left}}px">
+				<div class="cardBg"></div>
+				<div class="card-details {{p3card.cardColor}}-card">
+					<div class="card-number-top">{{p3card.cardNo}}</div>
+					<div class="card-bg bg-{{p3card.cardType}}"></div>
+					<div class="card-number-bottom">{{p3card.cardNo}}</div>
+				</div>
+			</div>
+		</div> <!-- Player 3 Cards Wrapper Ends -->
+	</div> <!-- Player 3 Wrapper Ends -->
+
+	<div class="player4_wrapper" ng-if="gameCtrl.playerCards.player4.cards">
+		<div class="player4_cards_wrapper">
+			<div class="p1-card-6 card-{{$index+1}}" ng-repeat="p4card in gameCtrl.playerCards.player4.cards" style="left:{{p4card.left}}px">
+				<div class="cardBg"></div>
+				<div class="card-details {{p4card.cardColor}}-card">
+					<div class="card-number-top">{{p4card.cardNo}}</div>
+					<div class="card-bg bg-{{p4card.cardType}}"></div>
+					<div class="card-number-bottom">{{p4card.cardNo}}</div>
+				</div>
+			</div>
+		</div> <!-- Player 4 Cards Wrapper Ends -->
+	</div> <!-- Player 4 Wrapper Ends -->
+
+	<div class="player-playing-wrapper">
+		<div class="newcard-to-play" ng-if="gameCtrl.chosenNewCard.status == true">
+			<div class="new-card-heading">New card to play</div>
+			<div class="card-icon bg-{{gameCtrl.chosenNewCard.cardType}}"></div>
+		</div>
+		<div class="player-playing-text">
+			<h3 ng-if="gameCtrl.playerInfo"><label class="label label-warning">Player: {{gameCtrl.playerInfo}}'s <span>Play...</span></label></h3>
+		</div>
+		<div class="player-playing-button" ng-if="gameCtrl.showPlayerBtns">
+			<button class="btn btn-sm btn-success" ng-disabled="!gameCtrl.selectedCard" ng-click="gameCtrl.playCardToPool();">Play card</button>
+			<button class="btn btn-sm btn-primary" ng-click="gameCtrl.userPullNewCardFromDeck();">Pull new card</button>
+		</div>
+		<div class="player-playing-selectedCard" ng-if="gameCtrl.selectedCard">
+			<div class="card-selected-heading">Selected card</div>
+			<div class="card-number {{gameCtrl.selectedCard.cardColor}}-card">{{gameCtrl.selectedCard.cardNo}}</div>
+			<div class="card-icon bg-{{gameCtrl.selectedCard.cardType}}"></div>
+		</div>
+	</div>
+
+<div class="overlay" ng-hide="gameCtrl.startgameflag">
+	<div class="col-md-12">
+		<div class="col-md-1"></div>
+		<div class="col-md-10"><br/>
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+				  <h3 class="panel-title">Rules to play <em><u>THE BRIDGE</u></em></h3>
+				</div>
+				<div class="panel-body">
+					<strong>Only Rule:</strong> You should match card number or card type with your card, for e.g if <strong>King of hearts</strong> is played you should match it with either a <strong>Kind card</strong> (of any type like spade, club or diamond) or you can play any card which has an <strong>heart</strong> on it.<br/><br/>
+					<u><strong>Special cards with special powers</strong></u>
+					<ul>
+						<li><strong>A (Ace)</strong> - Next player should pull 3 cards from deck, but if next player too plays an "A" card then next to next player must pull 6 cards and so on.<br/><br/></li>
+						<li><strong>2</strong> - Next player should pull 2 cards from deck, but if next player too plays an "2" card then next to next player must pull 4 cards and so on.<br/><br/></li>
+						<li><strong>9</strong> - playing card "9" skips next users turn, but if next player has a card "9" then he can play it and the next player to him has to skip the turn an so on.<br/><br/></li>
+						<li><strong>Q (Queen)</strong> - The game begins in <em>Anticlockwise direction</em>, but whenever "Q" is played the direction changes to <em>Clockwise direction</em>. If again "Q" is played the direction changes back to <em>Anticlockwise direction</em> and so the cycle continues.<br/><br/></li>
+						<li><strong>J (Jack)</strong> - You can play "J" on any card irrespective of card number and card type, post playing this card you can select a card type of your own and next player has to play with the card type chosen be previous player.<br/><br/></li>
+					</ul>
+				<strong class="text-danger">Note:</strong>
+					<ol class="text-danger">
+						<li>You can tackle "A", "2" and "9" with similar cards only.</li>
+						<li>Special cards can be of any type, heart, spade, diamond or club.</li>
+						<li>In this game you are <em>Player 1</em> and your opponents will always be 3 <em>Artificially Intelligent</em> players.</li>
+					</ol>
+					<button class="btn btn-primary btn-sm" ng-click="gameCtrl.startGame();">Start Game</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="loadingoverlay" ng-show="gameCtrl.showLoader">
+	<div class="spinnngArea">
+		<div class="spinnerIcon text-primary">
+			<i class="fa fa-spinner fa-spin fa-4x fa-fw"></i>
+			<div class="spinner-text text-primary"><br/><strong>{{gameCtrl.loaderMsg}}</strong></div>
+		</div>
+	</div>
+</div>
+
+</div>
+</body>
+</html>
