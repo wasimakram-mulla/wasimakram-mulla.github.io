@@ -132,7 +132,7 @@
 
 /* Player Wrapper's */
 .player1_wrapper, .player2_wrapper, .player3_wrapper, .player4_wrapper{
-	height: 180px;
+    height: 182px;
     width: auto;
     position: absolute;
     min-width: 450px;
