@@ -8,8 +8,8 @@ function GameController(DeckService, $log, $timeout){
 	vm.deckPool = new Array();											// Prop: Pool area where Cards are played
 	vm.masterDeckSet = null;											// Prop: Complete Deck master copy
 	vm.deckSet = null;													// Prop: Complete Deck
-	vm.card_distribution_time = 300;										// Prop: Time to distribute cards to players
-	vm.AI_playing_time = 2000;											// Prop: AI Playing time.
+	vm.card_distribution_time = 200;									// Prop: Time to distribute cards to players
+	vm.AI_playing_time = 4000;											// Prop: AI Playing time.
 	vm.showPlayerBtns = true;											// Prop: This will remove player buttons for other players so that player1 wont play
 	vm.selectedCard = null;												// Prop: User/Player1 selected card
 	vm.currentPlayer = 1;												// Prop: Current playing player
@@ -53,14 +53,15 @@ function GameController(DeckService, $log, $timeout){
 			2. Also checks if player one all cards are played and declares a won to Player.
 	*/
 	function playCardToPool(){
-		console.log("%c------------------------------------------**************************************-------------------------------------------------","color:brown");console.log("%c Inside playCardToPool %c %c | Line: 48","color:green","color:black","color:red");
+		console.log("%c------------------------------------------**************************************-------------------------------------------------","color:brown");
+		console.log("%c Inside playCardToPool %c %c | Line: 57","color:green","color:black","color:red");
 		if(vm.deckPool[vm.deckPool.length-1].cardNo != vm.selectedCard.cardNo && vm.deckPool[vm.deckPool.length-1].cardType != vm.selectedCard.cardType && vm.selectedCard.cardNo != "J" && vm.chosenNewCard.status == false){
 			alert('Neither Card number nor Card type is matching.');
 		}else
 		{
 			if(vm.chosenNewCard.status == true || vm.already_tackled_JAQ29_cards == false){
 				if(vm.chosenNewCard.status == true){
-					console.log("Chosen Card Status == true %c %c %c | Line: 55","color:blue","color:black","color:red");
+					console.log("Chosen Card Status == true %c %c %c | Line: 64","color:blue","color:black","color:red");
 					var player1_cards = vm.playerCards.player1.cards;
 					var tmpPlayedCard = null;
 					if(vm.chosenNewCard.cardType == vm.selectedCard.cardType || vm.selectedCard.cardNo == "J"){
@@ -78,25 +79,26 @@ function GameController(DeckService, $log, $timeout){
 							vm.selectCardType_userPlay();
 						}
 						else if(tmpPlayedCard[0].cardNo == "A"){
-							console.log("Played card is %c 'A' %c %c | Line: 73","color:blue","color:black","color:red");
+							console.log("Played card is %c 'A' %c %c | Line: 82","color:blue","color:black","color:red");
 							vm.cardsToPull = vm.cardsToPull + 3;
 						}
 						else if(tmpPlayedCard[0].cardNo == "2"){
-							console.log("Played card is %c '2' %c %c | Line: 77","color:blue","color:black","color:red");
+							console.log("Played card is %c '2' %c %c | Line: 86","color:blue","color:black","color:red");
 							vm.cardsToPull = vm.cardsToPull + 2;
 						}
 						else if(tmpPlayedCard[0].cardNo == "Q"){
-							console.log("Played card is %c 'Q' %c direction changed %c | Line: 81","color:blue","color:black","color:red");
+							console.log("Played card is %c 'Q' %c direction changed %c | Line: 90","color:blue","color:black","color:red");
 							vm.currentDirection == "Anticlockwise"? vm.currentDirection = "Clockwise" : vm.currentDirection = "Anticlockwise";
 						}
 						else if(tmpPlayedCard[0].cardNo == "9"){
-							console.log("Played card is %c '9' %c %c | Line: 85","color:blue","color:black","color:red");
+							console.log("Played card is %c '9' %c %c | Line: 94","color:blue","color:black","color:red");
 							vm.skip_next_user_turn = true;
 							vm.already_tackled_JAQ29_cards = false;
 						}
 						tmpPlayedCard = null;
 						randomized_rotation = null;
 						vm.selectedCard = null;
+						vm.rearrange_cards_in_hands();
 						vm.play_next_player();	//COMMENT: Next player play Game.
 					}
 					else{
@@ -104,10 +106,10 @@ function GameController(DeckService, $log, $timeout){
 					}
 				}
 				else{
-					console.log("Chosen Card Status == false %c %c %c | Line: 98","color:blue","color:black","color:red");
+					console.log("Chosen Card Status == false %c %c %c | Line: 109","color:blue","color:black","color:red");
 					if(vm.deckPool[vm.deckPool.length-1].cardNo == "9")
 					{
-						console.log("Pool top card is %c '9' %c %c | Line: 101","color:blue","color:black","color:red");
+						console.log("Pool top card is %c '9' %c %c | Line: 112","color:blue","color:black","color:red");
 						var player1_cards = vm.playerCards.player1.cards;
 						var tmpPlayedCard = null;
 						var has9Flag = false;
@@ -120,12 +122,11 @@ function GameController(DeckService, $log, $timeout){
 						if(has9Flag == false)
 						{
 							alert("You cannot play this turn, Your turn is passed.");
-							//vm.already_tackled_JAQ29_cards = true;
 						}
 						else{
-							console.log("Found a card %c '9' %cmatching in your hand %c | Line: 117","color:blue","color:black","color:red");
+							console.log("Found a card %c '9' %cmatching in your hand %c | Line: 127","color:blue","color:black","color:red");
 							if(vm.selectedCard.cardNo == 9){
-								console.log("Played the card number %c'9' %c %c | Line: 120","color:blue","color:black","color:red");
+								console.log("Played the card number %c'9' %c %c | Line: 129","color:blue","color:black","color:red");
 								var player1_cards = vm.playerCards.player1.cards;
 								var tmpPlayedCard = null;
 								for(var i=0; i<player1_cards.length; i++){
@@ -142,6 +143,7 @@ function GameController(DeckService, $log, $timeout){
 								tmpPlayedCard = null;
 								randomized_rotation = null;
 								vm.selectedCard = null;
+								vm.rearrange_cards_in_hands();
 								vm.play_next_player();	//COMMENT: Next player play Game.
 							}
 							else{
@@ -151,7 +153,7 @@ function GameController(DeckService, $log, $timeout){
 					}
 					else if(vm.deckPool[vm.deckPool.length-1].cardNo == "A")
 					{
-						console.log("Pool Top Card is %c 'A' %c %c | Line: 144","color:blue","color:black","color:red");
+						console.log("Pool Top Card is %c 'A' %c %c | Line: 156","color:blue","color:black","color:red");
 						var player1_cards = vm.playerCards.player1.cards;
 						var tmpPlayedCard = null;
 						var hasAFlag = false;
@@ -164,12 +166,11 @@ function GameController(DeckService, $log, $timeout){
 						if(hasAFlag == false)
 						{
 							alert("You should pull cards to pass this turn.");
-							//vm.already_tackled_JAQ29_cards = true;
 						}
 						else{
-							console.log("Found card %c 'A' %c in Hand %c | Line: 160","color:blue","color:black", "color:red");
+							console.log("Found card %c 'A' %c in Hand %c | Line: 171","color:blue","color:black", "color:red");
 							if(vm.selectedCard.cardNo == "A"){
-								console.log("Played card %c 'A' %c %c | Line: 162","color:blue","color:black", "color:red");
+								console.log("Played card %c 'A' %c %c | Line: 173","color:blue","color:black", "color:red");
 								var player1_cards = vm.playerCards.player1.cards;
 								var tmpPlayedCard = null;
 								for(var i=0; i<player1_cards.length; i++){
@@ -187,6 +188,7 @@ function GameController(DeckService, $log, $timeout){
 								tmpPlayedCard = null;
 								randomized_rotation = null;
 								vm.selectedCard = null;
+								vm.rearrange_cards_in_hands();
 								vm.play_next_player();	//COMMENT: Next player play Game.
 							}
 							else{
@@ -196,7 +198,7 @@ function GameController(DeckService, $log, $timeout){
 					}
 					else if(vm.deckPool[vm.deckPool.length-1].cardNo == "2")
 					{
-						console.log("Pool Top Card is %c '2' %c %c | Line: 188","color:blue","color:black","color:red");
+						console.log("Pool Top Card is %c '2' %c %c | Line: 201","color:blue","color:black","color:red");
 						var player1_cards = vm.playerCards.player1.cards;
 						var tmpPlayedCard = null;
 						var has2Flag = false;
@@ -209,10 +211,9 @@ function GameController(DeckService, $log, $timeout){
 						if(has2Flag == false)
 						{
 							alert("You should pull cards to pass this turn.");
-							//vm.already_tackled_JAQ29_cards = true;
 						}
 						else{
-							console.log("Found Card %c '2' %c in hand %c | Line: 204","color:blue","color:black","color:red");
+							console.log("Found Card %c '2' %c in hand %c | Line: 216","color:blue","color:black","color:red");
 							if(vm.selectedCard.cardNo == "2"){
 								var player1_cards = vm.playerCards.player1.cards;
 								var tmpPlayedCard = null;
@@ -231,6 +232,7 @@ function GameController(DeckService, $log, $timeout){
 								tmpPlayedCard = null;
 								randomized_rotation = null;
 								vm.selectedCard = null;
+								vm.rearrange_cards_in_hands();
 								vm.play_next_player();	//COMMENT: Next player play Game.
 							}
 							else{
@@ -240,7 +242,7 @@ function GameController(DeckService, $log, $timeout){
 					}
 					else{
 						//COMMENT: Not a JAQ29 Card on top of pool but still somewhere already_tackled_JAQ29_cards remains false, so to handle written this method
-						console.log("Not a JAQ29 Card on top of pool %c %c %c | Line: 231","color:blue","color:black","color:red");
+						console.log("Not a JAQ29 Card on top of pool %c %c %c | Line: 245","color:blue","color:black","color:red");
 						var player1_cards = vm.playerCards.player1.cards;
 						var hasJcard = false;
 						if(player1_cards.length == 2 || player1_cards.length == 1)
@@ -257,7 +259,7 @@ function GameController(DeckService, $log, $timeout){
 							return;
 						}
 						if(vm.deckPool[vm.deckPool.length-1].cardNo == vm.selectedCard.cardNo || vm.deckPool[vm.deckPool.length-1].cardType == vm.selectedCard.cardType || vm.selectedCard.cardNo == "J"){
-							console.log("NON JAQ29 on top of pool | Top card and selected card matches or a %c 'J' %c card %c | Line: 234","color:blue","color:black","color:red");
+							console.log("NON JAQ29 on top of pool | Top card and selected card matches or a %c 'J' %c card %c | Line: 262","color:blue","color:black","color:red");
 							for(var i=0; i<player1_cards.length; i++){
 								if(player1_cards[i].cardNo == vm.selectedCard.cardNo && player1_cards[i].cardType == vm.selectedCard.cardType){
 									tmpPlayedCard = player1_cards.splice(i,1);
@@ -270,36 +272,37 @@ function GameController(DeckService, $log, $timeout){
 							randomized_rotation = null;
 							vm.selectedCard = null;
 							if(tmpPlayedCard[0].cardNo == "A"){
-								console.log("Played card is %c 'A' %c %c | Line: 247","color:blue","color:black","color:red");
+								console.log("Played card is %c 'A' %c %c | Line: 275","color:blue","color:black","color:red");
 								vm.cardsToPull = vm.cardsToPull + 3;
 							}
 							else if(tmpPlayedCard[0].cardNo == "2"){
-								console.log("Played card is %c '2' %c %c | Line: 251","color:blue","color:black","color:red");
+								console.log("Played card is %c '2' %c %c | Line: 279","color:blue","color:black","color:red");
 								vm.cardsToPull = vm.cardsToPull + 2;
 							}
 							else if(tmpPlayedCard[0].cardNo == "J"){
-								console.log("Played card is %c 'J' %c %c | Line: 255","color:blue","color:black","color:red");
+								console.log("Played card is %c 'J' %c %c | Line: 283","color:blue","color:black","color:red");
 								vm.selectCardType_userPlay();
 							}
 							else if(tmpPlayedCard[0].cardNo == "Q"){
-								console.log("Played card is %c 'Q' %c direction changed %c | Line: 259","color:blue","color:black","color:red");
+								console.log("Played card is %c 'Q' %c direction changed %c | Line: 287","color:blue","color:black","color:red");
 								vm.currentDirection == "Anticlockwise"? vm.currentDirection = "Clockwise" : vm.currentDirection = "Anticlockwise";
 							}
 							else if(tmpPlayedCard[0].cardNo == "9"){
-								console.log("Played card is %c '9' %c %c | Line: 263","color:blue","color:black","color:red");
+								console.log("Played card is %c '9' %c %c | Line: 291","color:blue","color:black","color:red");
 								vm.skip_next_user_turn = true;
 								vm.already_tackled_JAQ29_cards = false;
 							}
 							tmpPlayedCard = null;
+							vm.rearrange_cards_in_hands();
 							vm.play_next_player();	//COMMENT: Next player play Game.
 							if(vm.playerCards.player1.cards.length == 0){	//COMMENT: User Played Last Card and won the game
-								console.log("%c %c %c P1 WON | Line: 270","color:blue","color:black","color:red");
+								console.log("%c %c %c P1 WON | Line: 299","color:blue","color:black","color:red");
 								alert('Player 1 Won');
 								vm.player_won = true;
 							}
 						}
 						else{
-							console.log("%c %c %c Something went wrong | Line: 275","color:blue","color:black","color:red");
+							console.log("%c %c %c Something went wrong | Line: 305","color:blue","color:black","color:red");
 							alert('Something went wrong. Gameplay error, please refresh game to start again.');
 						}
 					}
@@ -321,28 +324,28 @@ function GameController(DeckService, $log, $timeout){
 					alert("You cannot play J card in the End. Please pull a new card.");
 					return;
 				}
-				console.log("CHOSEN Card status != true || already_tackled_JAQ29_cards != false %c %c %c | Line: 282","color:blue","color:black","color:red");
+				console.log("CHOSEN Card status != true || already_tackled_JAQ29_cards != false %c %c %c | Line: 327","color:blue","color:black","color:red");
 				if(vm.selectedCard.cardNo == "J"){
-					console.log("Selected card played %c 'J' %c %c | Line: 284","color:blue","color:black","color:red");
+					console.log("Selected card played %c 'J' %c %c | Line: 329","color:blue","color:black","color:red");
 					vm.selectCardType_userPlay();
 				}
 				if(vm.selectedCard.cardNo == "A"){
-					console.log("Selected card played %c 'A' %c %c | Line: 288","color:blue","color:black","color:red");
+					console.log("Selected card played %c 'A' %c %c | Line: 333","color:blue","color:black","color:red");
 					vm.cardsToPull == 1 ? vm.cardsToPull=3: vm.cardsToPull = vm.cardsToPull+3;
 					vm.already_tackled_JAQ29_cards = false;
 				}
 				if(vm.selectedCard.cardNo == "Q"){
-					console.log("Selected card played %c 'Q' %c %c | Line: 293","color:blue","color:black","color:red");
+					console.log("Selected card played %c 'Q' %c %c | Line: 338","color:blue","color:black","color:red");
 					vm.currentDirection == "Anticlockwise"? vm.currentDirection = "Clockwise" : vm.currentDirection = "Anticlockwise";
 					vm.already_tackled_JAQ29_cards = false;
 				}
 				if(vm.selectedCard.cardNo == "2"){
-					console.log("Selected card played %c '2' %c %c | Line: 298","color:blue","color:black","color:red");
+					console.log("Selected card played %c '2' %c %c | Line: 343","color:blue","color:black","color:red");
 					vm.cardsToPull == 1 ? vm.cardsToPull=2: vm.cardsToPull = vm.cardsToPull+2;
 					vm.already_tackled_JAQ29_cards = false;
 				}
 				if(vm.selectedCard.cardNo == "9"){
-					console.log("Selected card played %c '9' %c %c | Line: 303","color:blue","color:black","color:red");
+					console.log("Selected card played %c '9' %c %c | Line: 348","color:blue","color:black","color:red");
 					vm.skip_next_user_turn = true;
 					vm.already_tackled_JAQ29_cards = false;
 				}
@@ -360,15 +363,15 @@ function GameController(DeckService, $log, $timeout){
 				tmpPlayedCard = null;
 				randomized_rotation = null;
 				vm.selectedCard = null;
+				vm.rearrange_cards_in_hands();
 				vm.play_next_player();		//COMMENT: Next player play Game.
 			}
 		}
 		if(vm.playerCards.player1.cards.length == 0){	//COMMENT: User Played Last Card and won the game
-			console.log("%c %c %c | P1 WON Line: 326","color:blue","color:black","color:red");
+			console.log("%c %c %c | P1 WON Line: 371","color:blue","color:black","color:red");
 			alert('Player 1 Won');
 			vm.player_won = true;
 		}
-		vm.rearrange_cards_in_hands();
 	}
 
 	/** Called on "Pull card button" click.
@@ -381,16 +384,16 @@ function GameController(DeckService, $log, $timeout){
 						   pulling cards, it not handled then user will pull cards accordingly.
 	*/
 	function userPullNewCardFromDeck(){
-		console.log("%c Inside userPullNewCardFromDeck %c %c | Line: 342","color:green","color:black","color:red");
+		console.log("%c Inside userPullNewCardFromDeck %c %c | Line: 387","color:green","color:black","color:red");
 		if(vm.firstTurn != true){
 			if(vm.already_tackled_JAQ29_cards == false){	//COMMENT: previous player have thrown JAQ29 card
-				console.log("Not Tackled JAQ29 card in play %c %c %c | Line: 345","color:blue","color:black","color:red");
+				console.log("Not Tackled JAQ29 card in play %c %c %c | Line: 390","color:blue","color:black","color:red");
 				var deckTopCard = null;
 				if(vm.deckPool[vm.deckPool.length-1].cardNo == "A"){
-					console.log("Pool top card is %c 'A' %c %c | Line: 348","color:blue","color:black","color:red");
+					console.log("Pool top card is %c 'A' %c %c | Line: 393","color:blue","color:black","color:red");
 					vm.already_tackled_JAQ29_cards = true;
 					if(vm.deckSet.length == 0 || vm.deckSet.length < vm.cardsToPull){
-						console.log("%c Getting cards from pool and re-shuffling %c %c | Line: 351","color:blue","color:black","color:red");
+						console.log("%c Getting cards from pool and re-shuffling %c %c | Line: 396","color:blue","color:black","color:red");
 						var poolCards = vm.deckPool.splice(0,vm.deckPool.length-1);
 						DeckService.shuffleNewCards(poolCards)
 						.then(function(response){
@@ -398,7 +401,7 @@ function GameController(DeckService, $log, $timeout){
 							for(var i=0; i<poolCards.length; i++){
 								vm.deckSet.push(poolCards[i]);
 							}
-							console.log("Cards to pull %c " +vm.cardsToPull+ " %c %c | Line: 359","color:blue","color:black","color:red");
+							console.log("Cards to pull %c " +vm.cardsToPull+ " %c %c | Line: 404","color:blue","color:black","color:red");
 							deckTopCard = vm.deckSet.splice(0, vm.cardsToPull);	//COMMENT: Used 0 instead of (vm.deckSet.length-1) coz, array will not return multi set from last
 						})
 						.catch(function(error){
@@ -406,15 +409,15 @@ function GameController(DeckService, $log, $timeout){
 						});
 					}
 					else{
-						console.log("Cards to pull %c " +vm.cardsToPull+ " %c %c | Line: 367","color:blue","color:black","color:red");
+						console.log("Cards to pull %c " +vm.cardsToPull+ " %c %c | Line: 412","color:blue","color:black","color:red");
 						deckTopCard = vm.deckSet.splice(0, vm.cardsToPull);	//COMMENT: Used 0 instead of (vm.deckSet.length-1) coz, array will not return multi set from last
 					}
 				}
 				else if(vm.deckPool[vm.deckPool.length-1].cardNo == "2"){
-					console.log("Pool Top Card is %c '2' %c %c | Line: 372","color:blue","color:black","color:red");
+					console.log("Pool Top Card is %c '2' %c %c | Line: 417","color:blue","color:black","color:red");
 					vm.already_tackled_JAQ29_cards = true;
 						if(vm.deckSet.length == 0 || vm.deckSet.length < vm.cardsToPull){
-							console.log("%c Deck cards is <= 1, pulling from pool %c %c | Line: 375","color:blue","color:black","color:red");
+							console.log("%c Deck cards is <= 1, pulling from pool %c %c | Line: 420","color:blue","color:black","color:red");
 							var poolCards = vm.deckPool.splice(0,vm.deckPool.length-1);
 							DeckService.shuffleNewCards(poolCards)
 							.then(function(response){
@@ -422,7 +425,7 @@ function GameController(DeckService, $log, $timeout){
 								for(var i=0; i<poolCards.length; i++){
 									vm.deckSet.push(poolCards[i]);
 								}
-								console.log("Cards to pull %c "+vm.cardsToPull+" %c %c | Line: 383","color:blue","color:black","color:red");
+								console.log("Cards to pull %c "+vm.cardsToPull+" %c %c | Line: 428","color:blue","color:black","color:red");
 								deckTopCard = vm.deckSet.splice(0, vm.cardsToPull);
 							})
 							.catch(function(error){
@@ -430,15 +433,15 @@ function GameController(DeckService, $log, $timeout){
 							});
 						}
 						else{
-							console.log("Cards to pull %c "+vm.cardsToPull+" %c %c | Line: 391","color:blue","color:black","color:red");
+							console.log("Cards to pull %c "+vm.cardsToPull+" %c %c | Line: 436","color:blue","color:black","color:red");
 							deckTopCard = vm.deckSet.splice(0, vm.cardsToPull);
 						}
 				}
 				else{
-					console.log("Pool top card is neither %c 'A' nor '2' %c %c | Line: 396","color:blue","color:black","color:red");
+					console.log("Pool top card is neither %c 'A' nor '2' %c %c | Line: 441","color:blue","color:black","color:red");
 					vm.already_tackled_JAQ29_cards = true;
 						if(vm.deckSet.length == 0 || vm.deckSet.length < vm.cardsToPull){
-							console.log("Deck <= 1 getting cards from pool %c %c %c | Line: 399","color:blue","color:black","color:red");
+							console.log("Deck <= 1 getting cards from pool %c %c %c | Line: 444","color:blue","color:black","color:red");
 							var poolCards = vm.deckPool.splice(0,vm.deckPool.length-1);
 							DeckService.shuffleNewCards(poolCards)
 							.then(function(response){
@@ -446,7 +449,7 @@ function GameController(DeckService, $log, $timeout){
 								for(var i=0; i<poolCards.length; i++){
 									vm.deckSet.push(poolCards[i]);
 								}
-								console.log("Cards to pull %c "+vm.cardsToPull+" %c %c | Line: 407","color:blue","color:black","color:red");
+								console.log("Cards to pull %c "+vm.cardsToPull+" %c %c | Line: 452","color:blue","color:black","color:red");
 								deckTopCard = vm.deckSet.splice(0, vm.cardsToPull);
 							})
 							.catch(function(error){
@@ -454,11 +457,11 @@ function GameController(DeckService, $log, $timeout){
 							});
 						}
 						else{
-							console.log("Cards to pull %c "+vm.cardsToPull+" %c %c | Line: 415","color:blue","color:black","color:red");
+							console.log("Cards to pull %c "+vm.cardsToPull+" %c %c | Line: 460","color:blue","color:black","color:red");
 							deckTopCard = vm.deckSet.splice(0, vm.cardsToPull);
 						}
 				}
-				console.log("deckTopCards.length: %c "+deckTopCard.length+" %c %c | Line: 419","color:blue","color:black","color:red");
+				console.log("deckTopCards.length: %c "+deckTopCard.length+" %c %c | Line: 464","color:blue","color:black","color:red");
 				for(var i=0;i<deckTopCard.length;i++){
 					deckTopCard[i].left = vm.playerCards.player1.movingcnt * 40;
 					vm.playerCards.player1.movingcnt += 1;
@@ -467,11 +470,11 @@ function GameController(DeckService, $log, $timeout){
 				tmpdeckTopCard = null;
 			}
 			else{
-				console.log("Pool top cards is JAQ29 but already tackled %c %c %c | Line: 428","color:blue","color:black","color:red");
+				console.log("Pool top cards is JAQ29 but already tackled %c %c %c | Line: 473","color:blue","color:black","color:red");
 				vm.firstTurn = false;
 				vm.already_tackled_JAQ29_cards = true;
 				if(vm.deckSet.length == 0){
-					console.log("Deck length == %c 0 %c getting cards from pool and re-shuffle %c | Line: 432","color:blue","color:black","color:red");
+					console.log("Deck length == %c 0 %c getting cards from pool and re-shuffle %c | Line: 477","color:blue","color:black","color:red");
 					var poolCards = vm.deckPool.splice(0,vm.deckPool.length-1);
 					DeckService.shuffleNewCards(poolCards)
 					.then(function(response){
@@ -479,7 +482,7 @@ function GameController(DeckService, $log, $timeout){
 						for(var i=0; i<poolCards.length; i++){
 							vm.deckSet.push(poolCards[i]);
 						}
-						console.log("Pulling top deck card post re-shuffle %c %c %c | Line: 440","color:blue","color:black","color:red");
+						console.log("Pulling top deck card post re-shuffle %c %c %c | Line: 485","color:blue","color:black","color:red");
 						var deckTopCard = vm.deckSet.splice(0, 1);
 						deckTopCard[0].left = vm.playerCards.player1.movingcnt * 40;
 						vm.playerCards.player1.movingcnt += 1;
@@ -490,7 +493,7 @@ function GameController(DeckService, $log, $timeout){
 					});
 				}
 				else{
-					console.log("Pull %c 1 %c card from deck %c | Line: 451","color:blue","color:black","color:red");
+					console.log("Pull %c 1 %c card from deck %c | Line: 496","color:blue","color:black","color:red");
 					var deckTopCard = vm.deckSet.splice(0, 1);
 					deckTopCard[0].left = vm.playerCards.player1.movingcnt * 40;
 					vm.playerCards.player1.movingcnt += 1;
@@ -499,7 +502,7 @@ function GameController(DeckService, $log, $timeout){
 			}
 		}
 		else{
-			console.log("First turn play %c %c %c | Line: 460","color:blue","color:black","color:red");
+			console.log("First turn play %c %c %c | Line: 505","color:blue","color:black","color:red");
 			vm.firstTurn = false;
 			if(vm.deckSet.length == 0){
 				var poolCards = vm.deckPool.splice(0,vm.deckPool.length-1);
@@ -518,7 +521,7 @@ function GameController(DeckService, $log, $timeout){
 			else{
 				var deckTopCard = vm.deckSet.splice(0, 1);
 			}
-			console.log("Pull %c 1 %c card from deck %c | Line: 479","color:blue","color:black","color:red");
+			console.log("Pull %c 1 %c card from deck %c | Line: 524","color:blue","color:black","color:red");
 			deckTopCard[0].left = vm.playerCards.player1.movingcnt * 40;
 			vm.playerCards.player1.movingcnt += 1;
 			vm.playerCards.player1.cards.push(deckTopCard[0]);
@@ -526,8 +529,8 @@ function GameController(DeckService, $log, $timeout){
 		vm.cardsToPull == 1;
 		vm.skip_next_user_turn = false;
 		vm.already_tackled_JAQ29_cards = true;
-		vm.play_next_player();
 		vm.rearrange_cards_in_hands();
+		vm.play_next_player();
 	}
 
 	/** Returns card type only if user have entered from value of card type.
@@ -536,14 +539,14 @@ function GameController(DeckService, $log, $timeout){
 			2. Method is called if user Player 1 have played a "J" card.
 	*/
 	function selectCardType_userPlay(){
-		console.log("%c Inside selectCardType_userPlay %c %c | Line: 497","color:green","color:black","color:red");
+		console.log("%c Inside selectCardType_userPlay %c %c | Line: 542","color:green","color:black","color:red");
 		var selectType = prompt("Enter a card type to be played next.");
 		if(selectType.toLowerCase() != "spade" && selectType.toLowerCase() != "heart" && selectType.toLowerCase() != "club" && selectType.toLowerCase() != "diamond"){
 			alert("you can only enter- spade, heart, diamond, and heart, my deck does not contain special cards.");
 			return vm.selectCardType_userPlay();
 		}
 		else{
-			console.log("Chosen new card type %c "+selectType+" %c %c | Line: 504","color:blue","color:black","color:red");
+			console.log("Chosen new card type %c "+selectType+" %c %c | Line: 549","color:blue","color:black","color:red");
 			vm.chosenNewCard.status = true;
 			vm.chosenNewCard.cardType = selectType;
 			vm.already_tackled_JAQ29_cards = false;
@@ -556,7 +559,7 @@ function GameController(DeckService, $log, $timeout){
 			2. control passed to shuffleDeck method
 	*/
 	function init(){
-		console.log("%c Game Started %c %c | Line: 517","color:green","color:black","color:red");
+		console.log("%c Game Started %c %c | Line: 562","color:green","color:black","color:red");
 		DeckService.assembleDeck()
 			.then(function(response){
 				vm.loaderMsg = "Shuffling cards...";
@@ -573,19 +576,16 @@ function GameController(DeckService, $log, $timeout){
 			2. control passed to distributeCards method, which will later be call only on start button
 	*/
 	function shuffleDeck(){
-		console.log("%c Shuffle deck after Game start %c %c | Line: 533","color:green","color:black","color:red");
+		console.log("%c Shuffle deck after Game start %c %c | Line: 579","color:green","color:black","color:red");
 		vm.deckSet = null;
 		DeckService.shuffleDeck()
 			.then(function(response){
 				vm.masterDeckSet = angular.copy(response);
-				console.log("%c Distribution of card begin %c %c | Line: 538","color:green","color:black","color:red");
+				console.log("%c Distribution of card begin %c %c | Line: 584","color:green","color:black","color:red");
 				$timeout(function(){
 					vm.loaderMsg = "Distributing cards...";
-					vm.distributeCards();	//TODO: To comment out later - Enables start button if commented
+					vm.distributeCards();
 				},50);
-				$timeout(function(){
-					vm.playerInfo = angular.copy(vm.currentPlayer);			
-				},500);
 			})
 			.catch(function(error){
 				alert(error)
@@ -615,7 +615,10 @@ function GameController(DeckService, $log, $timeout){
 				vm.distributeCards();
 			}else{
 				vm.distributionCnt = 0;
-				console.log("%c All Cards distributed %c %c | Line: 569","color:blue","color:black","color:red");
+				console.log("%c All Cards distributed %c %c | Line: 618","color:blue","color:black","color:red");
+				$timeout(function(){
+					vm.playerInfo = angular.copy(vm.currentPlayer);
+				},80);
 				vm.initiateFirstCard();
 			}
 		},vm.card_distribution_time);
@@ -655,7 +658,7 @@ function GameController(DeckService, $log, $timeout){
 		var tmpPlayedCard = vm.deckSet.splice(0,1);
 		tmpPlayedCard[0].rotation = randomized_rotation;
 		vm.deckPool.push(tmpPlayedCard[0]);
-		console.log("%c Game begins | Played first card to pool %c'"+tmpPlayedCard[0].cardNo+"' %c %c | Line: 609","color:green","font-weight:bold;color:#1e90ff","color:black","color:red");
+		console.log("%c Game begins | Played first card to pool %c'"+tmpPlayedCard[0].cardNo+"' %c %c | Line: 661","color:green","font-weight:bold;color:#1e90ff","color:black","color:red");
 		tmpPlayedCard = null;
 		randomized_rotation = null;
 		vm.showLoader = false;
@@ -667,8 +670,7 @@ function GameController(DeckService, $log, $timeout){
 			2. Also calls a method "tackle_JAQ29_cards_in_play" to play according to the top most card played by previous player.
 	*/
 	function play_next_player(){
-		console.log("%c------------------------------------------**************************************-------------------------------------------------","color:brown");console.log("AI play...%c Inside play_next_player %c %c | Line: 620","color:green","color:black","color:red");
-		//debugger;
+		console.log("%c-----------------------------**************************************-----------------------------","color:brown");console.log("AI play...%c Inside play_next_player %c %c | Line: 673","color:green","color:black","color:red");
 		vm.showPlayerBtns = false;
 		if(vm.player_won == true){
 			return;
@@ -679,8 +681,7 @@ function GameController(DeckService, $log, $timeout){
 			{
 				vm.currentPlayer=1;
 			}
-			console.log("%c "+vm.currentPlayer+" Player Playing %c Anticlockwise %c | Line: 628","color:blue","color:black","color:red");
-			//alert(vm.currentPlayer+" Player Playing -- * -- Anticlockwise");
+			console.log("%c "+vm.currentPlayer+" Player Playing %c Anticlockwise %c | Line: 684","color:blue","color:black","color:red");
 		}
 		else{
 			vm.currentPlayer--;
@@ -688,12 +689,11 @@ function GameController(DeckService, $log, $timeout){
 			{
 				vm.currentPlayer=4;
 			}
-			console.log(vm.currentPlayer+"%c Player Playing %c Clockwise %c | Line: 637","color:blue","color:black","color:red");
-			//alert(vm.currentPlayer+" Player Playing -- * -- Clockwise");
+			console.log(vm.currentPlayer+"%c Player Playing %c Clockwise %c | Line: 692","color:blue","color:black","color:red");
 		}
 		vm.playerInfo = null;
 		$timeout(function(){
-			vm.playerInfo = angular.copy(vm.currentPlayer);			
+			vm.playerInfo = angular.copy(vm.currentPlayer);
 		},500);
 		vm.firstTurn = false;
 
@@ -702,7 +702,7 @@ function GameController(DeckService, $log, $timeout){
 				if(vm.deckPool[vm.deckPool.length-1].cardNo == "J" || vm.deckPool[vm.deckPool.length-1].cardNo == "A" || vm.deckPool[vm.deckPool.length-1].cardNo == "Q" || vm.deckPool[vm.deckPool.length-1].cardNo == "2" || vm.deckPool[vm.deckPool.length-1].cardNo == "9")
 				{
 					if(vm.already_tackled_JAQ29_cards == true){				//COMMENT: Check if already tackled JAQ29
-						console.log("Pool top card is %c JAQ29 (TACKLED) %c %c | Line: 646","color:blue","color:black","color:red");
+						console.log("Pool top card is %c JAQ29 (TACKLED) %c %c | Line: 705","color:blue","color:black","color:red");
 						var tmpPlayerCards = vm.playerCards["player"+vm.currentPlayer].cards;
 						var hasJcard = false;
 						if(tmpPlayerCards.length == 2){
@@ -721,7 +721,7 @@ function GameController(DeckService, $log, $timeout){
 						else{
 							if(vm.deckPool[vm.deckPool.length-1].cardNo == "J")	//COMMENT: If top card is joker then must play according to new card chosen
 							{
-								console.log("Pool top card is %c 'J' %c playing according to chosen card %c | Line: 649","color:blue","color:black","color:red");
+								console.log("Pool top card is %c 'J' %c playing according to chosen card %c | Line: 724","color:blue","color:black","color:red");
 								var topPoolCard = vm.chosenNewCard.cardType;
 								var tmpLogicalDecisionArray = new Array();
 								for(var i=0; i<tmpPlayerCards.length; i++)
@@ -730,11 +730,11 @@ function GameController(DeckService, $log, $timeout){
 										tmpLogicalDecisionArray.push(tmpPlayerCards[i]);
 									}
 								}
-								console.log("Decision to make with cards: %c "+tmpLogicalDecisionArray.length+"%c %c | Line: 659","color:blue","color:black","color:red");
+								console.log("Decision to make with cards: %c "+tmpLogicalDecisionArray.length+"%c %c | Line: 733","color:blue","color:black","color:red");
 								vm.AI_logical_decision_to_play_next_card(tmpLogicalDecisionArray);	//COMMENT: AI thinks according to the array passed
 							}
 							else{
-								console.log("Pool top card is %c AQ29 (TACKLED) %c %c | Line: 663","color:blue","color:black","color:red");
+								console.log("Pool top card is %c AQ29 (TACKLED) %c %c | Line: 737","color:blue","color:black","color:red");
 								//COMMENT: Normal play | If top pool card is joker/Queen/Ace/2/9 but is tackled already.
 								var topPoolCard = vm.deckPool[vm.deckPool.length-1];
 								var tmpLogicalDecisionArray = new Array();
@@ -744,19 +744,19 @@ function GameController(DeckService, $log, $timeout){
 										tmpLogicalDecisionArray.push(tmpPlayerCards[i]);
 									}
 								}
-								console.log("Decision to make with cards: %c "+tmpLogicalDecisionArray.length+"%c %c | Line: 674","color:blue","color:black","color:red");
+								console.log("Decision to make with cards: %c "+tmpLogicalDecisionArray.length+"%c %c | Line: 747","color:blue","color:black","color:red");
 								vm.AI_logical_decision_to_play_next_card(tmpLogicalDecisionArray);	//COMMENT: AI thinks according to the array passed
 							}
 						}
 					}
 					else{
-						console.log("%c Top card JAQ29 (TO TACKLE) %c %c | Line: 679","color:blue","color:black","color:red");
+						console.log("%c Top card JAQ29 (TO TACKLE) %c %c | Line: 753","color:blue","color:black","color:red");
 						//COMMENT: Tackle JAQ29 card using smart play of AI.
 						vm.tackle_JAQ29_cards_in_play(vm.deckPool[vm.deckPool.length-1], vm.currentPlayer);
 					}
 				}
 				else{
-					console.log("Normal Play | Pool top card is %c NOT JAQ29 %c %c | Line: 685","color:blue","color:black","color:red");
+					console.log("Normal Play | Pool top card is %c NOT JAQ29 %c %c | Line: 759","color:blue","color:black","color:red");
 					//COMMENT: If top pool card is non joker, non Queen, non Ace, non 2 and non 9
 					var tmpPlayerCards = vm.playerCards["player"+vm.currentPlayer].cards;
 					var topPoolCard = vm.deckPool[vm.deckPool.length-1];
@@ -767,7 +767,7 @@ function GameController(DeckService, $log, $timeout){
 							tmpLogicalDecisionArray.push(tmpPlayerCards[i]);
 						}
 					}
-					console.log("Decision to make with cards: %c "+tmpLogicalDecisionArray.length+"%c %c | Line: 696","color:blue","color:black","color:red");
+					console.log("Decision to make with cards: %c "+tmpLogicalDecisionArray.length+"%c %c | Line: 770","color:blue","color:black","color:red");
 					vm.AI_logical_decision_to_play_next_card(tmpLogicalDecisionArray);	//COMMENT: AI thinks according to the array passed
 				}
 				vm.rearrange_cards_in_hands();
@@ -775,9 +775,9 @@ function GameController(DeckService, $log, $timeout){
 			},vm.AI_playing_time);
 			}
 			else{	//COMMENT: If next player is Human
-				console.log("P1 player %c is HUMAN %c %c | Line: 702","color:blue","color:black","color:red");
+				console.log("P1 player %c is HUMAN %c %c | Line: 778","color:blue","color:black","color:red");
 				if(vm.deckPool[vm.deckPool.length-1].cardNo == "9" && vm.already_tackled_JAQ29_cards == false){
-					console.log("Pool top card is %c '9' %c check if have 9 else skip turn set to false %c | Line: 704","color:blue","color:black","color:red");
+					console.log("Pool top card is %c '9' %c check if have 9 else skip turn set to false %c | Line: 780","color:blue","color:black","color:red");
 					var player1_cards = vm.playerCards.player1.cards;
 					var has9card = false;
 					for(var i=0; i<player1_cards.length; i++){
@@ -791,19 +791,20 @@ function GameController(DeckService, $log, $timeout){
 					if(has9card != true){
 						vm.skip_next_user_turn = false;
 						vm.already_tackled_JAQ29_cards = true;
+						vm.rearrange_cards_in_hands();
 						vm.play_next_player();
 					}
 					has9card = null;
 					player1_cards = null;
 				}
-				
+
 					$timeout(function(){
 						vm.playerInfo = 1;
 						vm.showPlayerBtns = true;
 					},50);
 			}
 			if(vm.playerCards["player"+vm.currentPlayer].cards.length == 0){
-				console.log("%c %c %c "+vm.currentPlayer+" Player WON  | Line: 711","color:blue","color:black","color:red");
+				console.log("%c %c %c "+vm.currentPlayer+" Player WON  | Line: 807","color:blue","color:black","color:red");
 				alert("Player "+ vm.currentPlayer + " Won the Game");
 				vm.player_won = true;
 			}
@@ -814,7 +815,7 @@ function GameController(DeckService, $log, $timeout){
 			1. This method handles the top card played by previous player and plays next card accordingly.
 	*/
 	function tackle_JAQ29_cards_in_play(pool_top_card, currPlayer){
-		console.log("%c Inside Tackle JAQ29 Cards %c %c | Line: 724","color:green","color:black","color:red");
+		console.log("%c Inside Tackle JAQ29 Cards %c %c | Line: 818","color:green","color:black","color:red");
 		var tmpPlayedCard = null;
 		var tmpPlayerCards = vm.playerCards["player"+currPlayer].cards;
 		var tmpIndex = -1;
@@ -826,7 +827,7 @@ function GameController(DeckService, $log, $timeout){
 		}
 
 		if(tmpIndex != -1){		//COMMENT: found counter measure cards to pool card played
-			console.log("Found Counter measure to tackle JAQ29 Card%c %c %c | Line: 736","color:blue","color:black","color:red");
+			console.log("Found Counter measure to tackle JAQ29 Card%c %c %c | Line: 830","color:blue","color:black","color:red");
 			for(var i=0; i<tmpPlayerCards.length; i++)
 			{
 				if(pool_top_card.cardNo == tmpPlayerCards[i].cardNo)
@@ -840,29 +841,29 @@ function GameController(DeckService, $log, $timeout){
 			vm.already_tackled_JAQ29_cards = false;
 
 			if(tmpPlayedCard[0].cardNo == "A"){
-				console.log("Played card %c 'A' %c %c | Line: 750","color:blue","color:black","color:red");
+				console.log("Played card %c 'A' %c %c | Line: 844","color:blue","color:black","color:red");
 				vm.cardsToPull = vm.cardsToPull + 3;
 			}
 			else if(tmpPlayedCard[0].cardNo == "2"){
-				console.log("Played card %c '2' %c %c | Line: 754","color:blue","color:black","color:red");
+				console.log("Played card %c '2' %c %c | Line: 848","color:blue","color:black","color:red");
 				vm.cardsToPull = vm.cardsToPull + 2;
 			}
 			else if(tmpPlayedCard[0].cardNo == "J"){
-				console.log("Played card %c 'J' %c %c | Line: 758","color:blue","color:black","color:red");
+				console.log("Played card %c 'J' %c %c | Line: 852","color:blue","color:black","color:red");
 				vm.selectCardType_AI_Play();
 			}
 			else if(tmpPlayedCard[0].cardNo == "Q"){
-				console.log("Played card %c 'Q' %c %c | Line: 762","color:blue","color:black","color:red");
+				console.log("Played card %c 'Q' %c %c | Line: 856","color:blue","color:black","color:red");
 				vm.currentDirection == "Anticlockwise"? vm.currentDirection = "Clockwise" : vm.currentDirection = "Anticlockwise";
 			}
 			else if(tmpPlayedCard[0].cardNo == "9"){
-				console.log("Played card %c '9' %c %c | Line: 766","color:blue","color:black","color:red");
+				console.log("Played card %c '9' %c %c | Line: 860","color:blue","color:black","color:red");
 				vm.already_tackled_JAQ29_cards = false;
 				vm.skip_next_user_turn = true;
 			}
 		}
 		else{
-			console.log("NO counter measure found %c %c %c | Line: 772","color:blue","color:black","color:red");
+			console.log("NO counter measure found %c %c %c | Line: 866","color:blue","color:black","color:red");
 			//COMMENT: Cannot matched with any JAQ29 cards so pulled cards from deck.
 			if(pool_top_card.cardNo == "A" || pool_top_card.cardNo == "2")
 			{
@@ -896,24 +897,22 @@ function GameController(DeckService, $log, $timeout){
 							vm.playerCards["player"+currPlayer].cards.push(tmpCardsPulled[i]);
 						}
 				}
-				console.log("Pool top card is %c 'A'/'2' therefore '"+vm.cardsToPull+"' %c cards pulled %c | Line: 806","color:blue","color:black","color:red");
+				console.log("Pool top card is %c 'A'/'2' therefore '"+vm.cardsToPull+"' %c cards pulled %c | Line: 900","color:blue","color:black","color:red");
 				vm.cardsToPull = 1;
-				//vm.chosenNewCard.status = false;
 				vm.already_tackled_JAQ29_cards = true;
 				vm.skip_next_user_turn = false;
 			}
 			if(pool_top_card.cardNo == "9")
 			{
-				console.log("Pool top card is %c '9' %c so skipped turn %c | Line: 814","color:blue","color:black","color:red");
+				console.log("Pool top card is %c '9' %c so skipped turn %c | Line: 907","color:blue","color:black","color:red");
 				//COMMENT: Need to do nothing pass turn;
 				vm.cardsToPull = 1;
-				//vm.chosenNewCard.status = false;
 				vm.already_tackled_JAQ29_cards = true;
 				vm.skip_next_user_turn = false;
 			}
 			if(pool_top_card.cardNo == "Q")
 			{
-				console.log("Pool top card is %c 'Q' %c %c | Line: 823","color:blue","color:black","color:red");
+				console.log("Pool top card is %c 'Q' %c %c | Line: 915","color:blue","color:black","color:red");
 				var tmpMatchedCard = false;
 				var tmpLogicalDecisionArray = new Array();
 				for(var i=0; i<tmpPlayerCards.length; i++)
@@ -927,12 +926,12 @@ function GameController(DeckService, $log, $timeout){
 
 				if(tmpMatchedCard == true)
 				{
-					console.log("Have a matching card | Decision to make with cards: %c "+tmpLogicalDecisionArray.length+"%c %c | Line: 837","color:blue","color:black","color:red");
+					console.log("Have a matching card | Decision to make with cards: %c "+tmpLogicalDecisionArray.length+"%c %c | Line: 929","color:blue","color:black","color:red");
 					vm.AI_logical_decision_to_play_next_card(tmpLogicalDecisionArray);	//COMMENT: AI thinks according to the array passed
 				}
 				else{
 					//COMMENT: Pull a card
-					console.log("Pulling a card no matching card found %c %c %c | Line: 842","color:blue","color:black","color:red");
+					console.log("Pulling a card no matching card found %c %c %c | Line: 934","color:blue","color:black","color:red");
 					if(vm.deckSet.length == 0){
 						var poolCards = vm.deckPool.splice(0,vm.deckPool.length-1);
 						DeckService.shuffleNewCards(poolCards)
@@ -956,14 +955,13 @@ function GameController(DeckService, $log, $timeout){
 					vm.playerCards["player"+vm.currentPlayer].cards.push(pulledCard[0]);
 					pulledCard = null;
 					vm.cardsToPull = 1;
-					//vm.chosenNewCard.status = false;
 					vm.already_tackled_JAQ29_cards = true;
 					vm.skip_next_user_turn = false;
 				}
 			}
 			if(pool_top_card.cardNo == "J")
 			{
-				console.log("Pool top card is %c 'J' %c playing according to new card type chosen %c | Line: 873","color:blue","color:black","color:red");
+				console.log("Pool top card is %c 'J' %c playing according to new card type chosen %c | Line: 964","color:blue","color:black","color:red");
 				var tmpMatchedCard = false;
 				var tmpLogicalDecisionArray = new Array();
 				for(var i=0; i<tmpPlayerCards.length; i++)
@@ -977,12 +975,12 @@ function GameController(DeckService, $log, $timeout){
 
 				if(tmpMatchedCard == true)
 				{
-					console.log("Have a matching card | Decision to make with cards: %c "+tmpLogicalDecisionArray.length+"%c %c | Line: 887","color:blue","color:black","color:red");
+					console.log("Have a matching card | Decision to make with cards: %c "+tmpLogicalDecisionArray.length+"%c %c | Line: 978","color:blue","color:black","color:red");
 					vm.AI_logical_decision_to_play_next_card(tmpLogicalDecisionArray);	//COMMENT: AI thinks according to the array passed
 				}
 				else{
 					//COMMENT: Pull a card
-					console.log("Pulling a card no matching card found %c %c %c | Line: 892","color:blue","color:black","color:red");
+					console.log("Pulling a card no matching card found %c %c %c | Line: 983","color:blue","color:black","color:red");
 					if(vm.deckSet.length == 0){
 						var poolCards = vm.deckPool.splice(0,vm.deckPool.length-1);
 						DeckService.shuffleNewCards(poolCards)
@@ -1005,15 +1003,10 @@ function GameController(DeckService, $log, $timeout){
 					vm.playerCards["player"+vm.currentPlayer].cards.push(pulledCard[0]);
 					pulledCard = null;
 					vm.cardsToPull = 1;
-					//vm.chosenNewCard.status = false;
 					vm.already_tackled_JAQ29_cards = true;
 					vm.skip_next_user_turn = false;
 				}
 			}
-			//vm.cardsToPull = 1;
-			//vm.chosenNewCard.status = false;
-			//vm.already_tackled_JAQ29_cards = true;
-			//vm.skip_next_user_turn = false;
 		}
 	}
 
@@ -1022,12 +1015,12 @@ function GameController(DeckService, $log, $timeout){
 			1. It will play card according to the decisions based on cards present in hand or matched cards.
 	*/
 	function AI_logical_decision_to_play_next_card(tmpLogicalDecisionArray){
-		console.log("%c Inside AI_logical_decision_to_play_next_card %c %c | Line: 932","color:green","color:black","color:red");
+		console.log("%c Inside AI_logical_decision_to_play_next_card %c %c | Line: 1018","color:green","color:black","color:red");
 		var tmpPlayerCards = vm.playerCards["player"+vm.currentPlayer].cards;
 		var topPoolCard = vm.deckPool[vm.deckPool.length-1];
 		if(tmpLogicalDecisionArray.length>0){
 			if(tmpLogicalDecisionArray.length == 1){ //COMMENT: AI have only one card to play.
-				console.log("AI have only %c '1' %c card to play %c | Line: 937","color:blue","color:black","color:red");
+				console.log("AI have only %c '1' %c card to play %c | Line: 1023","color:blue","color:black","color:red");
 				var tmpPlayedCard = null;
 				for(var i=0; i<tmpPlayerCards.length; i++)
 				{
@@ -1042,41 +1035,41 @@ function GameController(DeckService, $log, $timeout){
 				vm.deckPool.push(tmpPlayedCard[0]);
 				vm.chosenNewCard.status = false;
 				if(tmpPlayedCard[0].cardNo == "J"){
-					console.log("Card played: %c 'J' %c %c | Line: 952","color:blue","color:black","color:red");
+					console.log("Card played: %c 'J' %c %c | Line: 1038","color:blue","color:black","color:red");
 					vm.selectCardType_AI_Play();
 				}
 				if(tmpPlayedCard[0].cardNo == "Q"){
-					console.log("Card played: %c 'Q' %c %c | Line: 956","color:blue","color:black","color:red");
+					console.log("Card played: %c 'Q' %c %c | Line: 1042","color:blue","color:black","color:red");
 					vm.currentDirection == "Anticlockwise"? vm.currentDirection = "Clockwise" : vm.currentDirection = "Anticlockwise";
 					vm.chosenNewCard.status = false;
 				}
 				if(tmpPlayedCard[0].cardNo == "A"){
-					console.log("Card played: %c 'A' %c %c | Line: 961","color:blue","color:black","color:red");
+					console.log("Card played: %c 'A' %c %c | Line: 1047","color:blue","color:black","color:red");
 					vm.cardsToPull = 3;
 					vm.chosenNewCard.status = false;
 					vm.already_tackled_JAQ29_cards = false;
 				}
 				if(tmpPlayedCard[0].cardNo == "2"){
-					console.log("Card played: %c '2' %c %c | Line: 967","color:blue","color:black","color:red");
+					console.log("Card played: %c '2' %c %c | Line: 1053","color:blue","color:black","color:red");
 					vm.cardsToPull = 2;
 					vm.chosenNewCard.status = false;
 					vm.already_tackled_JAQ29_cards = false;
 				}
 				if(tmpPlayedCard[0].cardNo == "9"){
-					console.log("Card played: %c '9' %c %c | Line: 973","color:blue","color:black","color:red");
+					console.log("Card played: %c '9' %c %c | Line: 1059","color:blue","color:black","color:red");
 					vm.already_tackled_JAQ29_cards = false;
 					vm.chosenNewCard.status = false;
 					vm.skip_next_user_turn = true;
 				}
 			}
 			else{		//COMMENT: here tmpLogicalDecisionArray.length > 1
-				console.log("AI has multiple possibilities to think %c %c %c | Line: 980","color:blue","color:black","color:red");
+				console.log("AI has multiple possibilities to think %c %c %c | Line: 1066","color:blue","color:black","color:red");
 				vm.AlreadyTackled_logic_with_multiple_decisions(tmpLogicalDecisionArray)
 			}
 		}else{
-			console.log("No Cards to play %c %c %c | Line: 984","color:blue","color:black","color:red");
+			console.log("No Cards to play %c %c %c | Line: 1070","color:blue","color:black","color:red");
 			if(vm.skip_next_user_turn != true){
-				console.log("%c Pulling a card from deck %c | skip_next_user_turn == false  %c | Line: 986","color:blue","color:black","color:red");
+				console.log("%c Pulling a card from deck %c | skip_next_user_turn == false  %c | Line: 1072","color:blue","color:black","color:red");
 				alert("Pulling a card from deck.");
 				vm.already_tackled_JAQ29_cards = true;
 				if(vm.deckSet.length == 0){
@@ -1106,7 +1099,7 @@ function GameController(DeckService, $log, $timeout){
 				}
 			}
 			else{
-				console.log("Skipped turn as previously played %c '9' %c %c | Line: 1016","color:blue","color:black","color:red");
+				console.log("Skipped turn as previously played %c '9' %c %c | Line: 1102","color:blue","color:black","color:red");
 				vm.skip_next_user_turn = false;
 				alert('Skipped Turn as previously played 9');
 			}
@@ -1121,7 +1114,7 @@ function GameController(DeckService, $log, $timeout){
 				c. If It can skip the next turn, etc.
 	*/
 	function AlreadyTackled_logic_with_multiple_decisions(tmpLogicalDecisionArray){
-		console.log("%c Inside AlreadyTackled_logic_with_multiple_decisions %c %c | Line: 1031","color:green","color:black","color:red");
+		console.log("%c Inside AlreadyTackled_logic_with_multiple_decisions %c %c | Line: 1117","color:green","color:black","color:red");
 		var tmpCurrPlayerCards = vm.playerCards["player"+vm.currentPlayer].cards;
 		var topPoolCard = vm.deckPool[vm.deckPool.length-1];
 		var nextPlayer = null;
@@ -1129,7 +1122,7 @@ function GameController(DeckService, $log, $timeout){
 		var lastPlayer = null;
 
 		if(vm.currentDirection == "Anticlockwise"){
-			console.log("Current direction %c 'Anticlockwise' with "+vm.currentPlayer+" %c player playing %c | Line: 1039","color:blue","color:black","color:red");
+			console.log("Current direction %c 'Anticlockwise' with "+vm.currentPlayer+" %c player playing %c | Line: 1125","color:blue","color:black","color:red");
 			if(vm.currentPlayer == 4){
 				nextPlayer = 1;
 				next_nextPlayer = 2;
@@ -1152,7 +1145,7 @@ function GameController(DeckService, $log, $timeout){
 			}
 		}
 		else{
-			console.log("Current direction %c 'Clockwise' with "+vm.currentPlayer+" %c player playing %c | Line: 1062","color:blue","color:black","color:red");
+			console.log("Current direction %c 'Clockwise' with "+vm.currentPlayer+" %c player playing %c | Line: 1148","color:blue","color:black","color:red");
 			if(vm.currentPlayer == 4){
 				nextPlayer = 3;
 				next_nextPlayer = 2;
@@ -1176,7 +1169,7 @@ function GameController(DeckService, $log, $timeout){
 		}
 
 		if(vm.playerCards["player"+nextPlayer].cards.length == 1){	//COMMENT: Next player has only one card in hand
-			console.log("%c "+nextPlayer+" %c player has only card %c | Line: 1086","color:blue","color:black","color:red");
+			console.log("%c "+nextPlayer+" %c player has only card %c | Line: 1172","color:blue","color:black","color:red");
 			var foundAceOr2 = false;
 			var found9 = false;
 			var foundJ = false;
@@ -1184,7 +1177,7 @@ function GameController(DeckService, $log, $timeout){
 			var index = -1;
 			for(var i=0; i<tmpLogicalDecisionArray.length; i++){
 				if(tmpLogicalDecisionArray[i].cardNo == "A" || tmpLogicalDecisionArray[i].cardNo == "2"){
-					console.log("Found %c 'A/2' %c to play %c | Line: 1094","color:blue","color:black","color:red");
+					console.log("Found %c 'A/2' %c to play %c | Line: 1180","color:blue","color:black","color:red");
 					foundAceOr2 = true;
 					index = i;
 					break;
@@ -1194,7 +1187,7 @@ function GameController(DeckService, $log, $timeout){
 			if(foundAceOr2 == false){
 				for(var i=0; i<tmpLogicalDecisionArray.length; i++){
 					if(tmpLogicalDecisionArray[i].cardNo == "9"){
-						console.log("Found %c '9' %c to play %c | Line: 1104","color:blue","color:black","color:red");
+						console.log("Found %c '9' %c to play %c | Line: 1190","color:blue","color:black","color:red");
 						found9 = true;
 						index = i;
 						break;
@@ -1205,7 +1198,7 @@ function GameController(DeckService, $log, $timeout){
 			if(foundAceOr2 == false && found9 == false){
 				for(var i=0; i<tmpLogicalDecisionArray.length; i++){
 					if(tmpLogicalDecisionArray[i].cardNo == "J"){
-						console.log("Found %c 'J' %c to play %c | Line: 1115","color:blue","color:black","color:red");
+						console.log("Found %c 'J' %c to play %c | Line: 1201","color:blue","color:black","color:red");
 						foundJ = true;
 						index = i;
 						break;
@@ -1216,7 +1209,7 @@ function GameController(DeckService, $log, $timeout){
 			if(foundAceOr2 == false && found9 == false && foundJ == false){
 				for(var i=0; i<tmpLogicalDecisionArray.length; i++){
 					if(tmpLogicalDecisionArray[i].cardNo == "Q"){
-						console.log("Found %c 'Q' %c to play %c | Line: 1126","color:blue","color:black","color:red");
+						console.log("Found %c 'Q' %c to play %c | Line: 1212","color:blue","color:black","color:red");
 						foundQ = true;
 						index = i;
 						break;
@@ -1224,7 +1217,7 @@ function GameController(DeckService, $log, $timeout){
 				}
 			}
 			if(index!=-1 && (foundAceOr2 == true || found9 == true || foundJ == true || foundQ == true)){	//COMMENT: Found Either A / 2 / Q / 9 to play
-				console.log("Found JAQ29 card to play and stop next playe from winning %c %c %c | Line: 1134","color:blue","color:black","color:red");
+				console.log("Found JAQ29 card to play and stop next playe from winning %c %c %c | Line: 1220","color:blue","color:black","color:red");
 				var tmpPlayedCard = null;
 				for(var i=0; i<tmpCurrPlayerCards.length; i++)
 				{
@@ -1239,34 +1232,34 @@ function GameController(DeckService, $log, $timeout){
 				vm.deckPool.push(tmpPlayedCard[0]);
 				vm.chosenNewCard.status = false;
 				if(tmpPlayedCard[0].cardNo == "Q"){
-					console.log("Found %c 'Q' %c to play %c | Line: 1149","color:blue","color:black","color:red");
+					console.log("Found %c 'Q' %c to play %c | Line: 1235","color:blue","color:black","color:red");
 					vm.currentDirection == "Anticlockwise"? vm.currentDirection = "Clockwise" : vm.currentDirection = "Anticlockwise";
 				}
 				if(tmpPlayedCard[0].cardNo == "A"){
-					console.log("Found %c 'A' %c to play %c | Line: 1153","color:blue","color:black","color:red");
+					console.log("Found %c 'A' %c to play %c | Line: 1239","color:blue","color:black","color:red");
 					vm.cardsToPull = 3;
 					vm.already_tackled_JAQ29_cards = false;
 					vm.chosenNewCard.status = false;
 				}
 				if(tmpPlayedCard[0].cardNo == "2"){
-					console.log("Found %c '2' %c to play %c | Line: 1159","color:blue","color:black","color:red");
+					console.log("Found %c '2' %c to play %c | Line: 1245","color:blue","color:black","color:red");
 					vm.cardsToPull = 2;
 					vm.already_tackled_JAQ29_cards = false;
 					vm.chosenNewCard.status = false;
 				}
 				if(tmpPlayedCard[0].cardNo == "9"){
-					console.log("Found %c '9' %c to play %c | Line: 1165","color:blue","color:black","color:red");
+					console.log("Found %c '9' %c to play %c | Line: 1251","color:blue","color:black","color:red");
 					vm.already_tackled_JAQ29_cards = false;
 					vm.skip_next_user_turn = true;
 				}
 				if(tmpPlayedCard[0].cardNo == "J"){
-					console.log("Found %c 'J' %c to play %c | Line: 1170","color:blue","color:black","color:red");
+					console.log("Found %c 'J' %c to play %c | Line: 1256","color:blue","color:black","color:red");
 					vm.selectCardType_AI_Play();
 				}
 			}
 			else{
 				//COMMENT: Cannot find either A / 2 / Q / 9 / J to play
-				console.log("Not able to change next players cards %c %c %c | Line: 1176","color:blue","color:black","color:red");
+				console.log("Not able to change next players cards %c %c %c | Line: 1262","color:blue","color:black","color:red");
 				var randomCard = tmpLogicalDecisionArray[Math.floor(Math.random() * tmpLogicalDecisionArray.length)];
 				var tmpPlayedCard = null;
 				for(var i=0; i<tmpCurrPlayerCards.length; i++)
@@ -1279,13 +1272,13 @@ function GameController(DeckService, $log, $timeout){
 				}
 				vm.cardsToPull = 1;
 				tmpPlayedCard[0].rotation = Math.floor(Math.random() * 359) + 1;
-				console.log("Randomly played %c '"+tmpPlayedCard[0].cardNo+"' %c card %c | Line: 1189","color:blue","color:black","color:red");
+				console.log("Randomly played %c '"+tmpPlayedCard[0].cardNo+"' %c card %c | Line: 1275","color:blue","color:black","color:red");
 				vm.deckPool.push(tmpPlayedCard[0]);
 				vm.chosenNewCard.status = false;
 			}
 		}
 		else if(vm.playerCards["player"+next_nextPlayer].cards.length == 1 || vm.playerCards["player"+lastPlayer].cards.length == 1){
-			console.log("%c "+next_nextPlayer+"/"+lastPlayer+" %c player has only card %c | Line: 1195","color:blue","color:black","color:red");
+			console.log("%c "+next_nextPlayer+"/"+lastPlayer+" %c player has only card %c | Line: 1281","color:blue","color:black","color:red");
 			//COMMENT: Next Player / Last player has one card in hand
 			var logical_dec_has_other_cards = false;
 			var foundJ = false;
@@ -1299,7 +1292,7 @@ function GameController(DeckService, $log, $timeout){
 
 			if(logical_dec_has_other_cards == true){
 				//COMMENT: remove all AQ29 cards as playing these will increase next_next or last players winning chances.
-				console.log("Removing AQ29 cards so that next player have a chance of stopping some player from winning %c %c %c | Line: 1209","color:blue","color:black","color:red");
+				console.log("Removing AQ29 cards so that next player have a chance of stopping some player from winning %c %c %c | Line: 1295","color:blue","color:black","color:red");
 				for(var i=0; i<tmpLogicalDecisionArray.length; i++){
 					if(tmpLogicalDecisionArray[i].cardNo == "9" || tmpLogicalDecisionArray[i].cardNo == "2" || tmpLogicalDecisionArray[i].cardNo == "Q" || tmpLogicalDecisionArray[i].cardNo == "A"){
 						tmpLogicalDecisionArray.splice(i,1);
@@ -1310,7 +1303,7 @@ function GameController(DeckService, $log, $timeout){
 
 			for(var i=0; i<tmpLogicalDecisionArray.length; i++){
 				if(tmpLogicalDecisionArray[i].cardNo == "J"){
-					console.log("%c 'J' %c card found to play %c | Line: 1220","color:blue","color:black","color:red");
+					console.log("%c 'J' %c card found to play %c | Line: 1306","color:blue","color:black","color:red");
 					foundJ = true;
 					index = i;
 					break;
@@ -1327,13 +1320,12 @@ function GameController(DeckService, $log, $timeout){
 					}
 				}
 				vm.cardsToPull = 1;
-				console.log("Card played: %c "+tmpPlayedCard[0].cardNo+" %c %c | Line: 1237","color:blue","color:black","color:red");
+				console.log("Card played: %c "+tmpPlayedCard[0].cardNo+" %c %c | Line: 1323","color:blue","color:black","color:red");
 				tmpPlayedCard[0].rotation = Math.floor(Math.random() * 359) + 1;
 				vm.deckPool.push(tmpPlayedCard[0]);
 				vm.selectCardType_AI_Play();
 			}
 			else{	//COMMENT: Randomly play any card.
-				debugger;
 				var randomCard = tmpLogicalDecisionArray[Math.floor(Math.random() * tmpLogicalDecisionArray.length)];
 				var tmpPlayedCard = null;
 				for(var i=0; i<tmpCurrPlayerCards.length; i++)
@@ -1345,14 +1337,14 @@ function GameController(DeckService, $log, $timeout){
 					}
 				}
 				vm.cardsToPull = 1;
-				console.log("Randomly played: %c "+tmpPlayedCard[0].cardNo+" %c %c | Line: 1255","color:blue","color:black","color:red");
+				console.log("Randomly played: %c "+tmpPlayedCard[0].cardNo+" %c %c | Line: 1340","color:blue","color:black","color:red");
 				tmpPlayedCard[0].rotation = Math.floor(Math.random() * 359) + 1;
 				vm.deckPool.push(tmpPlayedCard[0]);
 			}
 		}
 		else{
 			//COMMENT: All Players has more then one cards in hand so Randomly play any card.
-			console.log("Playing normally as all players have more than 1 card in hand %c %c %c | Line: 1262","color:blue","color:black","color:red");
+			console.log("Playing normally as all players have more than 1 card in hand %c %c %c | Line: 1347","color:blue","color:black","color:red");
 			var randomCard = tmpLogicalDecisionArray[Math.floor(Math.random() * tmpLogicalDecisionArray.length)];
 			var tmpPlayedCard = null;
 			for(var i=0; i<tmpCurrPlayerCards.length; i++)
@@ -1368,26 +1360,26 @@ function GameController(DeckService, $log, $timeout){
 			vm.deckPool.push(tmpPlayedCard[0]);
 			vm.chosenNewCard.status = false;
 			if(tmpPlayedCard[0].cardNo == "Q"){
-				console.log("Found %c 'Q' %c to play %c | Line: 1277","color:blue","color:black","color:red");
+				console.log("Found %c 'Q' %c to play %c | Line: 1363","color:blue","color:black","color:red");
 				vm.currentDirection == "Anticlockwise"? vm.currentDirection = "Clockwise" : vm.currentDirection = "Anticlockwise";
 			}
 			if(tmpPlayedCard[0].cardNo == "A"){
-				console.log("Found %c 'A' %c to play %c | Line: 1282","color:blue","color:black","color:red");
+				console.log("Found %c 'A' %c to play %c | Line: 1367","color:blue","color:black","color:red");
 				vm.cardsToPull = 3;
 				vm.already_tackled_JAQ29_cards = false;
 			}
 			if(tmpPlayedCard[0].cardNo == "2"){
-				console.log("Found %c '2' %c to play %c | Line: 1288","color:blue","color:black","color:red");
+				console.log("Found %c '2' %c to play %c | Line: 1372","color:blue","color:black","color:red");
 				vm.cardsToPull = 2;
 				vm.already_tackled_JAQ29_cards = false;
 			}
 			if(tmpPlayedCard[0].cardNo == "9"){
-				console.log("Found %c '9' %c to play %c | Line: 1294","color:blue","color:black","color:red");
+				console.log("Found %c '9' %c to play %c | Line: 1377","color:blue","color:black","color:red");
 				vm.already_tackled_JAQ29_cards = false;
 				vm.skip_next_user_turn = true;
 			}
 			if(tmpPlayedCard[0].cardNo == "J"){
-				console.log("Found %c 'J' %c to play %c | Line: 1300","color:blue","color:black","color:red");
+				console.log("Found %c 'J' %c to play %c | Line: 1382","color:blue","color:black","color:red");
 				vm.selectCardType_AI_Play();
 			}
 		}
@@ -1395,7 +1387,7 @@ function GameController(DeckService, $log, $timeout){
 
 	/** Returns randomized card type from AI. */
 	function selectCardType_AI_Play(){
-		console.log("%c Inside selectCardType_AI_Play %c %c | Line: 1308","color:green","color:black","color:red");
+		console.log("%c Inside selectCardType_AI_Play %c %c | Line: 1390","color:green","color:black","color:red");
 		var tmpCardTypes = ["spade", "heart", "diamond", "club"];
 		var tmpCurrPlayerCards = angular.copy(vm.playerCards["player"+vm.currentPlayer].cards);
 		var flag_player_have_1_card = false;
@@ -1461,7 +1453,7 @@ function GameController(DeckService, $log, $timeout){
 			{
 				tmpCardType = "club";
 			}
-			console.log("SMARTLY CHOSEN CARD | The new Card Type will be %c "+tmpCardType+" %c %c | Line: 1374","color:blue","color:black","color:red");
+			console.log("SMARTLY CHOSEN CARD | The new Card Type will be %c "+tmpCardType+" %c %c | Line: 1456","color:blue","color:black","color:red");
 			alert("SMARTLY CHOSEN CARD | The new Card Type will be: "+ tmpCardType);
 			vm.chosenNewCard.status = true;
 			vm.chosenNewCard.cardType = tmpCardType;
@@ -1498,8 +1490,7 @@ function GameController(DeckService, $log, $timeout){
 			else{
 				var randCardType = "club";
 			}
-			//var randCardType = tmpCardTypes[Math.floor(Math.random() * tmpCardTypes.length)];
-			console.log("New Card Type is chosen according to max type card player have in hand %c i.e: "+randCardType+" %c %c | Line: 1412","color:blue","color:black","color:red");
+			console.log("New Card Type is chosen according to max type card player have in hand %c i.e: "+randCardType+" %c %c | Line: 1493","color:blue","color:black","color:red");
 			alert("The new Card Type will be: "+ randCardType);
 			vm.chosenNewCard.status = true;
 			vm.chosenNewCard.cardType = randCardType;
@@ -1509,17 +1500,16 @@ function GameController(DeckService, $log, $timeout){
 
 
 	function rearrange_cards_in_hands(){
-		console.log("Re-arranging cards of %c Player "+vm.currentPlayer+" hand %c %c | Line: 1422","color:green","color:black","color:red");
-		//alert('Curr Player '  + vm.currentPlayer);
+		console.log("Re-arranging cards of %c Player "+vm.currentPlayer+" hand %c %c | Line: 1503","color:green","color:black","color:red");
+		var playerCards = vm.playerCards["player"+vm.currentPlayer].cards;
 		$timeout(function(){
-			var playerCards = vm.playerCards["player"+vm.currentPlayer].cards;
 			for(var i=0; i<playerCards.length; i++){
 				playerCards[i].left = i*40;
 			}
-		},100);
+		},300);
 	}
 
-	function startGame(){	
+	function startGame(){
 		/** Initial function call post loading game/page refresh */
 		vm.startgameflag = true;
 		vm.showLoader = true;
