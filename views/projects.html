@@ -7,7 +7,7 @@
 
 	<div class="col-md-12 text-primary" ng-if="PrjCtrl.loader"><h3><img src="./img/squares.gif" height="30" width="30"/> Please wait... loading projects</h3></div>
 	
-	<div class="col-md-6 col-xs-12 col-lg-6 flip-container" ng-repeat="projs in PrjCtrl.projectsDets">
+	<div class="col-md-6 col-xs-12 col-lg-6 flip-container" ng-repeat="projs in PrjCtrl.projectsDets" ng-show="!PrjCtrl.loader">
 		<div class="project f1_container">
 			<span class="icon" title="Click me for more Info.">
 				<span class="glyphicon glyphicon-info-sign"></span>
