@@ -1,0 +1,657 @@
+{
+	"projects": [{
+		"project_name": "Bridge game",
+		"project_link": "projects/bridge/index.html",
+		"project_img": "img/projects/bridge.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "Angular 1",
+			"label_type": "label-warning"
+		}],
+		"project_details": "A game made from solitaire cards. Fun and interactive to play, and is similar to UNO cards.<br/>Frameworks used: HTML5, CSS3, BootStrap, AngularJS 1, etc."
+	}, {
+		"project_name": "Bridge game",
+		"project_link": "projects/blog/index.html",
+		"project_img": "img/projects/blog.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "Angular 1",
+			"label_type": "label-warning"
+		}],
+		"project_details": "I have created a static data blog, this blog stores the data only in the temporary session, once the session is closed the data is reset back to the original data.<br/><br/> I have created this blog trying to use as standard angular code as possible, you can even do so just by checking out the code and use it. <br/> Frameworks used: HTML5, CSS3, BootStrap, AngularJS 1, etc."
+	}, {
+		"project_name": "Expedition Quest",
+		"project_link": "projects/expedition/index.html",
+		"project_img": "img/projects/expedition.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "Angular 1",
+			"label_type": "label-warning"
+		}],
+		"project_details": "Expedition Quest, is a fun game with a lot of things to do. There are various set of rules and gameplays.<br/><br/> You'll love the two different layouts in which you can play. You will play it in 1024 * 768 resolution at best."
+	}, {
+		"project_name": "Chatbox",
+		"project_link": "projects/chatbox/index.html",
+		"project_img": "img/projects/chatbox.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "Angular 1",
+			"label_type": "label-warning"
+		}],
+		"project_details": "This is a very powerful chatbox application where a user needs no registration and anyone can create his own group and can chat."
+	}, {
+		"project_name": "Hangman",
+		"project_link": "projects/hangman/index.html",
+		"project_img": "img/projects/hangman.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "Angular 1",
+			"label_type": "label-warning"
+		}],
+		"project_details": "A very easy to play game created by me. Its quite simple to play just follow the rules below.<br/> <strong>Rules:</strong><br/> Let the opponent add a movie name of his choice.<br/> And then start the game by clicking 'Start Game' button.<br/> Later you have to guess the characters of the movie what it would be by clicking the Alphabets.<br/> For each wrong alphabet selected a character from the word 'Hollywood' will be highlighted which is your life-points. Which makes a total of 9 Life-points.<br/> Well good luck and enjoy.<br/>"
+	}, {
+		"project_name": "Live Chat (Online chat)",
+		"project_link": "projects/livechat/index.html",
+		"project_img": "img/projects/livechat.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "Firebase",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "Angular 1",
+			"label_type": "label-warning"
+		}],
+		"project_details": "This live chat is an open source application to create and demo a simple chat application. <br/>Any user is able to chat as well as code and also if wanted he can clone the code too.<br/>"
+	}, {
+		"project_name": "Angular Quiz",
+		"project_link": "projects/quiz/index.html",
+		"project_img": "img/projects/angular_quiz.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "Angular 1",
+			"label_type": "label-warning"
+		}],
+		"project_details": "Angular quiz is an interesting quiz where you can choose the number of questions you like and also each time you start the quiz you will get a random question.<br/><br/> The biggest benefit of this quiz is, all of your questions and answers are shown with the score in the end and in which question you lag the result with clearify it."
+	}, {
+		"project_name": "My Kart (Shopping Site - Demo)",
+		"project_link": "projects/myKart/index.html",
+		"project_img": "img/projects/myKart.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "Angular 1",
+			"label_type": "label-warning"
+		}],
+		"project_details": "This is a Small Shopping Site demo, Created in 1-Day. This is quite simple and yet powerful. <br/>"
+	}, {
+		"project_name": "Order Management Demo",
+		"project_link": "projects/Ang_Kiosk_Demo/index.html",
+		"project_img": "img/projects/order_mgmt.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "Angular 1",
+			"label_type": "label-warning"
+		}],
+		"project_details": "This demo represents 3 Counters. <br/>Order Counter, Kitchen Counter and Display Order Counter."
+	}, {
+		"project_name": "Attendance Management System",
+		"project_link": "projects/Attendance_Mgmt_System/index.html",
+		"project_img": "img/projects/attendance_mgmt_system.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "Angular 1",
+			"label_type": "label-warning"
+		}],
+		"project_details": "This demo was created for Attendance of employees in a Company. Demo is generated using BARCODE System."
+	}, {
+		"project_name": "My Portfolio",
+		"project_link": "javascript:alert('My current portfolio site')",
+		"project_img": "img/projects/portfolio.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "Angular 1",
+			"label_type": "label-warning"
+		}],
+		"project_details": "For representing myself."
+	}, {
+		"project_name": "Hall Decoration",
+		"project_link": "projects/Wall_poster/index.html",
+		"project_img": "img/projects/wallposter.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "Angular 1",
+			"label_type": "label-warning"
+		}],
+		"project_details": "In this demo you can add objects to you hall and change the look n feel and see how it looks."
+	}, {
+		"project_name": "Angular Multi JSON Load Demo",
+		"project_link": "projects/Ang_Shell_Multiple_JSON/index.html",
+		"project_img": "img/projects/Ang_Multi_JSON_Load.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "Angular 1",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "JSON",
+			"label_type": "label-danger"
+		}],
+		"project_details": "This demo was created to explain how multiple JSON files are loaded on single AngularJS page."
+	}, {
+		"project_name": "Angular Basic + Advance App",
+		"project_link": "projects/Angular_Adv_Tutorial/index.html",
+		"project_img": "img/projects/Angular_Adv_Tutorial.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "Angular 1",
+			"label_type": "label-warning"
+		}],
+		"project_details": "This demo was created to explain details of AngularJS."
+	}, {
+		"project_name": "3D Skybox - Cubic Skybox and Reflection",
+		"project_link": "projects/3D_SKY/index.html",
+		"project_img": "img/projects/3dsky.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "three.js",
+			"label_type": "label-primary"
+		}],
+		"project_details": "This demo uses WebGL which gives your browser a 3D Effect. This demo show a place which you can see in 360 Degree."
+	}, {
+		"project_name": "3D Auto Rotating Box",
+		"project_link": "projects/3D_Box/index.html",
+		"project_img": "img/projects/3dbox.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "three.js",
+			"label_type": "label-primary"
+		}],
+		"project_details": "Another demo of WebGL which gives an Auto Rotating Effect."
+	}, {
+		"project_name": "WebGL 360 Rotation",
+		"project_link": "projects/3D_Box_Self/index.html",
+		"project_img": "img/projects/3dbox_self.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "three.js",
+			"label_type": "label-primary"
+		}],
+		"project_details": "This is too a demo on WebGL, in which you can rotate the box anyhow in anyway."
+	}, {
+		"project_name": "Meeting Room Booking System",
+		"project_link": "javascript:alert('GIT cannot load PHP sites!!! \n\n Please fork my Portfolio on github.')",
+		"project_img": "img/projects/mrbs.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}],
+		"project_details": "This is an Complete application for booking an Meeting Room + Responsive."
+	}, {
+		"project_name": "Tic Tac Toe",
+		"project_link": "projects/tictactoe/index.html",
+		"project_img": "img/projects/tictactoe.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}],
+		"project_details": "This is a Game of Tic Tac Toe, Play and Enjoy."
+	}, {
+		"project_name": "Junior Games Demo",
+		"project_link": "javascript:alert('GIT cannot load PHP sites!!! \n\n Please fork my Portfolio on github.')",
+		"project_img": "img/projects/kids_games.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "JSON",
+			"label_type": "label-danger"
+		}],
+		"project_details": "This demo represents games for kids. <br/>This demo was actually created for showing the audio and text synchronization."
+	}, {
+		"project_name": "Canvas Annotations",
+		"project_link": "projects/annotation/index.html",
+		"project_img": "img/projects/annotation.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "fabric.js",
+			"label_type": "label-warning"
+		}],
+		"project_details": "A Best example on what we can do with HTML5 Canvas."
+	}, {
+		"project_name": "Z-Index Slider",
+		"project_link": "projects/Z_index_Slider/index.html",
+		"project_img": "img/projects/Z_index_Slider.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}],
+		"project_details": "This is purely an jQuery Slider, which works on Z-Index."
+	}, {
+		"project_name": "Scheduler",
+		"project_link": "projects/schedular/index.html",
+		"project_img": "img/projects/schedular.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}],
+		"project_details": "A Scheduler which reminds you whatever you want."
+	}, {
+		"project_name": "Photo Gallery",
+		"project_link": "javascript:alert('GIT cannot load PHP sites!!! \n\n Please fork my Portfolio on github.')",
+		"project_img": "img/projects/photogallery.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery lightbox",
+			"label_type": "label-warning"
+		}],
+		"project_details": "This is a very simple and responsive photo Gallery, with a responsive slider overhead."
+	}, {
+		"project_name": "Flip Quiz Demo",
+		"project_link": "projects/flipQuiz/index.html",
+		"project_img": "img/projects/flipQuiz.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}],
+		"project_details": "This is a Quiz Demo, Responsive one, and gives an nice turning effect for every question."
+	}, {
+		"project_name": "PHP Encryption Tool",
+		"project_link": "javascript:alert('GIT cannot load PHP sites!!! \n\n Please fork my Portfolio on github.')",
+		"project_img": "img/projects/encryption.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "PHP",
+			"label_type": "label-default"
+		}],
+		"project_details": "This is PHP Encryption Tool, which converts a simple string into Base64 encrypted cypher text."
+	}, {
+		"project_name": "Questionnaire",
+		"project_link": "projects/KBC/index.html",
+		"project_img": "img/projects/KBC.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "jQuery",
+			"label_type": "label-warning"
+		}],
+		"project_details": "This demo was created to explain details of AngularJS."
+	}, {
+		"project_name": "jQuery Multi JSON Load Demo",
+		"project_link": "projects/jQuery_Shell_Multiple_JSON/index.html",
+		"project_img": "img/projects/jQuery_Multi_JSON_Load.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "JSON",
+			"label_type": "label-danger"
+		}],
+		"project_details": "This demo was created to explain how multiple JSON files are loaded on single jQuery page."
+	}, {
+		"project_name": "Editable Content On Browser",
+		"project_link": "javascript:alert('GIT cannot load PHP sites!!! \n\n Please fork my Portfolio on github.')",
+		"project_img": "img/projects/editablecontent.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}],
+		"project_details": "This demo was created to show how we can edit contents on browser without using any Text-box or Text-area."
+	}, {
+		"project_name": "Analog clock",
+		"project_link": "projects/analogclock/index.html",
+		"project_img": "img/projects/analogclock.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "JavaScript",
+			"label_type": "label-warning"
+		}],
+		"project_details": "This is a small demo to show your current PC time in Analog style."
+	}]
+}
