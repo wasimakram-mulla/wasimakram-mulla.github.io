@@ -479,7 +479,7 @@
 	}, {
 		"project_name": "Z-Index Slider",
 		"project_link": "projects/Z_index_Slider/index.html",
-		"project_img": "img/projects/Z_index_Slider.jpg",
+		"project_img": "img/projects/z_index_slider.jpg",
 		"project_langs": [{
 			"lang_name": "HTML5",
 			"label_type": "label-success"
