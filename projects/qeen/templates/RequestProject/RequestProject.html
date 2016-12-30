@@ -1,0 +1,42 @@
+﻿<div class="col-md-12 LeaveProject">
+	<div class="container">
+		<div class="col-md-12 row">
+			<h4 class="text-primary">Request Project </h4>
+			<hr/>
+		</div>
+
+		<div class="col-md-12 row">
+			<div class="col-md-2 row">
+				<h5 class="text-info">Project name: </h5>
+			</div>
+			<div class="col-md-8 row">
+				<input type="text" class="form-control" placeholder="Enter project name (min. 3 chars)" ng-model="ReqPrjCtrl.prjName" ng-keyUp="ReqPrjCtrl.checkPrjAvail($event)"/>
+				<h6 class="text-danger" ng-if="ReqPrjCtrl.showError">
+					<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Project is unavailable.
+				</h6>
+			</div>
+			<div class="col-md-2"></div>
+		</div>
+		
+		<div class="col-md-12 row" ng-if="ReqPrjCtrl.projects.length>0"><br/>
+			<table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Project Name</th>
+                <th>Project Admin</th>
+                <th>Request</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="prj in ReqPrjCtrl.projects">
+                <td>{{$index+1}}</td>
+                <td>{{prj.projName}}</td>
+                <td>{{prj.userName}}</td>
+                <td><button class="btn btn-sm btn-success" ng-click="ReqPrjCtrl.requestProject(prj)">Request</button></td>
+              </tr>
+            </tbody>
+          </table>
+		</div>
+	</div>
+</div>

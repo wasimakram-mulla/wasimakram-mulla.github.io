@@ -1,0 +1,176 @@
+<div class="col-md-12 Profile">
+	<div class="container">
+		<div class="col-md-12 row">
+			<h4 class="text-primary">Profile</h4>
+			<hr/>
+		</div>
+
+		<div class="col-md-12 row" ng-if="ProfileCtrl.userDetails">
+			<div class="col-md-2 text-center">
+				<img ng-src="./imgs/user.png" class="user-profile-pic" ng-if="!userAvatar"/>
+				<div class="user-profile-pic" ng-if="userAvatar">
+					<div class="avatars {{ProfileCtrl.userDetails.userAvatar}}"></div>
+				</div>
+				<button class="btn btn-sm btn-default changepicbtn" ng-click="ProfileCtrl.changeProfilePic()" ng-if="ProfileCtrl.userId == ProfileCtrl.loggedInUser">Change profile pic</button>
+			</div>
+
+			<div class="col-md-6">
+				<div ng-if="!ProfileCtrl.userDetails">
+					<i class="fa fa-spinner fa-pulse fa-2x fa-fw text-primary"></i>
+				</div>
+				<div ng-if="ProfileCtrl.userDetails">
+					<h4 class="text-info">{{ProfileCtrl.userDetails.userFullName}}</h4>
+					<h5><strong>{{ProfileCtrl.userDetails.userName}}</strong></h5>
+					<h5><strong class="text-success"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> {{ProfileCtrl.userDetails.userPoints}}</strong></h5>
+					<h5>Member since <em>{{ProfileCtrl.userDetails.regDate | date: 'MMMM, yyyy'}}</em></h5>
+				</div>
+			</div>
+
+			<div class="col-md-4">
+				<div class="col-md-4 divider">
+					<h4>
+						<span ng-if="!ProfileCtrl.userprojects"><i class="fa fa-spinner fa-pulse fa-1x fa-fw text-primary"></i></span>
+						<strong class="text-info" ng-if="ProfileCtrl.userprojects">
+							<span ng-if="ProfileCtrl.userprojects.length>0">{{ProfileCtrl.userprojects.length-1}}</span>
+							<span ng-if="ProfileCtrl.userprojects.length<=0">{{ProfileCtrl.userprojects.length}}</span>
+						</strong>
+					</h4>
+					<h5>
+						<span ng-if="ProfileCtrl.userprojects.length!=1">Projects</span>
+						<span ng-if="ProfileCtrl.userprojects.length==1">Project</span>
+					</h5>
+				</div>
+				<div class="col-md-4" ng-class="{'divider': ProfileCtrl.userId == ProfileCtrl.loggedInUser}">
+					<h4>
+						<span ng-if="ProfileCtrl.totalQuestionCount==null"><i class="fa fa-spinner fa-pulse fa-1x fa-fw text-primary"></i></span>
+						<strong class="text-info" ng-if="ProfileCtrl.totalQuestionCount>=0">{{ProfileCtrl.totalQuestionCount}}</strong>
+					</h4>
+					<h5>
+						<span ng-if="ProfileCtrl.totalQuestionCount!=1">Questions</span>
+						<span ng-if="ProfileCtrl.totalQuestionCount==1">Question</span>
+					</h5>
+				</div>
+				<div class="col-md-4" ng-if="(ProfileCtrl.userId == ProfileCtrl.loggedInUser)">
+					<h4>
+						<span ng-if="!ProfileCtrl.bookmarkedQuestions"><i class="fa fa-spinner fa-pulse fa-1x fa-fw text-primary"></i></span>
+						<strong class="text-info">{{ProfileCtrl.bookmarkedQuestions.length}}</strong>
+					</h4>
+					<h5>
+						<span>Bookmarked Questions</span>
+					</h5>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-12" ng-if="ProfileCtrl.userDetails"><br/>
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" ng-class="{'active':ProfileCtrl.activeTab == 'projects'}" ng-click="ProfileCtrl.changeTab('projects')">
+					<a href="javascript:void(0)">Projects</a>
+				</li>
+				<li role="presentation" ng-class="{'active':ProfileCtrl.activeTab == 'questions'}" ng-click="ProfileCtrl.changeTab('questions')">
+					<a href="javascript:void(0);">Questions</a>
+				</li>
+				<li role="presentation" ng-class="{'active':ProfileCtrl.activeTab == 'bookmarks'}" ng-click="ProfileCtrl.changeTab('bookmarks')" ng-if="ProfileCtrl.userId == ProfileCtrl.loggedInUser">
+					<a href="javascript:void(0);">Bookmarks</a>
+				</li>
+				<li role="presentation" class="float-right">
+					<button class="btn btn-sm btn-primary" ng-click="ProfileCtrl.askQuestion();">Ask a Question <i class="fa fa-question"></i></button>
+				</li>
+			</ul>
+			<br/>
+		</div>
+
+		<div class="col-md-12" ng-if="ProfileCtrl.activeTab == 'projects' && ProfileCtrl.userDetails">
+			<strong class="text-primary"><em><u>Projects</u></em></strong>
+			<hr/>
+			<ul class="nav nav-pills" role="tablist" ng-if="ProfileCtrl.userprojects.length>0">
+				<li role="presentation" ng-repeat="prj in ProfileCtrl.userprojects" ng-if="prj.projId!=1">
+					<button class="btn btn-sm btn-primary" ng-click="ProfileCtrl.goToDashboard()">
+						{{prj.projName}}
+						<span class="badge ng-binding" ng-if="prj.questionData.length != 0">{{prj.questionData.length}}</span>
+					</button>
+				</li>
+			</ul>
+			<h5 class="text-danger" ng-if="ProfileCtrl.userprojects.length<=0"><i class="fa fa-exclamation-triangle"></i> No projects found</h5>
+		</div>
+
+		<div class="col-md-12" ng-if="ProfileCtrl.activeTab == 'questions' && ProfileCtrl.userDetails">
+			<strong class="text-primary"><em><u>Questions</u></em></strong>
+			<hr />
+			<div class="col-md-12">
+				<div class="questions" ng-if="ProfileCtrl.userQuestions.length>0">
+					<div class="col-md-12 row" ng-repeat="question in ProfileCtrl.userQuestions">
+						<div class="col-md-2 questOpts row">
+							<strong class="text-primary">{{question.answerCount}}</strong> <i class="fa fa-pencil-square" aria-hidden="true"></i> Answers<br/>
+						</div>
+						<div class="col-md-10">
+							<div class="col-md-9 row questionText">
+								<a href="#/question-details/{{question.quesId}}">{{question.quesTitle}}</a>
+							</div>
+							<div class="col-md-3">
+								<strong><u>Asked</u>: <em class="text-info">{{question.postedOn | date : "dd-MM-yyyy"}}</em></strong><br/>
+							</div>
+						</div>
+						<hr class="col-md-12 row"/>
+					</div>
+				</div>
+				<h5 class="text-danger" ng-if="ProfileCtrl.userQuestions.length<=0"><i class="fa fa-exclamation-triangle"></i> No questions found.</h5>
+			</div>
+		</div>
+		
+		<div class="col-md-12" ng-if="ProfileCtrl.activeTab == 'bookmarks' && ProfileCtrl.userDetails && (ProfileCtrl.userId == ProfileCtrl.loggedInUser)">
+			<strong class="text-primary"><em><u>Bookmarked Questions</u></em></strong>
+			<hr />
+			<div class="col-md-12">
+				<div class="questions" ng-if="ProfileCtrl.bookmarkedQuestions.length>0">
+					<div class="col-md-12 row" ng-repeat="question in ProfileCtrl.bookmarkedQuestions">
+						<div class="col-md-2 questOpts row">
+							<strong class="text-primary">{{question.answerCount}}</strong> <i class="fa fa-pencil-square" aria-hidden="true"></i> Answers<br/>
+						</div>
+						<div class="col-md-10">
+							<div class="col-md-9 row questionText">
+								<a href="#/question-details/{{question.quesId}}">{{question.quesTitle}}</a>
+							</div>
+							<div class="col-md-3">
+								<strong><u>Asked</u>: <em class="text-info">{{question.postedOn | date : "dd-MM-yyyy"}}</em></strong><br/>
+								<strong><u>By</u>: <a href="#/profile/{{question.userId}}">{{question.userName}}</a></strong><br/>
+							</div>
+						</div>
+						<hr class="col-md-12 row"/>
+					</div>
+				</div>
+				<h5 class="text-danger" ng-if="ProfileCtrl.bookmarkedQuestions.length<=0"><i class="fa fa-exclamation-triangle"></i> No Bookmarks found.</h5>
+			</div>
+		</div>
+
+		<div class="col-md-12" ng-if="!ProfileCtrl.userDetails && ProfileCtrl.userNotFoundFlag">
+			<h4 class="text-danger"><i class="fa fa-exclamation-triangle"></i> Cannot find such user.</h4>
+		</div>
+
+		<!-- Pop Up modal -->
+		<div class="overlay" ng-show="ProfileCtrl.changePicFlag">
+		<div class="col-md-3"></div>
+			<div class="popup-modal col-md-6" ng-if="ProfileCtrl.changePicFlag">
+				<div class="panel panel-warning">
+					<div class="panel-heading">
+					  <h3 class="panel-title">Select your Avatar.<a href="javascript:void(0);" ng-click="ProfileCtrl.closePopup()" class="close-popup-btn"><i class="fa fa-times" aria-hidden="true"></i></a></h3>
+					</div>
+					<div class="panel-body">
+						<div class="col-md-12 row">
+							<div class="col-md-3 clickableAvatar" ng-repeat="avatar in ProfileCtrl.avatars" ng-click="ProfileCtrl.selectAvatar($index)">
+								<div class="user-profile-pic">
+									<div class="avatars {{avatar.avatarName}}"></div>
+									<div class="selectedAvatar" ng-if="avatar.isSelected"><i class="fa fa-check-circle text-info" aria-hidden="true"></i></div>
+								</div>
+							</div>
+						</div>
+						<hr class="col-md-12" />
+						<div class="col-md-12">
+							<button class="btn btn-sm btn-warning" ng-click="ProfileCtrl.confirmDP()" ng-disabled = "!ProfileCtrl.selectedAvatar">Change Picture</button>
+							<button class="btn btn-sm btn-default" ng-click="ProfileCtrl.closePopup()">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

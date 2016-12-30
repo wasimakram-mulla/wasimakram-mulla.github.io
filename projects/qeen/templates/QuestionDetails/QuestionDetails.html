@@ -1,0 +1,177 @@
+﻿<div class="col-md-12 QuestionDetails">
+	<div class="container" ng-if="QueDetsCtrl.questionData">
+		<div class="col-md-10 row">
+			<div class="col-md-12">
+				<h4 class="text-primary">{{QueDetsCtrl.questionData.quesTitle}}</h4>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<h6><em>Asked: </em><strong class="text-info">{{QueDetsCtrl.questionData.postedOn | date : "dd-MM-yyyy HH:mm:ss"}}</strong></h6>
+			<h6><em>Views: </em><strong class="text-info">{{QueDetsCtrl.questionData.views}}</strong></h6>
+			<button class="btn btn-sm btn-danger" ng-if="QueDetsCtrl.questionData.userId == QueDetsCtrl.userId" ng-click="QueDetsCtrl.deleteQuestion()"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete Question</button>
+		</div>
+		<hr class="col-md-12"/>
+
+		<div class="col-md-1 text-center">
+			<h4>
+				<i class="fa fa-thumbs-o-up" aria-hidden="true" title="Nice question." ng-click="QueDetsCtrl.questionVoteUp();" ng-class="{'disabled':QueDetsCtrl.userId==null,'active':QueDetsCtrl.activeQuesVoteUp}"></i>
+			</h4>
+			<h4 ng-class="{'text-success':QueDetsCtrl.questionData.votes>=0,'text-danger':QueDetsCtrl.questionData.votes<0}"><strong>{{QueDetsCtrl.questionData.votes}}</strong></h4>
+			<h4>
+				<i class="fa fa-thumbs-o-down" aria-hidden="true" title="Could have been better." ng-click="QueDetsCtrl.questionVoteDown();" ng-class="{'disabled':QueDetsCtrl.userId==null,'active':QueDetsCtrl.activeQuesVoteDown}"></i>
+			</h4>
+			<h4>
+				<i class="fa" title="{{QueDetsCtrl.bookmarkText}}" ng-click="QueDetsCtrl.bookmarkQuestion();" ng-class="{'disabled':QueDetsCtrl.userId==null,'fa-star':QueDetsCtrl.bookmarkQueFlag == true,'fa-star-o':QueDetsCtrl.bookmarkQueFlag == false}"></i>
+			</h4>
+		</div>
+
+		<div class="col-md-11">
+			<div class="col-md-12 row" ng-bind-html="QueDetsCtrl.questionData.quesDesc">
+
+			</div>
+			<div class="col-md-9 row"><br/>
+				<button class="btn btn-xs btn-info tags" ng-repeat="tag in QueDetsCtrl.questionData.tags" ng-click="QueDetsCtrl.loadTagQuestions();">{{tag}}</button>
+				<br/>
+				<br/>
+				<h5 class="addCommentBox">
+					<a href="javascript:void(0);" ng-click="QueDetsCtrl.editQuestion()"><i class="fa fa-pencil" aria-hidden="true"></i> edit</a>					
+					<a class="link" href="javascript:void(0)" ng-click="QueDetsCtrl.scrollBottom()">
+						<i class="fa fa-hand-o-up" aria-hidden="true"></i> I got an answer.
+					</a>
+				</h5>
+			</div>
+			<div class="col-md-3 userdets"><br/>
+				<strong class="user-details">
+					<img ng-src="imgs/user.png" height="40" width="40" src="imgs/user.png" ng-if="!QueDetsCtrl.questionData.userAvatar">
+					<div class="user-profile-pic-small" ng-if="QueDetsCtrl.questionData.userAvatar">
+						<div class="avatars {{QueDetsCtrl.questionData.userAvatar}}"></div>
+					</div>
+					<div class="usertext">
+						<a href="#/profile/{{QueDetsCtrl.questionData.userId}}">{{QueDetsCtrl.questionData.userName}}</a><br>
+						<span class="text-success"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> {{QueDetsCtrl.questionData.userPoints}}</span>
+					</div>
+				</strong>
+			</div>
+		</div>
+
+		<!-- Answers -->
+			<div class="col-md-12 row" ng-if="QueDetsCtrl.answersData">
+				<br/>
+				<strong ng-if="QueDetsCtrl.answersData.length==1">{{QueDetsCtrl.answersData.length}} Answer</strong>
+				<strong ng-if="QueDetsCtrl.answersData.length>1">{{QueDetsCtrl.answersData.length}} Answers</strong>
+			</div>
+			<hr class="col-md-12 small-top-margin"/>
+
+			<div class="col-md-12 row" ng-if="QueDetsCtrl.answersData" ng-repeat="answer in QueDetsCtrl.answersData">
+				<div class="col-md-1 text-center">
+					<h4>
+						<i class="fa fa-thumbs-o-up" aria-hidden="true" title="Nice answer." ng-click="QueDetsCtrl.answerVoteUp(answer.ansId, $index, answer.userId);" ng-class="{'disabled':QueDetsCtrl.userId==null,'active':answer.ansVoteUp}"></i>
+					</h4>
+					<h4 ng-class="{'text-success':answer.votes>=0,'text-danger':answer.votes<0}"><strong>{{answer.votes}}</strong></h4>
+					<h4>
+						<i class="fa fa-thumbs-o-down" aria-hidden="true" title="Could have been better." ng-click="QueDetsCtrl.answerVoteDown(answer.ansId, $index, answer.userId);" ng-class="{'disabled':QueDetsCtrl.userId==null,'active':answer.ansVoteDown}"></i>
+					</h4>
+				</div>
+
+				<div class="col-md-11">
+					<div class="col-md-12 row" ng-bind-html="answer.ansDesc"></div>
+					<div class="col-md-12 row addCommentBox"><br/>
+						<strong ng-if="answer.answerCmnts.length>0">Comments</strong>
+						<hr class="col-md-11 small-top-margin" ng-if="answer.answerCmnts.length>0"/>
+						<div class="row" ng-repeat="cmnts in answer.answerCmnts" ng-if="answer.answerCmnts.length>0">
+							<div class="col-md-12">
+									{{cmnts.commentText}} - <a href="#/profile/{{cmnts.userId}}">{{cmnts.userName}}</a> on <span class="text-info">{{cmnts.postedOn | date: 'dd-MM-yyyy / HH:mm'}}</span>
+								
+							</div>
+							<hr class="col-md-11"/>
+						</div>
+						<h6 class="col-md-8">
+							<a href="javascript:void(0);" ng-click="QueDetsCtrl.editComment(answer)"><i class="fa fa-pencil" aria-hidden="true"></i> edit</a>
+							<a href="javascript:void(0)" ng-if="answer.userId == QueDetsCtrl.userId" ng-click="QueDetsCtrl.deleteAnsEvent(answer)"><i class="fa fa-trash-o" aria-hidden="true"></i> delete</a>
+							<a class="link" href="javascript:void(0)" ng-click="QueDetsCtrl.showCommentBox($index)">
+								<i class="fa fa-commenting-o" aria-hidden="true"></i> 
+									Add a comment
+							</a>
+						</h6>
+						<div class="col-md-3 userdets"><br/>
+							<strong class="user-details">
+								<img ng-src="imgs/user.png" height="40" width="40" src="imgs/user.png" ng-if="!answer.userAvatar">
+								<div class="user-profile-pic-small" ng-if="answer.userAvatar">
+									<div class="avatars {{answer.userAvatar}}"></div>
+								</div>
+								<div class="usertext">
+									<a href="#/profile/{{answer.userId}}">{{answer.userName}}</a><br>
+									<span class="text-success"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> {{answer.userPoints}}</span>
+									<br/><span class="text-info">{{answer.ansPostedOn | date: 'dd-MM-yyyy'}}</span>
+								</div>
+							</strong>
+						</div>
+						<div class="row col-md-12 commentBox" ng-show="QueDetsCtrl.dispCommentBox[$index].show==true">
+							<div class="col-md-10">
+								<input type="text" class="form-control" placeholder="Add comment" ng-model="QueDetsCtrl.commentBox[$index]"/>
+							</div>
+							<div class="col-md-2">
+								<button class="btn btn-sm btn-info" ng-click="QueDetsCtrl.postComment($index, answer)">
+									<i class="fa fa-check" aria-hidden="true"></i>
+								</button>
+								<button class="btn btn-sm btn-warning" ng-click="QueDetsCtrl.hideCommentBox()">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			<hr class="col-md-12"/>
+			</div>
+			<div class="col-md-12 row answerBox" ng-if="QueDetsCtrl.userId">
+					<h4>Your Answer</h4>
+					<textarea class="form-control" placeholder="I knew answer to this question." ng-model="QueDetsCtrl.answerText" ng-keyUp="QueDetsCtrl.addEnterKeyToAns($event)"></textarea>
+					<hr/>
+					<strong class="text-warning"><u>Output</u></strong>
+					<output ng-bind-html="QueDetsCtrl.answerText"></output>
+					<hr/>
+					<button class="btn btn-sm btn-primary" ng-click="QueDetsCtrl.postAnswer()">Post Your Answer</button>
+			</div>
+	</div>
+
+	<div class="overlay" ng-show="QueDetsCtrl.questionInEditMode">
+		<div class="col-md-3"></div>
+		<div class="popup-modal col-md-6" ng-if="QueDetsCtrl.questionInEditMode">
+			<div class="panel panel-warning">
+				<div class="panel-heading">
+				  <h3 class="panel-title">Edit content <a href="javascript:void(0);" ng-click="QueDetsCtrl.closePopup()" class="close-popup-btn"><i class="fa fa-times" aria-hidden="true"></i></a></h3>
+				</div>
+				<div class="panel-body">
+					<strong class="text-info" ng-if="QueDetsCtrl.editingQueAns == 'question'">Edit Title:</strong>
+					<input type="text" class="form-control" ng-model="QueDetsCtrl.editTitle" ng-if="QueDetsCtrl.editingQueAns == 'question'"/>
+					<br/>
+					<strong class="text-info">Edit: <span ng-if="QueDetsCtrl.editingQueAns == 'question'">Description</span></strong>
+					<textarea class="form-control" ng-model="QueDetsCtrl.editText"></textarea>
+					<hr/>
+					<button class="btn btn-sm btn-primary" ng-click="QueDetsCtrl.updateQueAns()">Update</button>
+					<button class="btn btn-sm btn-default" ng-click="QueDetsCtrl.closePopup()">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="overlay" ng-show="QueDetsCtrl.deleteAnswerFlag">
+		<div class="col-md-3"></div>
+		<div class="popup-modal col-md-6" ng-if="QueDetsCtrl.deleteAnswerFlag">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+				  <h3 class="panel-title">Delete - {{QueDetsCtrl.deletingQueAns | uppercase}}<a href="javascript:void(0);" ng-click="QueDetsCtrl.closeDelPopup()" class="close-popup-btn"><i class="fa fa-times" aria-hidden="true"></i></a></h3>
+				</div>
+				<div class="panel-body">
+					<strong class="text-info">Are you sure, you want the delete this {{QueDetsCtrl.deletingQueAns}}? </strong>
+					<h6 class="text-danger" ng-if="QueDetsCtrl.deletingQueAns == 'question'"><br/><br/>Deleting this question will delete all the associated answers, answer comments and question tags for this question.</h6>
+					<h6 class="text-danger" ng-if="QueDetsCtrl.deletingQueAns == 'answer'"><br/><br/>Deleting this answer will delete all the associated comments from all users for this answer.</h6>
+					<hr/>
+					<button class="btn btn-sm btn-primary" ng-click="QueDetsCtrl.removeQueAns()">Delete</button>
+					<button class="btn btn-sm btn-default" ng-click="QueDetsCtrl.closeDelPopup()">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

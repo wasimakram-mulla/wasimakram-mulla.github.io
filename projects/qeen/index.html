@@ -1,0 +1,75 @@
+<!doctype html>
+<html ng-app="Qeen">
+	<head>
+		<title>Question Keen</title>
+		<!-- Libraries -->
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" href="css/font-awesome.min.css" />
+		<link rel="stylesheet" href="css/bootstrap-override.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="templates/AllQuestions/css/style.css" />
+		<link rel="stylesheet" href="templates/AskQuestion/css/style.css" />
+		<link rel="stylesheet" href="templates/SignIn/css/style.css" />
+		<link rel="stylesheet" href="templates/Teams/css/style.css" />
+		<link rel="stylesheet" href="templates/QuestionDetails/css/style.css" />
+		<link rel="stylesheet" href="templates/LeaveProject/css/style.css" />
+		<link rel="stylesheet" href="templates/Approvals/css/style.css" />
+		<link rel="stylesheet" href="templates/Profile/css/style.css" />
+		<link rel="stylesheet" href="templates/SearchUser/css/style.css" />
+		<link rel="stylesheet" href="templates/QuestionTags/css/style.css" />
+		<link rel="stylesheet" href="templates/SignUp/css/style.css" />
+		
+		<link rel="icon" href="favicon.ico">
+		<script src="js/libs/jquery-3.1.1.min.js"></script>
+		<script src="js/libs/angular.min.js"></script>
+		<script src="js/libs/angular-animate.min.js"></script>
+		<script src="js/libs/angular-route.min.js"></script>
+		<script src="js/libs/angular-sanitize.min.js"></script>
+		<script src="js/libs/bootstrap.min.js"></script>
+		<script src="js/libs/enc.min.js"></script>
+		<script src="https://cdn.backand.net/backand/dist/1.8.11/backand.min.js"></script>
+		<!-- Custom JS -->
+		<script src="js/app.js"></script>
+		<script src="js/config/app-config.js"></script>
+		<script src="js/common/controllers/NavigationController.js"></script>
+		<script src="js/common/services/QuestionsService.js"></script>
+		<script src="js/common/services/UserService.js"></script>
+		<script src="js/common/services/ProjectsService.js"></script>
+		<script src="js/common/services/TagsService.js"></script>
+		<script src="js/common/services/AnswersService.js"></script>
+		<script src="templates/AllQuestions/js/controllers/AllQuestionsController.js"></script>		
+		<script src="templates/SignIn/js/controllers/SignInController.js"></script>
+		<script src="templates/AskQuestion/js/controllers/AskQuestionController.js"></script>
+		<script src="templates/Teams/js/controllers/TeamController.js"></script>
+		<script src="templates/CreateProject/js/controllers/CreateProjectController.js"></script>
+		<script src="templates/QuestionDetails/js/controllers/QuestionDetailsController.js"></script>
+		<script src="templates/LeaveProject/js/controllers/LeaveProjectController.js"></script>
+		<script src="templates/RequestProject/js/controllers/RequestProjectController.js"></script>
+		<script src="templates/Approvals/js/controllers/ApprovalController.js"></script>
+		<script src="templates/ChangePassword/js/controllers/ChangePasswordController.js"></script>
+		<script src="templates/Profile/js/controllers/ProfileController.js"></script>
+		<script src="templates/SearchUser/js/controllers/SearchUserController.js"></script>
+		<script src="templates/QuestionTags/js/controllers/QuestionTagsController.js"></script>
+		<script src="templates/SignUp/js/controllers/SignUpController.js"></script>
+	</head>
+<body>
+<ng-include src="'nav-bar.html'"></ng-include>
+
+<ng-view></ng-view>
+
+<div class="emptyOverlay" ng-if="errorMessage || successMessage || loader"></div>
+
+<div class="errorOverlay" ng-if="errorMessage">
+	<h4 class="overlay-text"><i class="fa fa-info" aria-hidden="true"></i> {{errorMessage}}</h4>
+</div>
+<div class="successOverlay" ng-if="successMessage">
+	<h4 class="overlay-text"><i class="fa fa-bolt" aria-hidden="true"></i> <span ng-bind-html="successMessage"></span></h4>
+</div>
+<div class="loaderOverlay" ng-if="loader">
+	<h4 class="overlay-text"><i class="fa fa-circle-o-notch fa-spin fa-fw" aria-hidden="true"></i> 
+		<span>Please wait...</span>
+		<span ng-if="loadMessage">{{loadMessage}}</span></h4>
+</div>
+<div class="imagePreloader"></div>
+</body>
+</html>

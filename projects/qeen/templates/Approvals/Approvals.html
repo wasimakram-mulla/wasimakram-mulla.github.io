@@ -1,0 +1,88 @@
+<div class="col-md-12 ApproveRequests">
+	<div class="container">
+		<div class="col-md-12 row">
+			<h4 class="text-primary">Approvals</h4>
+			<hr/>
+		</div>
+        
+        <div class="col-md-12">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" ng-class="{'active':ApproveCtrl.activeTab == 'pendingArroval'}" ng-click="ApproveCtrl.setActiveTab('pendingArroval')">
+                    <a href="javascript:void(0)">Pending approvals</a>
+                </li>
+                <li role="presentation" ng-class="{'active':ApproveCtrl.activeTab == 'myRequest'}" ng-click="ApproveCtrl.setActiveTab('myRequest')">
+                    <a href="javascript:void(0)">My requests</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-12 approvalsContainer" ng-if="ApproveCtrl.activeTab == 'pendingArroval'">
+            <div class="col-md-12">
+                <strong class="text-info"><em>Pending Approvals</em></strong>
+                <br/><br/>
+                <table class="table table-striped" ng-if="ApproveCtrl.projects.length>0">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Project Name</th>
+                        <th>Requesting User</th>
+                        <th>Approval status</th>
+                        <th>Approve</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="prj in ApproveCtrl.projects">
+                        <td>{{$index+1}}</td>
+                        <td>{{prj.projName}}</td>
+                        <td>{{prj.userName}}</td>
+                        <td>{{prj.approvalStatus}}</td>
+                        <td>
+                            <button class="btn btn-sm btn-success" ng-click="ApproveCtrl.approveProject(prj)">
+                                <i class="fa fa-check"></i> Approve
+                            </button>
+                            <button class="btn btn-sm btn-danger" ng-click="ApproveCtrl.declineProject(prj)">
+                                <i class="fa fa-times"></i> Decline
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <strong class="text-danger" ng-if="ApproveCtrl.projects.length<=0"><i class="fa fa-exclamation-triangle"></i> No pending requests found.</strong>
+            </div>
+        </div>
+        
+        <div class="col-md-12 requestContainer" ng-if="ApproveCtrl.activeTab == 'myRequest'">
+            <div class="col-md-12">
+               <strong class="text-info"><em>My Requests</em></strong>
+               <br/><br/><br/>
+                <div class="col-md-2 row">
+                    <h4>Search request: </h4>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Search requests" ng-model="ApproveCtrl.searchReq"/>
+                <br/>
+                </div>
+                <table class="table table-striped" ng-if="ApproveCtrl.myReqs.length>0">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Project Name</th>
+                        <th>Approval status</th>
+                        <th>Request Date / Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="prj in ApproveCtrl.myReqs | filter:ApproveCtrl.searchReq">
+                        <td>{{$index+1}}</td>
+                        <td>{{prj.projName}}</td>
+                        <td>{{prj.approvalStatus}}</td>
+                        <td>{{prj.reqPostedOn | date: 'dd-MM-yyyy / HH:mm:ss'}}
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="col-md-12 row">
+                    <strong class="text-danger" ng-if="ApproveCtrl.myReqs.length<=0"><i class="fa fa-exclamation-triangle"></i> No requests found.</strong>
+                </div>
+            </div>
+        </div>
+	</div>
+</div>

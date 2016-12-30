@@ -1,0 +1,25 @@
+﻿<div class="container CreateProject">
+	<div class="col-md-12 row">
+		<h4 class="text-primary">Create new Project</h4>
+		<hr/>
+	</div>
+	<div class="col-md-12 row">
+		<div class="col-md-2 row">
+			<h5 class="text-info">Project name: </h5>
+		</div>
+		<div class="col-md-6 row">
+			<input type="text" class="form-control" placeholder="Enter project name." ng-model="CreatePrjCtrl.prjName" ng-blur="CreatePrjCtrl.checkPrjAvail()" ng-keyUp="CreatePrjCtrl.modifyPrjNm($event)"/>
+			<h6 class="text-warning">Note: Please blur out or hit enter to check if project name is available.</h6>
+			<h6 class="text-danger" ng-if="!CreatePrjCtrl.projectNmAvail && CreatePrjCtrl.showError"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Project name unavailable, please select a different name.</h6>
+			<h6 class="text-success" ng-if="CreatePrjCtrl.projectNmAvail && CreatePrjCtrl.showError"><i class="fa fa-check" aria-hidden="true"></i> Project name available.</h6>
+		</div>
+		<div class="col-md-2"></div>
+		<div class="col-md-2">
+			<h5><a class="text-danger" href="#/leave-project"><i class="fa fa-minus-circle" aria-hidden="true"></i> Leave project</a></h5>
+		</div>		
+	</div>
+	
+	<div class="col-md-12 row"><br/>
+		<button class="btn btn-sm btn-success" ng-disabled="!(CreatePrjCtrl.prjName) || CreatePrjCtrl.projectNmAvail == false" ng-click="CreatePrjCtrl.createNewProject()">Create project</button>
+	</div>
+</div>

@@ -1,0 +1,60 @@
+﻿<div class="container SignIn">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<form class="sign-in" ng-submit="SignInCtrl.signIn()">
+			<div class="input-group margin-bottom-sm">
+				<h3 class="text-success">Sign In</h3>
+			</div>
+			<div class="input-group margin-bottom-sm">
+				<span class="input-group-addon"><i class="fa fa-user-o fa-fw"></i></span>
+				<input class="form-control" type="text" placeholder="Username" ng-model="SignInCtrl.usernm"/>
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+				<input class="form-control" type="password" placeholder="Password" ng-model="SignInCtrl.passwd"/>
+			</div>
+			<div class="input-group">
+				<button class="btn btn-primary btn-block" type="submit" ng-disabled="!SignInCtrl.usernm || !SignInCtrl.passwd">
+					<i class="fa fa-sign-in" aria-hidden="true"></i> Sign In
+				</button><br/>
+				Don't have an account? <a href="#/sign-up" class="link">Sign up</a><br/>
+				<a href="javascript:void(0)" ng-click="SignInCtrl.showForgetPopUp()"><i class="fa fa-history" aria-hidden="true"></i> Forget password</a>
+			</div>
+		</form>
+	</div>
+
+
+	<div class="overlay" ng-if="SignInCtrl.forgetPasswordPopupFlag">
+		<div class="col-md-3"></div>
+		<div class="popup-modal col-md-6" ng-show="SignInCtrl.forgetPasswordPopupFlag">
+			<div class="panel panel-danger">
+				<div class="panel-heading">
+				  <h3 class="panel-title">Forget Password <a href="javascript:void(0);" ng-click="SignInCtrl.closePopup()" class="close-popup-btn"><i class="fa fa-times" aria-hidden="true"></i></a></h3>
+				</div>
+				<div class="panel-body">
+					<div class="enter-username-panel" ng-if="SignInCtrl.popupEnterUsernmPane">
+						<strong class="text-primary">Enter your user name:</strong><br/>
+						<input type="text" class="form-control" placeholder="Enter username" ng-model="SignInCtrl.FPusername"/><br/>
+						<button class="btn btn-sm btn-primary float-right" ng-click="SignInCtrl.popupShowSecQuesPane();">Next</button>
+					</div>
+					<div class="enter-username-panel" ng-if="SignInCtrl.popupSecQuesPane">
+						<strong class="">Please answer your security question.</strong><br/><br/>
+						<strong class="text-primary">{{SignInCtrl.secQue}}</strong><br/>
+						<input type="password" class="form-control" placeholder="Answer is..." ng-model="SignInCtrl.FPsecAnswer"/><br/>
+						<h6 class="text-danger">Note: Your answer is case sentitive</h6>
+						<button class="btn btn-sm btn-primary float-right" ng-click="SignInCtrl.popupGetPassword();">Get password</button>
+					</div>
+					<div class="enter-username-panel" ng-if="SignInCtrl.popupPasswdPane">
+						<strong><a href="javascript:void(0)" ng-click="SignInCtrl.showPassword=!SignInCtrl.showPassword">Click Here</a> for your password. </strong><br/>
+						<h5 class="text-success" ng-if="SignInCtrl.showPassword">{{SignInCtrl.secAns}}</h5>
+						<h5 class="text-danger"><i class="fa fa-exclamation-triangle"></i> Note: Please check around before clicking the link so that no one can see your password.</h5><br/>
+					</div>
+					<hr class="col-md-12"/>
+					<div class="col-md-12 row">
+						<button class="btn btn-sm btn-default" ng-click="SignInCtrl.closePopup()">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

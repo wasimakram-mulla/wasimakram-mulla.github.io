@@ -1,0 +1,41 @@
+﻿.AllQuestions .nav-right{
+	float:right;
+}
+
+.AllQuestions .questionsWrapper{
+	margin-top:5px;
+}
+
+.AllQuestions .questionText{
+	font-size:17px;
+}
+
+.AllQuestions .tags{	
+	margin-top:5px;
+}
+
+.AllQuestions .userdets{	
+	font-size:12px;
+}
+.AllQuestions .userdets img{
+	border:1px solid #777;
+	border-radius:50%;
+	float:left;
+}
+.AllQuestions .userdets .usertext{
+	display:inline-block;
+	margin-left:10px;
+	vertical-align: top;
+}
+
+.AllQuestions .Loader{
+	text-align:center;
+	font-size:18px;
+}
+
+.AllQuestions .user-profile-pic-small {
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    position: relative;
+}

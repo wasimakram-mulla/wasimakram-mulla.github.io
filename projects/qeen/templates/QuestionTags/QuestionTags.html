@@ -1,0 +1,47 @@
+﻿<div class="container QuestionTags">
+	<div class="col-md-12 row">
+		<h4 class="text-primary">{{QueTagCtrl.pageTitle}}</h4>
+		<hr/>
+	</div>
+	
+	<div class="col-md-12 row" ng-if="QueTagCtrl.showQuestionsFlag == false">
+		<div class="col-md-2 tags" ng-repeat="tag in QueTagCtrl.allTags">
+			<button class="btn btn-block btn-sm btn-primary" ng-click="QueTagCtrl.loadQuestionOfTag(tag)">{{tag.langName}}
+				<span class="badge">{{tag.questions}}</span>
+			</button>
+		</div>
+		<div class="col-md-12 text-danger">
+			<h6><i class="fa fa-exclamation"></i> Note: These tags only show questions in General project.</h6>
+		</div>
+	</div>
+	
+	<div class="col-md-12 row" ng-if="QueTagCtrl.showQuestionsFlag == true">
+		<ul class="nav nav-pills" role="tablist">
+			<li role="presentation" class="active">
+				<a href="javascript:void(0)" ng-click="QueTagCtrl.showAllTags()"><i class="fa fa-chevron-left"></i> All Tags</a>
+			</li>
+		</ul><br/>
+		<h5 class="text-primary"><strong><em><u>{{QueTagCtrl.selectedTagNm | uppercase}}</u></em></strong></h5>
+		<hr/>
+		
+		<div class="col-md-12">
+			<div class="questions" ng-if="QueTagCtrl.tagQuestions.length>0">
+				<div class="col-md-12 row" ng-repeat="question in QueTagCtrl.tagQuestions">
+					<div class="col-md-2 questOpts row">
+						<strong class="text-primary">{{question.answerCount}}</strong> <i class="fa fa-pencil-square" aria-hidden="true"></i> Answers<br/>
+					</div>
+					<div class="col-md-10">
+						<div class="col-md-9 row questionText">
+							<a href="#/question-details/{{question.quesId}}">{{question.quesTitle}}</a>
+						</div>
+						<div class="col-md-3">
+							<strong><u>Asked by</u>: <a href="#/profile/{{question.userId}}"><em class="text-info">{{question.userName}}</em></a></strong><br/>
+						</div>
+					</div>
+					<hr class="col-md-12 row"/>
+				</div>
+			</div>
+			<h5 class="text-danger" ng-if="QueTagCtrl.tagQuestions.length<=0"><i class="fa fa-exclamation-triangle"></i> No questions found.</h5>
+		</div>
+	</div>
+</div>

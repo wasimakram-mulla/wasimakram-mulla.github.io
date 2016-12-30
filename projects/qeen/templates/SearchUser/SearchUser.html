@@ -1,0 +1,39 @@
+﻿<div class="container SearchUser">
+	<div class="col-md-12 row">
+		<h4 class="text-primary">Search User</h4>
+		<hr/>
+	</div>
+	<div class="col-md-12 row">
+		<div class="col-md-2 row">
+			<h5 class="text-info">User Name / Full Name: </h5>
+		</div>
+		<div class="col-md-6 row">
+			<input type="text" class="form-control" placeholder="Enter user name / full name." ng-model="searchUsrCtrl.searchUsr" ng-keyUp="searchUsrCtrl.searchOnKeyPress($event)" ng-disabled="searchUsrCtrl.isLoading"/>
+			<h6 class="text-warning">Note: You cannot add user to project / team from here.</h6>
+			<h6 class="text-danger" ng-if="searchUsrCtrl.noUserFound">
+				<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> User name not found.
+			</h6>
+		</div>
+		<div class="col-md-2" ng-if="searchUsrCtrl.isLoading">
+			<h4><i class="fa fa-spinner fa-pulse fa-fw text-primary"></i></h4>
+		</div>
+		<hr class="col-md-12"/>
+	</div>
+	
+	<div class="col-md-12 row" ng-if="searchUsrCtrl.searchedUsers.length>0">
+		<div class="col-md-3" ng-repeat="usr in searchUsrCtrl.searchedUsers">
+			<strong class="userdets">
+				<img height="80" width="80" src="imgs/user.png" ng-if="!usr.userAvatar" />
+				<div class="user-profile-pic-small" ng-if="usr.userAvatar">
+					<div class="avatars {{usr.userAvatar}}"></div>
+				</div>
+				<div class="usertext">
+					<a href="#/profile/{{usr.userId}}">{{usr.userFullName}}</a><br>
+					<a href="#/profile/{{usr.userId}}">{{usr.userName}}</a><br>
+					<span class="text-success"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> {{usr.userPoints}}</span>
+				</div>
+			</strong>
+		</div>
+	</div>
+
+</div>

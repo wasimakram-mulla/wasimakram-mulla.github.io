@@ -1,0 +1,65 @@
+﻿.SignIn.container{
+	padding:100px 20px;
+}
+
+.SignIn form{
+	border:1px solid #cccccc;
+	padding:0px 25px 25px 25px;
+}
+.SignIn .overlay{
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(128, 128, 128, 0.2);
+    height: 100%;
+    width: 100%;
+	z-index:2;
+}
+
+.SignIn .overlay .popup-modal{
+    min-height: 50px;
+    margin: 50px auto;
+}
+
+.SignIn .overlay .popup-modal textarea{
+    resize:none;
+	height:200px;
+}
+
+.SignIn .overlay .popup-modal .panel-body{
+    overflow: hidden;
+}
+
+.SignIn .overlay .popup-modal .close-popup-btn{
+    float:right;
+}
+
+.SignIn .popup-modal.ng-enter {
+  transition:0.5s linear all;
+  transform:translateY(-100%);
+}
+
+.SignIn .popup-modal.ng-enter.ng-enter-active {
+  transform:translateY(0%);
+}
+
+.SignIn .enter-username-panel.ng-enter {
+  transition:0.2s linear all;
+  transform:translateX(100%);
+}
+
+.SignIn .enter-username-panel.ng-enter.ng-enter-active {
+  transform:translateX(0%);
+}
+
+.SignIn .enter-username-panel.ng-leave {
+  transition:0.2s linear all;
+  transform:translateX(0%);
+}
+
+.SignIn .enter-username-panel.ng-leave-active {
+  transform:translateX(-100%);
+}
+.SignIn .float-right{
+	float:right;
+}

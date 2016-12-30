@@ -1,0 +1,33 @@
+﻿.navbar-brand {
+    height: 40px;
+    padding: 10px 15px;
+}
+.navbar {
+    min-height: 20px;
+}
+
+.nav>li>a{
+	padding: 5px 15px;
+}
+
+.form-control{
+	height: 40px;
+}
+
+.input-group{
+	margin-top: 10px;
+	width:100%;
+}
+
+.container{
+	background:#ffffff;
+	padding:20px;
+}
+
+@media (min-width: 768px)
+{
+	.navbar-nav>li>a {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+}

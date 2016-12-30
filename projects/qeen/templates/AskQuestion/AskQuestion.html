@@ -1,0 +1,87 @@
+﻿<div class="col-md-12 AskQuesion">
+
+	<div class="container">
+		<div class="col-md-10 row">
+			<ul class="nav nav-pills" role="tablist">
+				<li role="presentation" class="active">
+					<a href="#"><i class="fa fa-chevron-left"></i> All Questions</a>
+				</li>
+			</ul>
+		</div>
+		<hr class="col-md-12" />
+		<div class="row">
+			<div class="col-md-10">
+				<div class="col-md-1 row"><h4>Title</h4></div>
+				<div class="col-md-11 row">
+					<input type="text" class="form-control" placeholder="What is your technical query ? Specific and brief." ng-model="AskQuesCtrl.questionTitle">
+				</div>
+			</div>
+			<div class="col-md-2">
+				<h5><a class="text-success" href="#/create-project"><i class="fa fa-plus-circle" aria-hidden="true"></i> Create a new project</a></h5>
+				<h5 ng-if="AskQuesCtrl.userprojects.length>1"><a class="text-danger" href="#/leave-project"><i class="fa fa-minus-circle" aria-hidden="true"></i> Leave project</a></h5>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-10">
+				<div class="col-md-3 row"><h4>Select project/s: </h4></div>
+				<div class="col-md-9 row">
+					<h4 ng-if="!AskQuesCtrl.userprojects"><i class="fa fa-spinner fa-pulse text-info"></i></h4>
+					<div class="checkbox" ng-repeat="prj in AskQuesCtrl.userprojects">					  
+					  <label><input type="checkbox" ng-click="AskQuesCtrl.toggleProjectSel(prj)">{{prj.projName}}</label>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="code-panel">
+					<h4>Code:</h4> <span>(you can use any html tags, but there are some standards you need to follow.)
+					<i class="fa fa-question-circle text-danger" aria-hidden="true"></i>
+					<textarea class="form-control" ng-model="AskQuesCtrl.quesDesc"></textarea>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="preview-panel">
+					<h4>Preview:</h4>
+					<output ng-bind-html="AskQuesCtrl.quesDesc"></output>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6">
+				<div class="col-md-2">
+					<h4>Tags</h4>
+				</div>
+				<div class="col-md-8">
+					<input type="text" class="form-control" placeholder="Search and add Tags (Max. {{AskQuesCtrl.tagLimit}} tags)" list="AllTags" ng-model="AskQuesCtrl.searchTag"/>
+					If tag not found, <a href="#">click here</a><br/>
+					<span class="text-danger" ng-if="AskQuesCtrl.selectedTags.length>=AskQuesCtrl.tagLimit">Maximum tag limit reached.</span>
+					<datalist id="AllTags">
+						<option ng-repeat="tags in AskQuesCtrl.allTags" ng-value="tags.langName" />
+					</datalist>
+				</div>
+				<div class="col-md-2">
+					<button class="btn" title="Click to add tag" ng-click="AskQuesCtrl.addTag()" ng-disabled="AskQuesCtrl.selectedTags.length >= AskQuesCtrl.tagLimit || !AskQuesCtrl.searchTag" ng-class="{'btn-warning':AskQuesCtrl.selectedTags.length<AskQuesCtrl.tagLimit,'btn-danger':AskQuesCtrl.selectedTags.length>=AskQuesCtrl.tagLimit}">
+						<i class="fa fa-plus"></i>
+					</button>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<strong ng-if="AskQuesCtrl.selectedTags.length">Selected Tags:</strong>
+				<label class="label-tags label label-info" ng-repeat="selTags in AskQuesCtrl.selectedTags">
+					{{selTags.langName}}
+					<i class="fa fa-times removeTag" ng-click="AskQuesCtrl.removeTag(selTags)"></i>
+				</label>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12"><br/><br/>
+				<button class="btn btn-sm btn-primary" ng-click="AskQuesCtrl.postQuestion();" ng-disabled="AskQuesCtrl.selectedTags.length == 0 || !AskQuesCtrl.quesDesc || !AskQuesCtrl.questionTitle">Post your question</button>
+			</div>
+		</div>
+	</div><br/><br/><br/>
+</div>

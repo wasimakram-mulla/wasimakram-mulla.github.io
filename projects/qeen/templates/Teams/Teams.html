@@ -1,0 +1,82 @@
+﻿<div class="container Teams">
+	<div class="col-md-12 row">
+		<h4 class="text-primary">Project Teams</h4>
+		<hr/>
+	</div>
+	<div ng-class="{'col-md-12':!TeamCtrl.usrIdAdmin,'col-md-8':TeamCtrl.usrIdAdmin}" >
+	<div class="col-md-12 row">
+		<ul class="nav nav-pills row" role="tablist">
+			<li role="presentation">
+				<a href="javascript:void(0)"><strong>Projects:</strong></a>
+			</li>
+			<li role="presentation" ng-repeat="prjs in TeamCtrl.userprojects" ng-if="prjs.projId != 1">
+				<button class="btn btn-sm" ng-click="TeamCtrl.selectProject(prjs, $index)" ng-class="{'btn-primary':TeamCtrl.selectedPrjTab == ($index), 'btn-info':TeamCtrl.selectedPrjTab != ($index)}">
+					{{prjs.projName}}
+				</button>
+			</li>
+		</ul>
+	</div>
+
+	<div class="row col-md-12" ng-if="TeamCtrl.prjUsers">
+		<br/>
+		<h4 class="text-info"><i class="fa fa-users"></i> <u>Users</u> | <u>{{TeamCtrl.selectedPrj.projName}}</u></h4>
+	</div>
+
+	<div class="row col-md-12" ng-if="TeamCtrl.prjUsers.length>0">
+		<table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Username</th>
+                <th>Points</th>
+                <th ng-if="TeamCtrl.usrIdAdmin">Remove</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="usrs in TeamCtrl.prjUsers">
+                <td>{{$index+1}}</td>
+                <td><a href="#/profile/{{usrs.userId}}">{{usrs.userFullName}}</a></td>
+                <td><a href="#/profile/{{usrs.userId}}">{{usrs.userName}}</a></td>
+                <td>{{usrs.userPoints}}</td>
+				<td ng-if="TeamCtrl.usrIdAdmin"><button class="btn btn-xs btn-danger" title="Remove user from project." ng-click="TeamCtrl.removeUserFromProject(usrs)"><i class="fa fa-trash"></i></button></td>
+              </tr>
+            </tbody>
+          </table>
+	</div>
+	<div class="row col-md-8" ng-if="TeamCtrl.prjUsers.length<=0">
+		<h4 class="text-danger"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Cannot find any users for this project.</h4>
+	</div>
+	</div>
+	<div class="col-md-4" ng-if="TeamCtrl.usrIdAdmin">
+		<br/>
+		<h4 class="text-success"><i class="fa fa-shield" aria-hidden="true"></i><u> You are admin</u></h4>
+		<strong class="text-primary">Search and Add users.</strong>
+		<div class="input-group margin-bottom-sm">
+			<input type="text" class="form-control" placeholder="Search with Username or full name" ng-model="TeamCtrl.searchUsr" ng-keyUp="TeamCtrl.searchOnKeyPress()" ng-disabled="TeamCtrl.isLoading"/>
+			<span class="input-group-addon" title="Search user.">
+				<i class="fa fa-search fa-fw"></i>
+			</span>
+		</div>
+		<table class="table table-striped" ng-if="TeamCtrl.searchedUsers && !TeamCtrl.noUserFound">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Username</th>
+                <th>Add</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="usrs in TeamCtrl.searchedUsers">
+                <td>{{$index+1}}</td>
+                <td>{{usrs.userFullName}}</td>
+                <td>{{usrs.userName}}</td>
+                <td><button class="btn btn-xs btn-warning" title="Add user to project." ng-click="TeamCtrl.addUserToProject(usrs)"><i class="fa fa-plus"></i></button></td>
+              </tr>
+            </tbody>
+		</table>
+		<h5 class="text-danger"> Minimum 2 characters</h5>
+		<h5 class="text-danger" ng-if="TeamCtrl.noUserFound"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> No users found</h5>
+	</div>
+</div>

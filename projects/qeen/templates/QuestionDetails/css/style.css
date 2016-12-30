@@ -1,0 +1,113 @@
+﻿.QuestionDetails .fa-thumbs-o-up,.QuestionDetails .fa-thumbs-o-down, .QuestionDetails .fa-star-o, .QuestionDetails .fa-star{
+	cursor: pointer;
+}
+
+.QuestionDetails .fa-thumbs-o-up:hover:before{
+	content: "\f164";
+}
+
+.QuestionDetails .fa-thumbs-o-down:hover:before{
+	content: "\f165";
+}
+
+.QuestionDetails .fa-thumbs-o-up.disabled:before{
+	content: "\f164";
+	color: #808080;
+	cursor:default;
+}
+
+.QuestionDetails .fa-thumbs-o-up.active:before{
+	content: "\f164";
+}
+.QuestionDetails .fa-thumbs-o-down.active:before{
+	content: "\f165";
+}
+
+.QuestionDetails .fa-thumbs-o-down.disabled:before{
+	content: "\f165";
+	color: #808080;
+	cursor:default;
+}
+.QuestionDetails .fa-star-o.disabled:before{
+	content: "\f005";
+	color: #808080;
+	cursor:default;
+}
+
+.QuestionDetails .userdets{
+	font-size:12px;
+}
+.QuestionDetails .userdets img{
+	border:1px solid #777;
+	border-radius:50%;
+	float:left;
+}
+.QuestionDetails .userdets .usertext{
+	display:inline-block;
+	margin-left:10px;
+	vertical-align: top;
+}
+.QuestionDetails .user-details{
+	background: #f0f8ff;
+    float: left;
+	min-width:170px;
+    padding: 10px 25px 10px 10px;
+}
+.QuestionDetails .small-top-margin{
+	margin-top:5px;
+}
+.QuestionDetails button.tags{
+	margin-right:5px;
+}
+
+.QuestionDetails .answerBox textarea{
+	resize:none;
+	height:200px;
+}
+.QuestionDetails .addCommentBox a{
+	margin-right:10px;
+}
+.QuestionDetails .commentBox{
+	margin-top:10px;
+}
+
+.QuestionDetails .overlay{
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(128, 128, 128, 0.2);
+    height: 100%;
+    width: 100%;
+	z-index:1;
+}
+
+.QuestionDetails .overlay .popup-modal{    
+    min-height: 50px;
+    margin: 50px auto;
+}
+
+.QuestionDetails .overlay .popup-modal textarea{    
+    resize:none;
+	height:200px;
+}
+
+.QuestionDetails .overlay .popup-modal .close-popup-btn{    
+    float:right;
+}
+
+
+.popup-modal.ng-enter {
+  transition:0.5s linear all;
+  transform:translateY(-100%);
+}
+.popup-modal.ng-enter.ng-enter-active {
+  transform:translateY(0%);
+}
+
+
+.QuestionDetails .user-profile-pic-small {
+    height: 40px;
+    width: 40px;
+    display: inline-block;
+    position: relative;
+}

@@ -1,0 +1,14 @@
+﻿{
+	"Avatars": [{
+		"avatarId": 1,
+		"avatarName": "man-blue"
+	},
+	{
+		"avatarId": 2,
+		"avatarName": "lady-orange"
+	},
+	{
+		"avatarId": 3,
+		"avatarName": "boy-red"
+	}]
+}

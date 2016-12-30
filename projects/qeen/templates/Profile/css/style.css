@@ -1,0 +1,86 @@
+﻿.Profile .user-profile-pic{
+	border:1px solid #cccccc;
+	padding: 10px;
+	height: 130px;
+	width: 130px;
+    display: inline-block;
+	position:relative;
+}
+
+.Profile .divider{
+    border-right: 1px solid #b0e0e6;
+}
+
+.Profile .float-right{
+    float:right;
+}
+
+.Profile .changepicbtn{
+    margin-top: 10px;
+}
+
+.Profile .overlay{
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(128, 128, 128, 0.2);
+    height: 100%;
+    width: 100%;
+	z-index:1;
+}
+
+.Profile .overlay .popup-modal{    
+    min-height: 50px;
+    margin: 50px auto;
+}
+
+.Profile .overlay .popup-modal textarea{    
+    resize:none;
+	height:200px;
+}
+
+.Profile .overlay .popup-modal .close-popup-btn{    
+    float:right;
+}
+
+
+.popup-modal.ng-enter {
+  transition:0.5s linear all;
+  transform:translateY(-100%);
+}
+.popup-modal.ng-enter.ng-enter-active {
+  transform:translateY(0%);
+}
+
+.Profile .selectedAvatar .fa{
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    font-size: 20px;
+}
+
+.Profile .clickableAvatar{
+	cursor:pointer;
+}
+
+.Profile .userdets{
+    font-size: 12px;
+}
+.Profile .userdets img{
+	border:1px solid #777;
+	border-radius:50%;
+	float:left;
+}
+.Profile .userdets .usertext{
+	float:left;
+	margin-left:10px;
+}
+
+.Profile .Loader{
+	text-align:center;
+	font-size:18px;
+}
+
+.Profile .user{
+	margin-bottom:20px;
+}

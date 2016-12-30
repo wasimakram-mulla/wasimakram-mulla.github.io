@@ -1,0 +1,43 @@
+﻿<div class="container SignUp">
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
+		<form class="sign-up" ng-submit="SignUpCtrl.signIn()">
+			<div class="input-group margin-bottom-sm">
+				<h3 class="text-success">Create new account</h3>
+				<h6 class="text-danger">All fields are mandatory to enable "Create account" button</h6>
+			</div>
+			<div class="input-group margin-bottom-sm" ng-class="{'has-error':!SignUpCtrl.userfullnm,'has-success':SignUpCtrl.userfullnm}">
+				<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+				<input class="form-control" type="text" placeholder="Full Name" ng-model="SignUpCtrl.userfullnm"/>
+			</div>
+			<div class="input-group margin-bottom-sm" ng-class="{'has-error':SignUpCtrl.UsrNmFound, 'has-success':SignUpCtrl.UsrNmFound==false}">
+				<span class="input-group-addon">
+					<i class="fa fa-fw" ng-class="{'fa-user-o':SignUpCtrl.loadingUsrnm == false, 'fa-spinner fa-pulse text-primary':SignUpCtrl.loadingUsrnm == true}"></i>
+				</span>
+				<input class="form-control" type="text" placeholder="Username" ng-model="SignUpCtrl.usernm" ng-blur="SignUpCtrl.checkUserNameAvail()"/>
+			</div>
+			<div class="input-group" ng-class="{'has-error':(SignUpCtrl.passwd!=SignUpCtrl.confirmpass) && SignUpCtrl.passwd,'has-success': (SignUpCtrl.passwd==SignUpCtrl.confirmpass) && SignUpCtrl.passwd}">
+				<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+				<input class="form-control" type="password" placeholder="Password" ng-model="SignUpCtrl.passwd"/>
+			</div>
+			<div class="input-group" ng-class="{'has-error':(SignUpCtrl.passwd!=SignUpCtrl.confirmpass) && SignUpCtrl.confirmpass,'has-success': (SignUpCtrl.passwd==SignUpCtrl.confirmpass) && SignUpCtrl.confirmpass}">
+				<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+				<input class="form-control" type="password" placeholder="Confirm Password" ng-model="SignUpCtrl.confirmpass"/>
+			</div>
+			<div class="input-group" ng-class="{'has-error':!SignUpCtrl.securityQuestion,'has-success':SignUpCtrl.securityQuestion}">
+				<span class="input-group-addon"><i class="fa fa-question fa-fw"></i></span>
+				<input class="form-control" type="text" placeholder="Enter own security question" ng-model="SignUpCtrl.securityQuestion"/>
+			</div>
+			<div class="input-group" ng-class="{'has-error':!SignUpCtrl.securityAnswer,'has-success':SignUpCtrl.securityAnswer}">
+				<span class="input-group-addon"><i class="fa fa-arrow-right fa-fw"></i></span>
+				<input class="form-control" type="password" placeholder="Enter your Answer" ng-model="SignUpCtrl.securityAnswer"/>
+			</div>
+			<div class="input-group">
+				<button class="btn btn-primary btn-block" type="submit" ng-disabled="!SignUpCtrl.userfullnm || !SignUpCtrl.usernm || !SignUpCtrl.passwd || !SignUpCtrl.confirmpass || SignUpCtrl.hasError == true || SignUpCtrl.passwd!=SignUpCtrl.confirmpass || !SignUpCtrl.securityAnswer || !SignUpCtrl.securityQuestion" ng-click="SignUpCtrl.createAccount()">
+					<i class="fa fa-plus" aria-hidden="true"></i> Create account
+				</button><br/>
+				I already have an account? <a href="#/sign-in" class="link">Sign In</a>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,26 @@
+﻿{
+	"Questions": [{
+		"quesId": 1,
+		"quesText": "Hello World",
+		"userId": 1,
+		"projectId": [1],
+		"tags": [1, 2],
+		"votes": {
+			"upVote": 1,
+			"downVote": 0
+		},
+		"views": 1,
+		"postedOn": 1481100940478
+	}],
+	"UserDets": [{
+		"userId": 1,
+		"userName": "wasim",
+		"userFullName": "Wasimakram Mulla",
+		"password": "wasim1234"
+	}, {
+		"userId": 2,
+		"userName": "Mac",
+		"userFullName": "Mohseen",
+		"password": "mac1234"
+	}]
+}

@@ -1,0 +1,104 @@
+﻿<div class="col-md-12 AllQuestions">
+
+	<div class="container">
+		<div class="col-md-10 row">
+			<ul class="nav nav-pills" role="tablist">
+				<li role="presentation">
+					<button class="btn btn-sm" ng-click="AllQuesCtrl.loadAllQuestions();" ng-class="{'btn-primary':AllQuesCtrl.selectedQuesTab == 1,'btn-info':AllQuesCtrl.selectedQuesTab != 1}">
+						All Questions 
+						<span class="badge" ng-if="AllQuesCtrl.questionsData.length != 0">{{AllQuesCtrl.questionsData.length}}</span>
+						<span class="badge" ng-if="AllQuesCtrl.questionsData == null"><i class="fa fa-spinner fa-pulse fa-1x fa-fw text-primary"></i></span>
+					</button>
+				</li>
+
+				<li role="presentation" ng-repeat="prjs in AllQuesCtrl.userprojects" ng-if="prjs.projId!=1">
+					<button class="btn btn-sm btn-info" ng-click="AllQuesCtrl.selectProject(prjs, ($index+1))" ng-disabled="prjs.questionData == null"  ng-class="{'btn-primary':AllQuesCtrl.selectedQuesTab == ($index+1),'btn-info':AllQuesCtrl.selectedQuesTab != ($index+1)}">
+						{{prjs.projName}}
+						<span class="badge" ng-if="prjs.questionData.length != 0">{{prjs.questionData.length}}</span>
+						<span class="badge" ng-if="prjs.questionData == null">
+							<i class="fa fa-spinner fa-pulse fa-1x fa-fw text-primary"></i>
+						</span>
+					</button>
+				</li>
+			</ul>
+		</div>
+		<div class="col-md-2">
+		<ul class="nav nav-pills nav-right" role="tablist">
+			<li role="presentation" class="active">
+				<a href="#/ask-question">Ask a Question <i class="fa fa-question"></i></a>
+			</li>
+		</ul>
+		</div>
+		<hr class="col-md-12"/>
+		<div class="col-md-12 questionsWrapper" ng-if="AllQuesCtrl.questionsData && !AllQuesCtrl.prjQuestionsPanel">
+			<div class="questions" ng-repeat="question in AllQuesCtrl.questionsData">
+				<div class="col-md-2 questOpts">
+					<strong class="text-primary">{{question.votes}}</strong> <i class="fa fa-thumbs-up"></i> Votes <br/>
+					<strong class="text-primary">{{question.answerCount}}</strong> <i class="fa fa-pencil-square" aria-hidden="true"></i> Answers<br/>
+					<strong class="text-primary">{{question.views}}</strong> <i class="fa fa-binoculars" aria-hidden="true"></i> Views
+				</div>
+				<div class="col-md-10">
+					<div class="col-md-12 row questionText">
+						<a href="#/question-details/{{question.quesId}}">{{question.quesTitle}}</a>
+					</div>
+					<div class="col-md-12 row" ng-bind-html="question.quesDesc"></div>
+					<div class="col-md-9 row">
+						<div class="col-md-2 row tags" ng-repeat = "tags in question.tags">
+							<button class="btn btn-xs btn-info" ng-click="AllQuesCtrl.loadTagQuestions()">{{tags}}</button>
+						</div>
+					</div>
+					<div class="col-md-3 userdets">
+						<strong><u>Asked</u>: <em class="text-info">{{question.postedOn | date : "dd-MM-yyyy"}}</em></strong><br/>
+						<strong class="user-details">
+							<img ng-src="imgs/user.png" height="40" width="40" ng-if="!question.userAvatar"/>
+							<div class="user-profile-pic-small" ng-if="question.userAvatar">
+								<div class="avatars {{question.userAvatar}}"></div>
+							</div>
+							<div class="usertext">
+								<a href="#/profile/{{question.userId}}">{{question.userName}}</a><br/>
+								<span class="text-success"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> {{question.userPoints}}</span>
+							</div>
+						</strong>
+					</div>
+				</div>
+				<hr class="col-md-12"/>
+			</div>
+			<h4 class="text-danger" ng-if="AllQuesCtrl.questionsData.length<=0"><i class="fa fa-exclamation-triangle"></i> No questions available in this project.</h4>
+		</div>
+
+		<!-- Project Questions Panel -->
+		<div class="col-md-12 questionsWrapper" ng-if="AllQuesCtrl.prjQuestionsPanel">
+			<div class="questions" ng-repeat="question in AllQuesCtrl.prjQuestionsData">
+				<div class="col-md-2 questOpts">
+					<strong class="text-primary">{{question.votes}}</strong> <i class="fa fa-thumbs-up"></i> Votes <br/>
+					<strong class="text-primary">{{question.answerCount}}</strong> <i class="fa fa-pencil-square" aria-hidden="true"></i> Answers<br/>
+					<strong class="text-primary">{{question.views}}</strong> <i class="fa fa-binoculars" aria-hidden="true"></i> Views
+				</div>
+				<div class="col-md-10">
+					<div class="col-md-12 row questionText">
+						<a href="#/question-details/{{question.quesId}}">{{question.quesTitle}}</a>
+					</div>
+					<div class="col-md-12 row" ng-bind-html="question.quesDesc">
+					</div>
+					<div class="col-md-9 row">
+						<div class="col-md-2 row tags" ng-repeat = "tags in question.tags">
+							<button class="btn btn-xs btn-info" ng-click="AllQuesCtrl.loadTagQuestions()">{{tags}}</button>
+						</div>
+					</div>
+					<div class="col-md-3 userdets">
+						<strong><u>Asked</u>: <em class="text-info">{{question.postedOn | date : "dd-MM-yyyy HH:mm:ss"}}</em></strong><br/>
+						<strong class="user-details">
+							<img ng-src="imgs/user.png" height="40" width="40"/>
+							<div class="usertext">
+								<a href="javascript:void(0)">{{question.userName}}</a><br/>
+								<span class="text-success"><i class="fa fa-dot-circle-o" aria-hidden="true"></i> {{question.userPoints}}</span>
+							</div>
+						</strong>
+					</div>
+				</div>
+				<hr class="col-md-12"/>
+			</div>
+			<h4 class="text-danger" ng-if="AllQuesCtrl.prjQuestionsData.length<=0"><i class="fa fa-exclamation-triangle"></i> No questions available in this project.</h4>
+		</div>
+	</div>
+</div>

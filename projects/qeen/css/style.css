@@ -1,0 +1,130 @@
+﻿body{
+	padding:0;
+	margin:0;
+	background: #efefef;
+}
+
+.imagePreloader{
+	background: url('../imgs/man-blue.png'), url('../imgs/lady-orange.png') no-repeat -9999px -9999px;
+	display:none;
+}
+
+.navbar-brand img{
+	float:left;
+	margin-top:-5px;
+	margin-right:5px;
+}
+
+.nav.navbar-nav.navbar-right li{
+	margin-left:10px;
+}
+
+.errorOverlay, .successOverlay{
+	background:#ff6347;
+	color:#ffffff;
+	min-width:100px;
+	width:auto;
+	position:fixed;
+	right:0;
+	top:45px;
+}
+
+.overlay-text{
+	padding:10px 20px;
+}
+
+.successOverlay{
+	background:#66cdaa;
+}
+
+.emptyOverlay{
+	background:none;
+	position:fixed;
+	top:0;
+	left:0;
+	height:100%;
+	width:100%;
+}
+
+.loaderOverlay{
+	background:#1e90ff;
+	color:#ffffff;
+	min-width:200px;
+	width:auto;
+	position:fixed;
+	right:0;
+	top:45px;
+}
+
+.text-center{
+	text-align:center;
+}
+
+/* Animations */
+.errorOverlay.ng-enter {
+  transition:0.5s linear all;
+  transform:translateX(100%);
+}
+
+/* The finishing CSS styles for the enter animation */
+.errorOverlay.ng-enter.ng-enter-active {
+  transform:translateX(0%);
+}
+.errorOverlay.ng-leave {
+  transition:0.5s linear all;
+  transform:translateX(0%);
+}
+
+/* The finishing CSS styles for the enter animation */
+.errorOverlay.ng-leave.ng-leave-active {
+  transform:translateX(100%);
+}
+
+
+.successOverlay.ng-enter {
+  transition:0.5s linear all;
+  transform:translateX(100%);
+}
+
+/* The finishing CSS styles for the enter animation */
+.successOverlay.ng-enter.ng-enter-active {
+  transform:translateX(0%);
+}
+.successOverlay.ng-leave {
+  transition:0.5s linear all;
+  transform:translateX(0%);
+}
+
+/* The finishing CSS styles for the enter animation */
+.successOverlay.ng-leave.ng-leave-active {
+  transform:translateX(100%);
+}
+
+.nav-avatar{
+    margin-right: 3px;
+    border: 1px solid #ccc;
+}
+
+.custom-avatar{
+    height: 30px;
+    width: 30px;
+	display: inline-block;
+    vertical-align: middle;
+}
+
+/* User Avatars */
+.avatars{
+    height: 100%;
+    width: 100%;
+    background-size: 100% 100%;
+}
+
+.lady-orange{
+	background-image:url('../imgs/lady-orange.png');
+}
+.man-blue{
+	background-image:url('../imgs/man-blue.png');
+}
+.boy-red{
+	background-image:url('../imgs/boy-red.png');
+}
