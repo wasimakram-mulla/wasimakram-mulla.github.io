@@ -1,14 +1,50 @@
 ﻿{
 	"Avatars": [{
 		"avatarId": 1,
-		"avatarName": "man-blue"
+		"avatarName": "boy-red-orange"
 	},
 	{
 		"avatarId": 2,
-		"avatarName": "lady-orange"
+		"avatarName": "girl-blue-green"
 	},
 	{
 		"avatarId": 3,
-		"avatarName": "boy-red"
+		"avatarName": "girl-red-blue"
+	},
+	{
+		"avatarId": 4,
+		"avatarName": "lady-blue-blue"
+	},
+	{
+		"avatarId": 5,
+		"avatarName": "lady-green-blue"
+	},
+	{
+		"avatarId": 6,
+		"avatarName": "lady-orange-red"
+	},
+	{
+		"avatarId": 7,
+		"avatarName": "lady-orange-teal"
+	},
+	{
+		"avatarId": 8,
+		"avatarName": "man-black-gray"
+	},
+	{
+		"avatarId": 9,
+		"avatarName": "man-black-green"
+	},
+	{
+		"avatarId": 10,
+		"avatarName": "man-blue-blue"
+	},
+	{
+		"avatarId": 11,
+		"avatarName": "man-blue-orange"
+	},
+	{
+		"avatarId": 12,
+		"avatarName": "man-blue-red"
 	}]
 }

@@ -5,7 +5,7 @@
 }
 
 .imagePreloader{
-	background: url('../imgs/man-blue.png'), url('../imgs/lady-orange.png') no-repeat -9999px -9999px;
+	background: url('../imgs/boy-red-orange'), url('../imgs/girl-blue-green.png'), url('../imgs/girl-red-blue.png'), url('../imgs/lady-blue-blue.png'), url('../imgs/lady-green-blue.png'), url('../imgs/lady-orange-red.png'), url('../imgs/lady-orange-teal.png'), url('../imgs/man-black-gray.png'), url('../imgs/man-black-green.png'), url('../imgs/man-blue-blue.png'), url('../imgs/man-blue-orange.png'), url('../imgs/man-blue-red.png') no-repeat -9999px -9999px;
 	display:none;
 }
 
@@ -118,13 +118,39 @@
     width: 100%;
     background-size: 100% 100%;
 }
-
-.lady-orange{
-	background-image:url('../imgs/lady-orange.png');
+.boy-red-orange{
+	background-image:url('../imgs/boy-red-orange.png');
 }
-.man-blue{
-	background-image:url('../imgs/man-blue.png');
+.girl-blue-green{
+	background-image:url('../imgs/girl-blue-green.png');
 }
-.boy-red{
-	background-image:url('../imgs/boy-red.png');
+.girl-red-blue{
+	background-image:url('../imgs/girl-red-blue.png');
+}
+.lady-blue-blue{
+	background-image:url('../imgs/lady-blue-blue.png');
+}
+.lady-green-blue{
+	background-image:url('../imgs/lady-green-blue.png');
+}
+.lady-orange-red{
+	background-image:url('../imgs/lady-orange-red.png');
+}
+.lady-orange-teal{
+	background-image:url('../imgs/lady-orange-teal.png');
+}
+.man-black-gray{
+	background-image:url('../imgs/man-black-gray.png');
+}
+.man-black-green{
+	background-image:url('../imgs/man-black-green.png');
+}
+.man-blue-blue{
+	background-image:url('../imgs/man-blue-blue.png');
+}
+.man-blue-orange{
+	background-image:url('../imgs/man-blue-orange.png');
+}
+.man-blue-red{
+	background-image:url('../imgs/man-blue-red.png');
 }
