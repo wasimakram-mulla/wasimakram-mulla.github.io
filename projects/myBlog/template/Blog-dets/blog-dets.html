@@ -1,0 +1,16 @@
+<div class="container">
+<button class="btn btn-sm btn-primary" ng-click="blogdetctrl.goToAllBlogs()"><i class="fa fa-reply" aria-hidden="true"></i> Go back</button>
+<div class='col-md-12 row' ng-if="blogdetctrl.blogdata.length<=0">
+	<h4 class="text-primary">
+		<i class="fa fa-pulse fa-spinner"></i> Please wait, loading blogs...
+	</h4>
+</div>
+
+<div class="col-md-12 row" ng-repeat="blog in blogdetctrl.blogdata track by $index">
+	<h3 class="text-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {{blog.title}}</h3>
+	<h5 class="text-warning"><strong class="floatRight" style="margin-top:-25px">{{blog.blogdate | date: 'dd-MM-yyyy HH:mm'}}</strong></h5>
+	<hr/>
+	<output class="preview-wrapper" ng-bind-html="blog.content"></output>
+</div>
+
+</div>

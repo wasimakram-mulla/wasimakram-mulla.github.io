@@ -1,0 +1,30 @@
+<div class="container Allblogs">
+	<div class="col-md-1">
+		<h3 class="text-primary">
+			<img src="http://wasimakram-mulla.github.io/img/myPic.jpg" height="100" width="100">
+		</h3>
+	</div>
+	<div class="col-md-8" style="margin-left:20px;">
+		<h3 class="text-primary">
+			Wasimakram Mulla
+			<br/>
+			<h5><a href="http://wasimakram-mulla.github.io"><i class="fa fa-link"></i> http://wasimakram-mulla.github.io</a></h5>
+		</h3>
+	</div>
+	<div class="col-md-12">
+		<blockquote class="text-primary">Blogging is not <i class="fa fa-rocket"></i> rocket science, it's about being yourself, and putting what you have into it.</blockquote>
+		<hr/>
+	</div>
+	
+<div class='col-md-12 row'>
+	<h4 class="text-primary" ng-if="allblogctrl.bloglinks.length<=0">
+		<i class="fa fa-pulse fa-spinner"></i> Please wait, loading blogs...
+	</h4>
+	<div class="col-md-3 blog-box bg-primary" ng-repeat="blog in allblogctrl.bloglinks" ng-click="allblogctrl.loadBlogDets(blog)">
+		<h4 class="blog-header">{{blog.blogTitle}}</h4>
+		<hr />
+		<h5 class="blog-body">Tags: <strong>{{blog.tags}}</strong></h5>
+		<h6><span class="floatRight">{{blog.blogdate | date: 'dd-MM-yyyy'}}</span></h6>
+	</div>
+</div>
+</div>

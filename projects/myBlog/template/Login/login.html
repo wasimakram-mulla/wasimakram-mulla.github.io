@@ -1,0 +1,15 @@
+<div class="container sign-in">
+  <form class="form-signin" ng-submit="loginctrl.checkLogin();">
+	<h2 class="form-signin-heading">Login</h2>
+	<label for="inputEmail" class="sr-only">Email address</label>
+	<input type="email" ng-model="loginctrl.email" class="form-control" placeholder="Email address" required autofocus>
+	<label for="inputPassword" class="sr-only">Password</label>
+	<input type="password" ng-model="loginctrl.passwd" class="form-control" placeholder="Password" required>
+	<div class="checkbox">
+	  <label>
+		<br/>
+	  </label>
+	</div>
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  </form>
+</div> <!-- /container -->
