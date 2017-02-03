@@ -9,7 +9,6 @@ function NavController($firebaseObject, $rootScope, PopUp, $location, UserServic
     vm.signOut = signOut;
     
     function init() {
-        console.log("NavController");
         if(firebase.auth().currentUser === null){
             $location.path("/");
         }

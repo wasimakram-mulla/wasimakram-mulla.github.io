@@ -1,9 +1,9 @@
 angular.module("GitBlog")
 	.controller("AddBlogController", AddBlogController);
 
-AddBlogController.$inject = ["$firebaseObject", "$firebaseArray", "$rootScope", "PopUp", "$location", "UserService", "$timeout"];
+AddBlogController.$inject = ["$firebaseObject", "$firebaseArray", "$firebaseAuth", "$rootScope", "PopUp", "$location", "UserService", "$timeout"];
 
-function AddBlogController($firebaseObject, $firebaseArray, $rootScope, PopUp, $location, UserService, $timeout){
+function AddBlogController($firebaseObject, $firebaseArray, $firebaseAuth, $rootScope, PopUp, $location, UserService, $timeout){
 	var vm = this;
 	vm.rootRef = null;
 	vm.linkRefs = null;
@@ -26,8 +26,20 @@ function AddBlogController($firebaseObject, $firebaseArray, $rootScope, PopUp, $
 		vm.blogdata = null;
 		vm.blogtags = null;
 		vm.linkRefs = new Array();
-
-		if(UserService.checkUser()){
+		
+		$firebaseAuth().$onAuthStateChanged(function(authData) {
+			if (authData) {
+				if(authData.uid != "c1QDdN6PkXVJIggZDHt8wTVHnyp2"){
+					$location.path('/');
+				}
+				$rootScope.isLoggedIn = true;
+			}
+			else {
+				$rootScope.isLoggedIn = false;
+			}
+		});
+		
+		if($rootScope.isLoggedIn){
 			vm.rootRef = firebase.database().ref().child('/blog-post');
 			vm.blogs = $firebaseArray(vm.rootRef);
 			vm.rootRefBlogLinks = firebase.database().ref().child('/blog-links');
