@@ -8,12 +8,12 @@ function PopUp($rootScope, $timeout){
 	vm.success = success;
 	vm.error = error;
 	
-	function success(msg){
+	function success(msg, time){
 		$rootScope.successMessage = msg;
 		
 		$timeout(function(){
 			$rootScope.successMessage = null;
-		},1500);
+		},time);
 	}
 	
 	function error(msg){

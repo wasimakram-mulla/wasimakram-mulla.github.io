@@ -1,4 +1,4 @@
-<div class="container container-nav">
+<div class="container container-nav" ng-controller="NavController as navctrl">
   <!-- Static navbar -->
   <nav class="navbar navbar-default">
 	<div class="container-fluid">
@@ -15,6 +15,7 @@
 		<ul class="nav navbar-nav navbar-right">
 		  <li><a href="#/addblog">New Blog</a></li>
 		  <li><a href="#/allblog">All Blog</a></li>
+			<li><a href="javascript:void(0)" ng-click="navctrl.signOut();">Logout</a></li>
 		</ul>
 	  </div><!--/.nav-collapse -->
 	</div><!--/.container-fluid -->
