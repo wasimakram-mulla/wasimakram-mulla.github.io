@@ -33,7 +33,7 @@ function LoginController($firebaseObject, $rootScope, PopUp, $location, UserServ
 		
 		if (user) {
 			vm.currentUID = user.uid;
-			console.log(vm.currentUID);
+			//console.log(vm.currentUID);
 			PopUp.success("Login Successful", 3000);
 			UserService.setUser();
 			vm.loader = null;
