@@ -23,7 +23,7 @@
 	<h4 class="text-primary col-md-12" ng-if="allblogctrl.bloglinks.length<=0 && !allblogctrl.noBlogs">
 		<i class="fa fa-pulse fa-spinner"></i> Please wait, loading blogs...
 	</h4>
-	<h4 ng-if="allblogctrl.noBlogs" class="text-danger col-md-12">
+	<h4 ng-if="allblogctrl.noBlogs && allblogctrl.bloglinks.length<=0" class="text-danger col-md-12">
 		<blockquote><i class="fa fa-exclamation-triangle"></i> I am sorry to inform, currently there are no blogs. Thanks for your interest I will surely write some in the near future.<br/><br/> Do come back. Thanks.</blockquote>
 	</h4>
 	<div class="col-md-3 blog-box bg-primary" ng-repeat="blog in allblogctrl.bloglinks">

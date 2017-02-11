@@ -19,9 +19,12 @@ function AllBlogController($firebaseObject, $firebaseArray, $firebaseAuth, $root
 
 		vm.blogPostRef = firebase.database().ref().child('/blog-post');
 		vm.blogPost = $firebaseArray(vm.blogPostRef);
+		
 		$timeout(function(){
-			vm.noBlogs = true;
-		},2000);
+			if(vm.bloglinks.length<=0){
+				vm.noBlogs = true;
+			}
+		},5000);
 	};
 	
 	function loadBlogDets(blog){
@@ -45,7 +48,13 @@ function AllBlogController($firebaseObject, $firebaseArray, $firebaseAuth, $root
 		vm.bloglinks.$remove(blog).then(function(ref) {
 			PopUp.success("Blog deleted successfully.",2000)
 		});
-	}
+		
+		$timeout(function(){
+			if(vm.bloglinks.length<=0){
+				vm.noBlogs = true;
+			}
+		},5000);
+	};
 
 	
 	vm.init();
