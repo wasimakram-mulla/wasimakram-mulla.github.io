@@ -28,18 +28,20 @@
 	<div class="col-md-12">
 		<div class="col-md-12 commentsWrapper" ng-repeat="cmtDet in blogdetctrl.blogSort">
 			<div class="col-md-2 commentImg">
-				<img ng-src="{{cmtDet.userPic}}" height="60" width="60" /><br/>
+				<img ng-src="{{cmtDet.userPic}}" height="80" width="80" /><br/>
 			</div>
 			<div class="col-md-10">
 				<div>From <span class="text-info">{{cmtDet.userName}}</span> on 
-						<span class="text-info">{{cmtDet.commentDate | date: "dd-MMM-yyyy"}}</span></div><br/>
+						<span class="text-info">{{cmtDet.commentDate | date: "dd-MMM-yyyy"}}</span>
+						<i class="fa fa-trash floatRight deleteCmt" title="Delete comment." ng-click="blogdetctrl.deleteComment(cmtDet)" ng-if="userData.displayName === cmtDet.userName"></i>
+				</div><br/>
 				{{cmtDet.comment}}
 			</div>
 		</div>
 		<h5 class="text-danger" ng-if="blogdetctrl.blogSort.length<=0">No comments yet...</h5>
 		<div class="col-md-12 commentsWrapper" ng-if="blogdetctrl.commentBox">
 			<div class="col-md-2 commentImg">
-				<img ng-src="{{userData.photoURL}}" height="60" width="60" /><br/>
+				<img ng-src="{{userData.photoURL}}" height="80" width="80" /><br/>
 			</div>
 			<div class="col-md-10">
 				<div>From <span class="text-info">{{userData.displayName}}</span></div><br/>
@@ -52,7 +54,7 @@
 		<h4 class="text-primary">Add a comment</h4>
 		<textarea class="form-control" placeholder="Would love to here you..." ng-model="blogdetctrl.commentBox"></textarea>
 		<br/>
-		<button class="btn btn-primary floatRight btn-comment" ng-click="blogdetctrl.addComment()">
+		<button class="btn btn-primary floatRight btn-comment" ng-click="blogdetctrl.addComment()" ng-disabled="!blogdetctrl.commentBox">
 			<i class="fa fa-pencil-square-o"></i> Add comment
 		</button>
 		<img ng-src="{{userData.photoURL}}" class="img-circle floatRight" height="40" width="40" ng-if="userData.photoURL"/>

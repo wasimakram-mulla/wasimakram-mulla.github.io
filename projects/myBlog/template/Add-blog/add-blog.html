@@ -9,7 +9,7 @@
 <input type="text" class="form-control" ng-model="addctrl.blogtitle" placeholder="Blog title" /><br/>
 <textarea class="form-control" ng-model="addctrl.blogdata" placeholder="Blog description"></textarea><br/>
 <input type="text" class="form-control" ng-model="addctrl.blogtags" placeholder="Tags" /><br/>
-<button class="btn btn-sm btn-primary" ng-click="addctrl.addPost()" ng-disabled="!addctrl.blogtitle || !addctrl.blogdata">Add Blog</button>
+<button class="btn btn-sm btn-primary" ng-click="addctrl.addPost()" ng-disabled="!addctrl.blogtitle || !addctrl.blogdata || !addctrl.blogtags">Add Blog</button>
 </div>
 
 <div class='col-md-3'>

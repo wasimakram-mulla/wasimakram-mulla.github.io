@@ -20,14 +20,20 @@
 	</div>
 	
 <div class='col-md-12 row'>
-	<h4 class="text-primary" ng-if="allblogctrl.bloglinks.length<=0">
+	<h4 class="text-primary col-md-12" ng-if="allblogctrl.bloglinks.length<=0 && !allblogctrl.noBlogs">
 		<i class="fa fa-pulse fa-spinner"></i> Please wait, loading blogs...
 	</h4>
-	<div class="col-md-3 blog-box bg-primary" ng-repeat="blog in allblogctrl.bloglinks" ng-click="allblogctrl.loadBlogDets(blog)">
+	<h4 ng-if="allblogctrl.noBlogs" class="text-danger col-md-12">
+		<blockquote><i class="fa fa-exclamation-triangle"></i> I am sorry to inform, currently there are no blogs. Thanks for your interest I will surely write some in the near future.<br/><br/> Do come back. Thanks.</blockquote>
+	</h4>
+	<div class="col-md-3 blog-box bg-primary" ng-repeat="blog in allblogctrl.bloglinks">
+		<span ng-click="allblogctrl.loadBlogDets(blog)" class="blogWrapper">
 		<h4 class="blog-header">{{blog.blogTitle}}</h4>
 		<hr />
 		<h5 class="blog-body">Tags: <strong>{{blog.tags}}</strong></h5>
 		<h6><span class="floatRight">{{blog.blogdate | date: 'dd-MM-yyyy'}}</span></h6>
+		</span>
+		<i class="fa fa-trash deleteBlog" title="Delete blog" ng-click="allblogctrl.deleteBlog(blog)"></i>
 	</div>
 </div>
 </div>

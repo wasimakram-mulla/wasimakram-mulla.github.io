@@ -14,6 +14,7 @@ function BlogDetsController($firebaseObject, $firebaseArray, $rootScope, PopUp, 
 	vm.init = init;
 	vm.goToAllBlogs = goToAllBlogs;
 	vm.addComment = addComment;
+	vm.deleteComment = deleteComment;
 
 	function init(){
 		console.log("BlogDetsController", $routeParams.blogId);
@@ -46,6 +47,12 @@ function BlogDetsController($firebaseObject, $firebaseArray, $rootScope, PopUp, 
 		console.log(commentData);
 		vm.commentBox = null;
 	}
+
+	function deleteComment(cmtData){
+		vm.blogSort.$remove(cmtData).then(function(ref) {
+			PopUp.success("Comment deleted successfully.",2000)
+		});
+	};
 
 	vm.init();
 }
