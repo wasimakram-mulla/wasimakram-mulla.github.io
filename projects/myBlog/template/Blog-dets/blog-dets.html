@@ -22,3 +22,39 @@
 </div>
 
 </div>
+
+<div class="container">
+	<h4 class="text-primary">Comments</h4>
+	<div class="col-md-12">
+		<div class="col-md-12 commentsWrapper" ng-repeat="cmtDet in blogdetctrl.blogSort">
+			<div class="col-md-2 commentImg">
+				<img ng-src="{{cmtDet.userPic}}" height="60" width="60" /><br/>
+			</div>
+			<div class="col-md-10">
+				<div>From <span class="text-info">{{cmtDet.userName}}</span> on 
+						<span class="text-info">{{cmtDet.commentDate | date: "dd-MMM-yyyy"}}</span></div><br/>
+				{{cmtDet.comment}}
+			</div>
+		</div>
+		<h5 class="text-danger" ng-if="blogdetctrl.blogSort.length<=0">No comments yet...</h5>
+		<div class="col-md-12 commentsWrapper" ng-if="blogdetctrl.commentBox">
+			<div class="col-md-2 commentImg">
+				<img ng-src="{{userData.photoURL}}" height="60" width="60" /><br/>
+			</div>
+			<div class="col-md-10">
+				<div>From <span class="text-info">{{userData.displayName}}</span></div><br/>
+				{{blogdetctrl.commentBox}}
+			</div>
+		</div>
+	</div>
+	<hr/>
+	<div class="col-md-12 row" ng-if="isLoggedIn">
+		<h4 class="text-primary">Add a comment</h4>
+		<textarea class="form-control" placeholder="Would love to here you..." ng-model="blogdetctrl.commentBox"></textarea>
+		<br/>
+		<button class="btn btn-primary floatRight btn-comment" ng-click="blogdetctrl.addComment()">
+			<i class="fa fa-pencil-square-o"></i> Add comment
+		</button>
+		<img ng-src="{{userData.photoURL}}" class="img-circle floatRight" height="40" width="40" ng-if="userData.photoURL"/>
+	</div>
+</div>

@@ -4,9 +4,11 @@ angular.module('GitBlog')
 		link: function (scope, elem, attrs) {
 			$firebaseAuth().$onAuthStateChanged(function(authData) {
 			if (authData) {
+				$rootScope.userData=authData;
 				$rootScope.isLoggedIn = true;
 			}
 			else {
+				$rootScope.userData=null;
 				$rootScope.isLoggedIn = false;
 			}
 		});
