@@ -21,7 +21,7 @@
 		}],
 		"project_details": "A game made from solitaire cards. Fun and interactive to play, and is similar to UNO cards.<br/>Frameworks used: HTML5, CSS3, BootStrap, AngularJS 1, etc."
 	}, {
-		"project_name": "Bridge game",
+		"project_name": "My Blogs",
 		"project_link": "projects/blog/index.html",
 		"project_img": "img/projects/blog.jpg",
 		"project_langs": [{
