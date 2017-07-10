@@ -1,5 +1,23 @@
 {
 	"projects": [{
+		"project_name": "Techy Blog",
+		"project_link": "https://techyblog.github.io",
+		"project_img": "img/projects/techyblog.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "Angular 1",
+			"label_type": "label-warning"
+		}],
+		"project_details": "This is a generalized blog where people with different views and knowledge bases come together and create something remarkable."
+	},{
 		"project_name": "Bridge game",
 		"project_link": "projects/bridge/index.html",
 		"project_img": "img/projects/bridge.jpg",
