@@ -1,5 +1,24 @@
 {
-	"projects": [{
+	"projects": [
+	{
+		"project_name": "Angular 4 To Do List",
+		"project_link": "projects/Ang4ToDoList/index.html",
+		"project_img": "img/projects/Ang4ToDoList.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "Angular 4",
+			"label_type": "label-warning"
+		}],
+		"project_details": "A todo list created in Angular 4, this is a minified version, for code fork the repository: https://github.com/wasimakram-mulla/Ang4TodoList."
+	},{
 		"project_name": "Techy Blog",
 		"project_link": "https://techyblog.github.io",
 		"project_img": "img/projects/techyblog.jpg",
