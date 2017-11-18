@@ -1,6 +1,27 @@
 {
 	"projects": [
 	{
+		"project_name": "Angular 5 Contact list",
+		"project_link": "projects/Ang5App/index.html",
+		"project_img": "img/projects/Ang5App.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "Angular 5",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "Routing",
+			"label_type": "label-danger"
+		}],
+		"project_details": "A contact list created with latest Angular 5 features like HttpClient with REST + Routing, this is a minified version, for code fork the repository: https://github.com/wasimakram-mulla/Ang5withRoute."
+	},{
 		"project_name": "Angular 4 To Do List",
 		"project_link": "projects/Ang4ToDoList/index.html",
 		"project_img": "img/projects/Ang4ToDoList.jpg",
