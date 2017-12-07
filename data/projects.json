@@ -1,6 +1,27 @@
 {
 	"projects": [
 	{
+		"project_name": "Angular 5 Student Registration App",
+		"project_link": "https://assasastudreg.firebaseapp.com",
+		"project_img": "img/projects/AssasaStudRegApp.jpg",
+		"project_langs": [{
+			"lang_name": "HTML5",
+			"label_type": "label-success"
+		}, {
+			"lang_name": "CSS3",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "BootStrap",
+			"label_type": "label-info"
+		}, {
+			"lang_name": "Angular 5",
+			"label_type": "label-warning"
+		}, {
+			"lang_name": "Routing",
+			"label_type": "label-danger"
+		}],
+		"project_details": "I have created this project for a very dear sir of mine, so that the registration process would be smoother for the students. If this link is not working you can even check another link and view the same application. Link: https://wasimakram-mulla.github.io/projects/AssasaStudRegApp/index.html"
+	},{
 		"project_name": "Angular 5 Contact list",
 		"project_link": "projects/Ang5App/index.html",
 		"project_img": "img/projects/Ang5App.jpg",
