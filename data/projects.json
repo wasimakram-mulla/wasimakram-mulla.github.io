@@ -623,7 +623,7 @@
 		"project_details": "This is a very simple and responsive photo Gallery, with a responsive slider overhead."
 	}, {
 		"project_name": "Flip Quiz Demo",
-		"project_link": "projects/flipQuiz/index.html",
+		"project_link": "projects/flipquiz/index.html",
 		"project_img": "img/projects/flipQuiz.jpg",
 		"project_langs": [{
 			"lang_name": "HTML5",
@@ -702,24 +702,6 @@
 			"label_type": "label-danger"
 		}],
 		"project_details": "This demo was created to explain how multiple JSON files are loaded on single jQuery page."
-	}, {
-		"project_name": "Editable Content On Browser",
-		"project_link": "javascript:alert('GIT cannot load PHP sites!!! \n\n Please fork my Portfolio on github.')",
-		"project_img": "img/projects/editablecontent.jpg",
-		"project_langs": [{
-			"lang_name": "HTML5",
-			"label_type": "label-success"
-		}, {
-			"lang_name": "CSS3",
-			"label_type": "label-info"
-		}, {
-			"lang_name": "BootStrap",
-			"label_type": "label-info"
-		}, {
-			"lang_name": "JavaScript",
-			"label_type": "label-warning"
-		}],
-		"project_details": "This demo was created to show how we can edit contents on browser without using any Text-box or Text-area."
 	}, {
 		"project_name": "Analog clock",
 		"project_link": "projects/analogclock/index.html",
